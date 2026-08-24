@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Customer Due</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
+  font-family:Arial,sans-serif;
+  background:#f5f6f8;
+}
+
+body{
+  overflow-x:hidden;
+}
+
+.app{
+  width:100%;
+  min-height:100vh;
+}
+
+.header{
+  width:100%;
+  background:#111827;
+  color:white;
+  padding:24px 18px;
+}
+
+.header h1{
+  font-size:23px;
+}
+
+.header p{
+  margin-top:6px;
+  font-size:14px;
+  color:#d1d5db;
+}
+
+.container{
+  width:100%;
+  padding:16px;
+}
+
+.card{
+  width:100%;
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 3px 15px rgba(0,0,0,.07);
+}
+
+.title{
+  font-size:20px;
+  font-weight:bold;
+  color:#111827;
+}
+
+.subtitle{
+  margin-top:5px;
+  color:#6b7280;
+  font-size:13px;
+}
+
+label{
+  display:block;
+  margin-top:20px;
+  margin-bottom:8px;
+  font-size:14px;
+  font-weight:bold;
+  color:#374151;
+}
+
+select,
+input{
+  width:100%;
+  height:55px;
+  border:1px solid #d1d5db;
+  border-radius:13px;
+  background:white;
+  padding:0 14px;
+  font-size:16px;
+  outline:none;
+}
+
+button{
+  width:100%;
+  height:56px;
+  margin-top:24px;
+  border:none;
+  border-radius:13px;
+  background:#111827;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+}
+
+button:disabled{
+  opacity:.6;
+}
+
+#message{
+  text-align:center;
+  margin-top:15px;
+  min-height:20px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.success{
+  color:#15803d;
+}
+
+.error{
+  color:#dc2626;
+}
+
+.loading{
+  color:#6b7280;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="header">
+    <h1>🏪 Customer Due</h1>
+    <p>Admin Transaction Panel</p>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+
+      <div class="title">
+        Add Transaction
+      </div>
+
+      <div class="subtitle">
+        Customer-এর হিসাব আপডেট করুন
+      </div>
+
+      <label>
+        Customer Name
+      </label>
+
+      <select id="customer">
+        <option value="">
+          Loading customers...
+        </option>
+      </select>
+
+      <label>
+        Amount (KD)
+      </label>
+
+      <input
+        id="amount"
+        type="number"
+        step="0.001"
+        inputmode="decimal"
+        placeholder="0.000"
+      >
+
+      <label>
+        Type
+      </label>
+
+      <select id="type">
+        <option value="বাকি">বাকি</option>
+        <option value="জমা">জমা</option>
+      </select>
+
+      <button
+        id="addButton"
+        onclick="addTransaction()">
+        + Add Transaction
+      </button>
+
+      <div id="message"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
+
+
+function showMessage(text,type){
+
+  const message =
+  document.getElementById("message");
+
+  message.textContent = text;
+
+  message.className = type || "";
+
+}
+
+
+async function loadCustomers(){
+
+  const select =
+  document.getElementById("customer");
+
+  try{
+
+    const response =
+    await fetch(API_URL + "?action=customers");
+
+    const customers =
+    await response.json();
+
+    select.innerHTML =
+    '<option value="">Customer নির্বাচন করুন</option>';
+
+    customers.forEach(function(customer){
+
+      const option =
+      document.createElement("option");
+
+      option.value =
+      customer.id;
+
+      option.textContent =
+      customer.name;
+
+      select.appendChild(option);
+
+    });
+
+  }catch(error){
+
+    select.innerHTML =
+    '<option value="">Customer load হয়নি</option>';
+
+    showMessage(
+      "Customer list load করা যায়নি",
+      "error"
+    );
+
+  }
+
+}
+
+
+async function addTransaction(){
+
+  const customerId =
+  document.getElementById("customer").value;
+
+  const amount =
+  document.getElementById("amount").value;
+
+  const type =
+  document.getElementById("type").value;
+
+  const button =
+  document.getElementById("addButton");
+
+
+  if(!customerId){
+
+    showMessage(
+      "Customer নির্বাচন করুন",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(!amount || Number(amount)<=0){
+
+    showMessage(
+      "Amount লিখুন",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  button.disabled = true;
+
+  button.textContent = "Saving...";
+
+
+  try{
+
+    const url =
+    API_URL +
+    "?action=add" +
+    "&customerId=" +
+    encodeURIComponent(customerId) +
+    "&amount=" +
+    encodeURIComponent(amount) +
+    "&type=" +
+    encodeURIComponent(type);
+
+
+    const response =
+    await fetch(url);
+
+    const result =
+    await response.json();
+
+
+    if(result.success){
+
+      showMessage(
+        "✓ Transaction added successfully",
+        "success"
+      );
+
+      document.getElementById("amount").value = "";
+
+      document.getElementById("customer").value = "";
+
+    }else{
+
+      showMessage(
+        result.message,
+        "error"
+      );
+
+    }
+
+  }catch(error){
+
+    showMessage(
+      "Transaction save হয়নি",
+      "error"
+    );
+
+  }
+
+
+  button.disabled = false;
+
+  button.textContent =
+  "+ Add Transaction";
+
+}
+
+
+loadCustomers();
+
+</script>
+
+</body>
+</html>
