@@ -11,7 +11,6 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  -webkit-tap-highlight-color:transparent;
 }
 
 html,body{
@@ -26,7 +25,7 @@ body{
   overflow-x:hidden;
 }
 
-button,input,select{
+button,input{
   font-family:inherit;
 }
 
@@ -35,33 +34,27 @@ button,input,select{
   min-height:100vh;
 }
 
-/* HEADER */
-
 .header{
   background:#111827;
   color:white;
-  padding:22px 18px;
+  padding:20px 17px;
 }
 
 .header-title{
-  font-size:22px;
+  font-size:21px;
   font-weight:700;
 }
 
 .header-sub{
-  margin-top:5px;
+  margin-top:4px;
   color:#cbd5e1;
-  font-size:13px;
+  font-size:12px;
 }
-
-/* MAIN */
 
 .container{
   width:100%;
   padding:15px;
 }
-
-/* CARDS */
 
 .card{
   width:100%;
@@ -71,8 +64,6 @@ button,input,select{
   margin-bottom:14px;
   box-shadow:0 3px 14px rgba(0,0,0,.06);
 }
-
-/* LOGIN */
 
 .login-title{
   font-size:21px;
@@ -90,28 +81,28 @@ label{
   display:block;
   font-size:13px;
   font-weight:700;
-  margin:16px 0 7px;
+  margin:15px 0 7px;
   color:#444;
 }
 
-input,select{
+input{
   width:100%;
   height:52px;
   border:1px solid #d6d9df;
   border-radius:12px;
-  background:white;
   padding:0 13px;
   font-size:16px;
   outline:none;
+  background:white;
 }
 
-input:focus,select:focus{
+input:focus{
   border-color:#111827;
 }
 
 button{
   width:100%;
-  height:53px;
+  height:52px;
   border:0;
   border-radius:12px;
   background:#111827;
@@ -125,15 +116,11 @@ button:disabled{
   opacity:.55;
 }
 
-/* CUSTOMER */
-
 .greeting{
   font-size:20px;
   font-weight:700;
   margin-bottom:14px;
 }
-
-/* NOTICE */
 
 .notice{
   background:#fff8e6;
@@ -156,8 +143,6 @@ button:disabled{
   white-space:pre-wrap;
 }
 
-/* CURRENT DUE */
-
 .due-card{
   background:white;
   border-radius:20px;
@@ -169,30 +154,20 @@ button:disabled{
 .due-label{
   font-size:13px;
   color:#777;
-  margin-bottom:6px;
+  margin-bottom:7px;
 }
 
 .due-number{
   font-size:36px;
   line-height:1.1;
   font-weight:700;
-  letter-spacing:-.5px;
 }
 
 .due-kd{
-  font-size:16px;
+  font-size:15px;
   font-weight:400;
-  color:#888;
-  margin-left:3px;
+  color:#999;
 }
-
-.due-bdt{
-  margin-top:7px;
-  font-size:14px;
-  color:#888;
-}
-
-/* HISTORY */
 
 .history-title{
   font-size:18px;
@@ -232,42 +207,18 @@ button:disabled{
   font-weight:400;
 }
 
-.transaction-tk{
-  font-size:15px;
-  color:#777;
-  font-weight:400;
-}
-
-/* COLORS */
-
-.due-type{
-  color:#222;
-}
-
-.payment-type{
-  color:#222;
-}
-
-/* LOGOUT */
-
 .logout{
-  background:#fff;
+  background:white;
   color:#555;
   border:1px solid #ddd;
   margin-top:8px;
 }
-
-/* MESSAGE */
 
 .message{
   text-align:center;
   min-height:20px;
   margin-top:12px;
   font-size:14px;
-}
-
-.success{
-  color:#15803d;
 }
 
 .error{
@@ -278,77 +229,35 @@ button:disabled{
   color:#777;
 }
 
-/* HIDDEN */
-
 .hidden{
   display:none !important;
 }
 
-/* ADMIN */
-
-.admin-title{
-  font-size:20px;
-  font-weight:700;
-  margin-bottom:5px;
-}
-
-.admin-sub{
-  font-size:13px;
-  color:#777;
-}
-
-.section-title{
-  font-size:17px;
-  font-weight:700;
-  margin-bottom:5px;
-}
-
-.small-text{
-  font-size:13px;
-  color:#777;
-  line-height:1.5;
-}
-
-/* NOTICE EDIT */
-
-textarea{
-  width:100%;
-  min-height:110px;
-  resize:none;
-  border:1px solid #d6d9df;
-  border-radius:12px;
-  padding:13px;
-  font-size:15px;
-  outline:none;
-}
-
-textarea:focus{
-  border-color:#111827;
-}
-
-/* FOOTER */
-
 .footer{
   text-align:center;
-  padding:15px;
+  padding:18px;
   font-size:12px;
   color:#999;
 }
 </style>
 </head>
 
-
 <body>
 
 <div class="app">
 
   <div class="header">
-    <div class="header-title">Customer Account</div>
-    <div class="header-sub">Secure account & transaction history</div>
+    <div class="header-title">
+      Customer Account
+    </div>
+
+    <div class="header-sub">
+      Your account & transaction history
+    </div>
   </div>
 
 
-  <!-- ================= LOGIN ================= -->
+  <!-- LOGIN -->
 
   <div id="loginPage" class="container">
 
@@ -359,36 +268,35 @@ textarea:focus{
       </div>
 
       <div class="login-sub">
-        আপনার Account নির্বাচন করে Login করুন
+        আপনার WhatsApp Number এবং Password দিয়ে Login করুন
       </div>
-
-
-      <label>
-        Customer
-      </label>
-
-      <select id="loginCustomer">
-        <option value="">
-          Customer Loading...
-        </option>
-      </select>
-
 
       <label>
         WhatsApp Number
       </label>
 
       <input
-        id="loginPhone"
+        id="phone"
         type="tel"
-        inputmode="numeric"
+        inputmode="tel"
         placeholder="WhatsApp Number"
+        autocomplete="username"
       >
 
+      <label>
+        Password
+      </label>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+      >
 
       <button
         id="loginButton"
-        onclick="customerLogin()">
+        onclick="login()">
         Login
       </button>
 
@@ -402,18 +310,17 @@ textarea:focus{
   </div>
 
 
-  <!-- ================= CUSTOMER ================= -->
+  <!-- CUSTOMER -->
 
   <div
     id="customerPage"
     class="container hidden">
 
     <div class="greeting">
-      আসসালামু আলাইকুম, <span id="customerName"></span> 👋
+      আসসালামু আলাইকুম,
+      <span id="customerName"></span> 👋
     </div>
 
-
-    <!-- NOTICE -->
 
     <div
       id="noticeBox"
@@ -430,8 +337,6 @@ textarea:focus{
 
     </div>
 
-
-    <!-- CURRENT DUE -->
 
     <div class="due-card">
 
@@ -451,15 +356,8 @@ textarea:focus{
 
       </div>
 
-      <div
-        id="currentDueTk"
-        class="due-bdt hidden">
-      </div>
-
     </div>
 
-
-    <!-- HISTORY -->
 
     <div class="history-title">
       লেনদেনের ইতিহাস
@@ -478,149 +376,6 @@ textarea:focus{
   </div>
 
 
-  <!-- ================= ADMIN ================= -->
-
-  <div
-    id="adminPage"
-    class="container hidden">
-
-    <div class="card">
-
-      <div class="admin-title">
-        Admin Panel
-      </div>
-
-      <div class="admin-sub">
-        Customer transaction update
-      </div>
-
-
-      <label>
-        Customer Name
-      </label>
-
-      <select id="adminCustomer">
-        <option value="">
-          Loading...
-        </option>
-      </select>
-
-
-      <label>
-        Amount (KD)
-      </label>
-
-      <input
-        id="amount"
-        type="number"
-        step="0.001"
-        inputmode="decimal"
-        placeholder="0.000"
-      >
-
-
-      <label>
-        Type
-      </label>
-
-      <select id="type">
-
-        <option value="বাকি">
-          বাকি
-        </option>
-
-        <option value="জমা">
-          জমা
-        </option>
-
-      </select>
-
-
-      <label>
-        Note
-      </label>
-
-      <select id="note">
-
-        <option value="">
-          Note নির্বাচন করুন
-        </option>
-
-      </select>
-
-
-      <label>
-        Amount (Tk) - Optional
-      </label>
-
-      <input
-        id="amountTk"
-        type="number"
-        inputmode="numeric"
-        placeholder="যেমন 5000"
-      >
-
-
-      <button
-        id="addButton"
-        onclick="addTransaction()">
-
-        + Add Transaction
-
-      </button>
-
-
-      <div
-        id="adminMessage"
-        class="message">
-      </div>
-
-    </div>
-
-
-    <!-- NOTICE -->
-
-    <div class="card">
-
-      <div class="section-title">
-        📢 Notice / Offer
-      </div>
-
-      <div class="small-text">
-        এখানে কিছু লিখলে সব Customer তাদের Dashboard-এ দেখবে।
-        খালি রাখলে Notice দেখাবে না।
-      </div>
-
-
-      <label>
-        Notice
-      </label>
-
-      <textarea
-        id="noticeInput"
-        placeholder="যেমন: 🎁 আজকের বিশেষ অফার...">
-      </textarea>
-
-
-      <button
-        onclick="saveNotice()">
-
-        Save Notice
-
-      </button>
-
-
-      <div
-        id="noticeMessage"
-        class="message">
-      </div>
-
-    </div>
-
-
-  </div>
-
-
   <div class="footer">
     Customer Due System
   </div>
@@ -630,162 +385,172 @@ textarea:focus{
 
 <script>
 
-/* ================= API ================= */
-
 const API_URL =
 "https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
 
 
-let customers = [];
-
 let currentCustomer = null;
 
 
-/* ================= MESSAGE ================= */
+/* LOGIN */
 
-function message(id,text,type){
+async function login(){
 
-  const el =
-  document.getElementById(id);
+  const phone =
+    document.getElementById("phone")
+    .value
+    .trim();
 
-  el.textContent = text;
+  const password =
+    document.getElementById("password")
+    .value
+    .trim();
 
-  el.className =
-  "message " + (type || "");
-
-}
+  const button =
+    document.getElementById("loginButton");
 
 
-/* ================= LOAD CUSTOMERS ================= */
+  if(!phone || !password){
 
-async function loadCustomers(){
+    showMessage(
+      "loginMessage",
+      "WhatsApp Number এবং Password দিন",
+      "error"
+    );
+
+    return;
+  }
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "Login হচ্ছে...";
+
 
   try{
 
+    const url =
+      API_URL +
+      "?action=login" +
+      "&phone=" +
+      encodeURIComponent(phone) +
+      "&password=" +
+      encodeURIComponent(password);
+
+
     const response =
-    await fetch(API_URL + "?action=customers");
-
-    customers =
-    await response.json();
+      await fetch(url);
 
 
-    const login =
-    document.getElementById("loginCustomer");
-
-    const admin =
-    document.getElementById("adminCustomer");
+    const data =
+      await response.json();
 
 
-    login.innerHTML =
-    '<option value="">Customer নির্বাচন করুন</option>';
+    if(data.success){
 
-    admin.innerHTML =
-    '<option value="">Customer নির্বাচন করুন</option>';
-
-
-    customers.forEach(function(c){
-
-      const option1 =
-      document.createElement("option");
-
-      option1.value = c.id;
-
-      option1.textContent = c.name;
-
-      login.appendChild(option1);
+      currentCustomer =
+        data.customer;
 
 
-      const option2 =
-      document.createElement("option");
+      /*
+       * Login session browser-এ রাখা হচ্ছে।
+       * Logout না করা পর্যন্ত refresh করলেও থাকবে।
+       */
 
-      option2.value = c.id;
+      localStorage.setItem(
+        "customerSession",
+        JSON.stringify(currentCustomer)
+      );
 
-      option2.textContent = c.name;
 
-      admin.appendChild(option2);
+      showCustomer();
 
-    });
+    }else{
+
+      showMessage(
+        "loginMessage",
+        data.message ||
+        "Login করা যায়নি",
+        "error"
+      );
+
+    }
 
   }catch(error){
 
-    message(
+    showMessage(
       "loginMessage",
-      "Customer list load হয়নি",
+      "Server-এর সাথে যোগাযোগ করা যাচ্ছে না",
       "error"
     );
 
   }
 
+
+  button.disabled = false;
+
+  button.textContent =
+    "Login";
 }
 
 
-/* ================= LOAD NOTE OPTIONS ================= */
+/* SHOW CUSTOMER */
 
-async function loadOptions(){
+function showCustomer(){
 
-  try{
-
-    const response =
-    await fetch(API_URL + "?action=options");
-
-    const options =
-    await response.json();
+  document
+    .getElementById("loginPage")
+    .classList
+    .add("hidden");
 
 
-    const note =
-    document.getElementById("note");
+  document
+    .getElementById("customerPage")
+    .classList
+    .remove("hidden");
 
 
-    note.innerHTML =
-    '<option value="">Note নির্বাচন করুন</option>';
+  document
+    .getElementById("customerName")
+    .textContent =
+    currentCustomer.name;
 
 
-    options.forEach(function(item){
+  loadNotice();
 
-      const option =
-      document.createElement("option");
-
-      option.value = item;
-
-      option.textContent = item;
-
-      note.appendChild(option);
-
-    });
-
-  }catch(error){
-
-    console.log(error);
-
-  }
-
+  loadTransactions();
 }
 
 
-/* ================= LOAD NOTICE ================= */
+/* LOAD NOTICE */
 
 async function loadNotice(){
 
   try{
 
     const response =
-    await fetch(API_URL + "?action=notice");
+      await fetch(
+        API_URL +
+        "?action=notice"
+      );
+
 
     const data =
-    await response.json();
+      await response.json();
 
 
     const box =
-    document.getElementById("noticeBox");
+      document.getElementById("noticeBox");
 
     const text =
-    document.getElementById("noticeText");
+      document.getElementById("noticeText");
 
 
     if(data.notice){
 
       text.textContent =
-      data.notice;
+        data.notice;
 
       box.classList.remove("hidden");
 
@@ -800,240 +565,133 @@ async function loadNotice(){
     console.log(error);
 
   }
-
 }
 
 
-/* ================= LOGIN ================= */
-
-function customerLogin(){
-
-  const id =
-  document.getElementById("loginCustomer").value;
-
-  const phone =
-  document.getElementById("loginPhone").value.trim();
-
-
-  if(!id){
-
-    message(
-      "loginMessage",
-      "Customer নির্বাচন করুন",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  if(!phone){
-
-    message(
-      "loginMessage",
-      "WhatsApp Number দিন",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const customer =
-  customers.find(function(c){
-
-    return String(c.id) === String(id);
-
-  });
-
-
-  if(!customer){
-
-    message(
-      "loginMessage",
-      "Customer পাওয়া যায়নি",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const cleanPhone =
-  phone.replace(/\D/g,"");
-
-  const savedPhone =
-  String(customer.phone)
-  .replace(/\D/g,"");
-
-
-  if(cleanPhone !== savedPhone){
-
-    message(
-      "loginMessage",
-      "WhatsApp Number সঠিক নয়",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  currentCustomer =
-  customer;
-
-
-  localStorage.setItem(
-    "customerId",
-    customer.id
-  );
-
-
-  showCustomerPage();
-
-}
-
-
-/* ================= CUSTOMER PAGE ================= */
-
-function showCustomerPage(){
-
-  document
-  .getElementById("loginPage")
-  .classList.add("hidden");
-
-  document
-  .getElementById("adminPage")
-  .classList.add("hidden");
-
-  document
-  .getElementById("customerPage")
-  .classList.remove("hidden");
-
-
-  document
-  .getElementById("customerName")
-  .textContent =
-  currentCustomer.name;
-
-
-  loadNotice();
-
-  loadTransactions();
-
-}
-
-
-/* ================= TRANSACTIONS ================= */
+/* LOAD TRANSACTIONS */
 
 async function loadTransactions(){
 
   const box =
-  document.getElementById("transactions");
+    document.getElementById("transactions");
 
 
   box.innerHTML =
-  '<div class="message loading">লেনদেন লোড হচ্ছে...</div>';
+    '<div class="message loading">লেনদেন লোড হচ্ছে...</div>';
 
 
   try{
 
-    const response =
-    await fetch(
+    const url =
       API_URL +
-      "?action=transactions&customerId=" +
-      encodeURIComponent(currentCustomer.id)
-    );
+      "?action=transactions" +
+      "&customerId=" +
+      encodeURIComponent(currentCustomer.id);
+
+
+    const response =
+      await fetch(url);
 
 
     const data =
-    await response.json();
+      await response.json();
 
 
     document
-    .getElementById("currentDue")
-    .textContent =
-    Number(data.currentDue || 0)
-    .toFixed(3);
+      .getElementById("currentDue")
+      .textContent =
+      Number(data.currentDue || 0)
+      .toFixed(3);
 
 
     box.innerHTML = "";
 
 
-    if(!data.transactions ||
-       data.transactions.length === 0){
+    if(
+      !data.transactions ||
+      data.transactions.length === 0
+    ){
 
       box.innerHTML =
-      '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
+        '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
 
       return;
-
     }
 
 
     data.transactions.forEach(function(t){
 
-      const div =
-      document.createElement("div");
-
-      div.className =
-      "transaction";
+      const item =
+        document.createElement("div");
 
 
-      let noteText =
-      t.note || "";
-
-
-      if(t.amountTk !== "" &&
-         t.amountTk !== null &&
-         t.amountTk !== undefined){
-
-        if(noteText){
-
-          noteText +=
-          " • " +
-          Number(t.amountTk).toLocaleString("en-US") +
-          " Tk";
-
-        }else{
-
-          noteText =
-          Number(t.amountTk).toLocaleString("en-US") +
-          " Tk";
-
-        }
-
-      }
+      item.className =
+        "transaction";
 
 
       const sign =
-      t.type === "বাকি"
-      ? "+"
-      : "−";
+        t.type === "বাকি"
+        ? "+"
+        : "−";
 
 
-      div.innerHTML = `
+      let note =
+        t.note || "";
+
+
+      if(
+        t.amountTk !== "" &&
+        t.amountTk !== null &&
+        t.amountTk !== undefined
+      ){
+
+        const tk =
+          Number(t.amountTk)
+          .toLocaleString("en-US");
+
+
+        if(note){
+
+          note +=
+            " • " +
+            tk +
+            " Tk";
+
+        }else{
+
+          note =
+            tk +
+            " Tk";
+
+        }
+      }
+
+
+      item.innerHTML = `
 
         <div class="transaction-date">
           ${escapeHTML(t.date)}
         </div>
 
         <div class="transaction-main">
+
           ${escapeHTML(t.type)}
           ${sign}${Number(t.amount).toFixed(3)}
-          <span class="transaction-kd">KD</span>
+
+          <span class="transaction-kd">
+            KD
+          </span>
+
         </div>
 
         ${
-          noteText
+          note
           ?
-          `<div class="transaction-note">
-            ${escapeHTML(noteText)}
-          </div>`
+          `
+          <div class="transaction-note">
+            ${escapeHTML(note)}
+          </div>
+          `
           :
           ""
         }
@@ -1041,227 +699,135 @@ async function loadTransactions(){
       `;
 
 
-      box.appendChild(div);
+      box.appendChild(item);
 
     });
-
 
   }catch(error){
 
     box.innerHTML =
-    '<div class="message error">লেনদেন লোড হয়নি</div>';
+      '<div class="message error">লেনদেন লোড হয়নি</div>';
 
   }
-
 }
 
 
-/* ================= ADD TRANSACTION ================= */
+/* LOGOUT */
 
-async function addTransaction(){
+function logout(){
 
-  const customerId =
-  document.getElementById("adminCustomer").value;
-
-  const amount =
-  document.getElementById("amount").value;
-
-  const type =
-  document.getElementById("type").value;
-
-  const note =
-  document.getElementById("note").value;
-
-  const amountTk =
-  document.getElementById("amountTk").value;
+  localStorage.removeItem(
+    "customerSession"
+  );
 
 
-  if(!customerId){
+  currentCustomer =
+    null;
 
-    message(
-      "adminMessage",
-      "Customer নির্বাচন করুন",
-      "error"
+
+  document
+    .getElementById("customerPage")
+    .classList
+    .add("hidden");
+
+
+  document
+    .getElementById("loginPage")
+    .classList
+    .remove("hidden");
+
+
+  document
+    .getElementById("phone")
+    .value = "";
+
+
+  document
+    .getElementById("password")
+    .value = "";
+}
+
+
+/* CHECK SAVED LOGIN */
+
+function checkSavedLogin(){
+
+  const saved =
+    localStorage.getItem(
+      "customerSession"
     );
 
-    return;
 
-  }
-
-
-  if(!amount || Number(amount)<=0){
-
-    message(
-      "adminMessage",
-      "Amount লিখুন",
-      "error"
-    );
+  if(!saved){
 
     return;
-
   }
-
-
-  const button =
-  document.getElementById("addButton");
-
-
-  button.disabled = true;
-
-  button.textContent =
-  "Saving...";
 
 
   try{
 
-    const url =
-    API_URL +
-    "?action=add" +
-    "&customerId=" +
-    encodeURIComponent(customerId) +
-    "&amount=" +
-    encodeURIComponent(amount) +
-    "&type=" +
-    encodeURIComponent(type) +
-    "&note=" +
-    encodeURIComponent(note) +
-    "&amountTk=" +
-    encodeURIComponent(amountTk);
+    currentCustomer =
+      JSON.parse(saved);
 
 
-    const response =
-    await fetch(url);
+    if(
+      currentCustomer &&
+      currentCustomer.id &&
+      currentCustomer.name
+    ){
 
-
-    const result =
-    await response.json();
-
-
-    if(result.success){
-
-      message(
-        "adminMessage",
-        "✓ Transaction added successfully",
-        "success"
-      );
-
-
-      document
-      .getElementById("amount")
-      .value = "";
-
-
-      document
-      .getElementById("amountTk")
-      .value = "";
-
-
-      document
-      .getElementById("note")
-      .value = "";
-
-    }else{
-
-      message(
-        "adminMessage",
-        result.message,
-        "error"
-      );
+      showCustomer();
 
     }
 
   }catch(error){
 
-    message(
-      "adminMessage",
-      "Transaction save হয়নি",
-      "error"
+    localStorage.removeItem(
+      "customerSession"
     );
 
   }
-
-
-  button.disabled = false;
-
-  button.textContent =
-  "+ Add Transaction";
-
 }
 
 
-/* ================= SAVE NOTICE ================= */
+/* MESSAGE */
 
-/*
-  Notice save করার জন্য backend endpoint
-  এখনো তৈরি করা হয়নি।
-  তাই এই অংশটি পরে backend-এর সাথে connect করব।
-*/
+function showMessage(
+  id,
+  text,
+  type
+){
 
-function saveNotice(){
+  const element =
+    document.getElementById(id);
 
-  message(
-    "noticeMessage",
-    "Notice system-এর backend পরের ধাপে connect হবে",
-    "loading"
-  );
 
+  element.textContent =
+    text;
+
+
+  element.className =
+    "message " +
+    (type || "");
 }
 
 
-/* ================= LOGOUT ================= */
-
-function logout(){
-
-  localStorage.removeItem(
-    "customerId"
-  );
-
-  currentCustomer = null;
-
-
-  document
-  .getElementById("customerPage")
-  .classList.add("hidden");
-
-
-  document
-  .getElementById("adminPage")
-  .classList.add("hidden");
-
-
-  document
-  .getElementById("loginPage")
-  .classList.remove("hidden");
-
-
-  document
-  .getElementById("loginPhone")
-  .value = "";
-
-}
-
-
-/* ================= SECURITY ================= */
+/* HTML SAFE */
 
 function escapeHTML(text){
 
   return String(text)
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
-
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
-/* ================= START ================= */
+/* START */
 
-loadCustomers();
-
-loadOptions();
-
-loadNotice();
+checkSavedLogin();
 
 </script>
 
