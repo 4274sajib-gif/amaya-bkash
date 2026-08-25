@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>Customer Account</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -116,15 +121,17 @@ button:disabled{
   opacity:.55;
 }
 
-.greeting{
-  font-size:20px;
-  font-weight:700;
-  margin-bottom:14px;
-}
-
 .notice{
   background:#fff8e6;
   border:1px solid #f5df9d;
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:15px;
+}
+
+.personal-notice{
+  background:#fff1f2;
+  border:1px solid #fecdd3;
   border-radius:16px;
   padding:15px;
   margin-bottom:15px;
@@ -239,146 +246,177 @@ button:disabled{
   font-size:12px;
   color:#999;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="app">
 
-  <div class="header">
-    <div class="header-title">
-      Customer Account
-    </div>
 
-    <div class="header-sub">
-      Your account & transaction history
-    </div>
+<div class="header">
+
+  <div class="header-title">
+    Customer Account
   </div>
 
-
-  <!-- LOGIN -->
-
-  <div id="loginPage" class="container">
-
-    <div class="card">
-
-      <div class="login-title">
-        Customer Login
-      </div>
-
-      <div class="login-sub">
-        আপনার WhatsApp Number এবং Password দিয়ে Login করুন
-      </div>
-
-      <label>
-        WhatsApp Number
-      </label>
-
-      <input
-        id="phone"
-        type="tel"
-        inputmode="tel"
-        placeholder="WhatsApp Number"
-        autocomplete="username"
-      >
-
-      <label>
-        Password
-      </label>
-
-      <input
-        id="password"
-        type="password"
-        placeholder="Password"
-        autocomplete="current-password"
-      >
-
-      <button
-        id="loginButton"
-        onclick="login()">
-        Login
-      </button>
-
-      <div
-        id="loginMessage"
-        class="message">
-      </div>
-
-    </div>
-
+  <div class="header-sub">
+    Your account & transaction history
   </div>
 
+</div>
 
-  <!-- CUSTOMER -->
 
-  <div
-    id="customerPage"
-    class="container hidden">
+<!-- LOGIN -->
 
-    <div class="greeting">
-      আসসালামু আলাইকুম,
-      <span id="customerName"></span> 👋
+<div id="loginPage" class="container">
+
+  <div class="card">
+
+    <div class="login-title">
+      Customer Login
     </div>
 
-
-    <div
-      id="noticeBox"
-      class="notice hidden">
-
-      <div class="notice-title">
-        📢 Notice
-      </div>
-
-      <div
-        id="noticeText"
-        class="notice-text">
-      </div>
-
+    <div class="login-sub">
+      আপনার WhatsApp Number এবং Password দিয়ে Login করুন
     </div>
 
+    <label>
+      WhatsApp Number
+    </label>
 
-    <div class="due-card">
+    <input
+      id="phone"
+      type="tel"
+      inputmode="tel"
+      placeholder="WhatsApp Number"
+      autocomplete="username"
+    >
 
-      <div class="due-label">
-        বর্তমান বাকি
-      </div>
+    <label>
+      Password
+    </label>
 
-      <div class="due-number">
-
-        <span id="currentDue">
-          0.000
-        </span>
-
-        <span class="due-kd">
-          KD
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="history-title">
-      লেনদেনের ইতিহাস
-    </div>
-
-    <div id="transactions">
-    </div>
-
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
 
     <button
-      class="logout"
-      onclick="logout()">
-      Logout
+      id="loginButton"
+      onclick="login()">
+      Login
     </button>
 
+    <div
+      id="loginMessage"
+      class="message">
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- CUSTOMER -->
+
+<div
+id="customerPage"
+class="container hidden">
+
+
+  <div class="greeting">
+
+    আসসালামু আলাইকুম,
+    <span id="customerName"></span> 👋
+
   </div>
 
 
-  <div class="footer">
-    Customer Due System
+  <!-- GLOBAL NOTICE -->
+
+  <div
+  id="noticeBox"
+  class="notice hidden">
+
+    <div class="notice-title">
+      📢 Notice
+    </div>
+
+    <div
+    id="noticeText"
+    class="notice-text">
+    </div>
+
   </div>
+
+
+  <!-- PERSONAL NOTICE -->
+
+  <div
+  id="personalNoticeBox"
+  class="personal-notice hidden">
+
+    <div class="notice-title">
+      ⚠️ আপনার জন্য বার্তা
+    </div>
+
+    <div
+    id="personalNoticeText"
+    class="notice-text">
+    </div>
+
+  </div>
+
+
+  <div class="due-card">
+
+    <div class="due-label">
+      বর্তমান বাকি
+    </div>
+
+    <div class="due-number">
+
+      <span id="currentDue">
+        0.000
+      </span>
+
+      <span class="due-kd">
+        KD
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="history-title">
+    লেনদেনের ইতিহাস
+  </div>
+
+
+  <div id="transactions">
+  </div>
+
+
+  <button
+  class="logout"
+  onclick="logout()">
+    Logout
+  </button>
+
+
+</div>
+
+
+<div class="footer">
+  Customer Due System
+</div>
+
 
 </div>
 
@@ -453,11 +491,6 @@ async function login(){
         data.customer;
 
 
-      /*
-       * Login session browser-এ রাখা হচ্ছে।
-       * Logout না করা পর্যন্ত refresh করলেও থাকবে।
-       */
-
       localStorage.setItem(
         "customerSession",
         JSON.stringify(currentCustomer)
@@ -519,11 +552,13 @@ function showCustomer(){
 
   loadNotice();
 
+  loadPersonalNotice();
+
   loadTransactions();
 }
 
 
-/* LOAD NOTICE */
+/* GLOBAL NOTICE */
 
 async function loadNotice(){
 
@@ -547,7 +582,10 @@ async function loadNotice(){
       document.getElementById("noticeText");
 
 
-    if(data.notice){
+    if(
+      data.notice &&
+      String(data.notice).trim() !== ""
+    ){
 
       text.textContent =
         data.notice;
@@ -568,12 +606,88 @@ async function loadNotice(){
 }
 
 
-/* LOAD TRANSACTIONS */
+/* PERSONAL NOTICE */
+
+async function loadPersonalNotice(){
+
+  const box =
+    document.getElementById(
+      "personalNoticeBox"
+    );
+
+  const text =
+    document.getElementById(
+      "personalNoticeText"
+    );
+
+
+  box.classList.add("hidden");
+
+
+  if(
+    !currentCustomer ||
+    !currentCustomer.id
+  ){
+
+    return;
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+        API_URL +
+        "?action=personalNotice" +
+        "&customerId=" +
+        encodeURIComponent(
+          currentCustomer.id
+        )
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      data.notice &&
+      String(data.notice).trim() !== ""
+    ){
+
+      text.textContent =
+        data.notice;
+
+      box.classList.remove(
+        "hidden"
+      );
+
+    }else{
+
+      box.classList.add(
+        "hidden"
+      );
+
+    }
+
+  }catch(error){
+
+    box.classList.add(
+      "hidden"
+    );
+
+  }
+}
+
+
+/* TRANSACTIONS */
 
 async function loadTransactions(){
 
   const box =
-    document.getElementById("transactions");
+    document.getElementById(
+      "transactions"
+    );
 
 
   box.innerHTML =
@@ -586,7 +700,9 @@ async function loadTransactions(){
       API_URL +
       "?action=transactions" +
       "&customerId=" +
-      encodeURIComponent(currentCustomer.id);
+      encodeURIComponent(
+        currentCustomer.id
+      );
 
 
     const response =
@@ -600,8 +716,9 @@ async function loadTransactions(){
     document
       .getElementById("currentDue")
       .textContent =
-      Number(data.currentDue || 0)
-      .toFixed(3);
+      Number(
+        data.currentDue || 0
+      ).toFixed(3);
 
 
     box.innerHTML = "";
@@ -619,89 +736,97 @@ async function loadTransactions(){
     }
 
 
-    data.transactions.forEach(function(t){
+    data.transactions.forEach(
+      function(t){
 
-      const item =
-        document.createElement("div");
-
-
-      item.className =
-        "transaction";
-
-
-      const sign =
-        t.type === "বাকি"
-        ? "+"
-        : "−";
+        const item =
+          document.createElement(
+            "div"
+          );
 
 
-      let note =
-        t.note || "";
+        item.className =
+          "transaction";
 
 
-      if(
-        t.amountTk !== "" &&
-        t.amountTk !== null &&
-        t.amountTk !== undefined
-      ){
-
-        const tk =
-          Number(t.amountTk)
-          .toLocaleString("en-US");
+        const sign =
+          t.type === "বাকি"
+          ? "+"
+          : "−";
 
 
-        if(note){
+        let note =
+          t.note || "";
 
-          note +=
-            " • " +
-            tk +
-            " Tk";
 
-        }else{
+        if(
+          t.amountTk !== "" &&
+          t.amountTk !== null &&
+          t.amountTk !== undefined
+        ){
 
-          note =
-            tk +
-            " Tk";
+          const tk =
+            Number(
+              t.amountTk
+            ).toLocaleString(
+              "en-US"
+            );
+
+
+          if(note){
+
+            note +=
+              " • " +
+              tk +
+              " Tk";
+
+          }else{
+
+            note =
+              tk +
+              " Tk";
+
+          }
 
         }
-      }
 
 
-      item.innerHTML = `
+        item.innerHTML = `
 
-        <div class="transaction-date">
-          ${escapeHTML(t.date)}
-        </div>
-
-        <div class="transaction-main">
-
-          ${escapeHTML(t.type)}
-          ${sign}${Number(t.amount).toFixed(3)}
-
-          <span class="transaction-kd">
-            KD
-          </span>
-
-        </div>
-
-        ${
-          note
-          ?
-          `
-          <div class="transaction-note">
-            ${escapeHTML(note)}
+          <div class="transaction-date">
+            ${escapeHTML(t.date)}
           </div>
-          `
-          :
-          ""
-        }
 
-      `;
+          <div class="transaction-main">
+
+            ${escapeHTML(t.type)}
+            ${sign}${Number(t.amount).toFixed(3)}
+
+            <span class="transaction-kd">
+              KD
+            </span>
+
+          </div>
+
+          ${
+            note
+            ?
+            `
+            <div class="transaction-note">
+              ${escapeHTML(note)}
+            </div>
+            `
+            :
+            ""
+          }
+
+        `;
 
 
-      box.appendChild(item);
+        box.appendChild(item);
 
-    });
+      }
+    );
 
   }catch(error){
 
@@ -745,10 +870,11 @@ function logout(){
   document
     .getElementById("password")
     .value = "";
+
 }
 
 
-/* CHECK SAVED LOGIN */
+/* SAVED LOGIN */
 
 function checkSavedLogin(){
 
@@ -809,6 +935,7 @@ function showMessage(
   element.className =
     "message " +
     (type || "");
+
 }
 
 
@@ -822,6 +949,7 @@ function escapeHTML(text){
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
+
 }
 
 
@@ -832,4 +960,5 @@ checkSavedLogin();
 </script>
 
 </body>
+
 </html>
