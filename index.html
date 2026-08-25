@@ -12,25 +12,31 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <style>
 
+/* ==============================
+   BASIC
+============================== */
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
-html,body{
+html,
+body{
   width:100%;
   min-height:100%;
   background:#f5f6f8;
   font-family:Arial,sans-serif;
-  color:#171717;
+  color:#111827;
 }
 
 body{
   overflow-x:hidden;
 }
 
-button,input{
+button,
+input{
   font-family:inherit;
 }
 
@@ -38,6 +44,11 @@ button,input{
   width:100%;
   min-height:100vh;
 }
+
+
+/* ==============================
+   HEADER
+============================== */
 
 .header{
   background:#111827;
@@ -56,10 +67,20 @@ button,input{
   font-size:12px;
 }
 
+
+/* ==============================
+   CONTAINER
+============================== */
+
 .container{
   width:100%;
   padding:15px;
 }
+
+
+/* ==============================
+   LOGIN CARD
+============================== */
 
 .card{
   width:100%;
@@ -81,6 +102,11 @@ button,input{
   color:#777;
   margin-bottom:18px;
 }
+
+
+/* ==============================
+   INPUT
+============================== */
 
 label{
   display:block;
@@ -105,6 +131,11 @@ input:focus{
   border-color:#111827;
 }
 
+
+/* ==============================
+   BUTTON
+============================== */
+
 button{
   width:100%;
   height:52px;
@@ -120,6 +151,11 @@ button{
 button:disabled{
   opacity:.55;
 }
+
+
+/* ==============================
+   NOTICE
+============================== */
 
 .notice{
   background:#fff8e6;
@@ -150,81 +186,203 @@ button:disabled{
   white-space:pre-wrap;
 }
 
+
+/* ==============================
+   GREETING
+============================== */
+
+.greeting{
+  font-size:18px;
+  font-weight:700;
+  color:#111827;
+  margin-bottom:18px;
+}
+
+
+/* ==============================
+   CURRENT DUE CARD
+============================== */
+
 .due-card{
-  background:white;
-  border-radius:20px;
-  padding:21px 18px;
-  margin-bottom:20px;
-  box-shadow:0 4px 18px rgba(0,0,0,.07);
+  background:#111827;
+  border-radius:28px;
+
+  padding:30px 20px;
+
+  margin-bottom:30px;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.10);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  min-height:145px;
 }
 
 .due-label{
-  font-size:13px;
-  color:#777;
-  margin-bottom:7px;
+  font-size:14px;
+  font-weight:600;
+  color:#cbd5e1;
+
+  margin-bottom:8px;
 }
 
 .due-number{
-  font-size:36px;
-  line-height:1.1;
-  font-weight:700;
+  font-size:52px;
+  line-height:1;
+  font-weight:800;
+
+  color:#ffffff;
+
+  letter-spacing:-1px;
 }
 
 .due-kd{
-  font-size:15px;
-  font-weight:400;
-  color:#999;
+  font-size:20px;
+  font-weight:600;
+
+  color:#cbd5e1;
+
+  margin-left:5px;
+
+  letter-spacing:0;
 }
+
+
+/* ==============================
+   HISTORY TITLE
+============================== */
 
 .history-title{
-  font-size:18px;
-  font-weight:700;
-  margin-bottom:13px;
+  font-size:24px;
+  font-weight:800;
+
+  margin-bottom:18px;
+
+  color:#111827;
 }
+
+
+/* ==============================
+   TRANSACTION CARD
+============================== */
 
 .transaction{
-  background:white;
-  border-radius:16px;
-  padding:16px;
-  margin-bottom:10px;
-  box-shadow:0 2px 10px rgba(0,0,0,.045);
+  position:relative;
+
+  background:#ffffff;
+
+  border:1px solid #edf0f4;
+
+  border-radius:24px;
+
+  padding:26px 28px;
+
+  margin-bottom:14px;
+
+  box-shadow:0 2px 8px rgba(0,0,0,.035);
 }
+
+
+/* DATE */
 
 .transaction-date{
-  font-size:16px;
-  font-weight:700;
-  margin-bottom:6px;
-}
-
-.transaction-main{
   font-size:17px;
   font-weight:400;
-  line-height:1.35;
+
+  color:#9ca3af;
+
+  margin-bottom:18px;
 }
+
+
+/* TYPE */
+
+.transaction-type{
+  position:absolute;
+
+  top:26px;
+  right:28px;
+
+  font-size:18px;
+
+  font-weight:700;
+
+  color:#111827;
+}
+
+
+/* AMOUNT */
+
+.transaction-main{
+  font-size:34px;
+
+  font-weight:800;
+
+  line-height:1.1;
+
+  color:#111827;
+}
+
+
+/* KD */
 
 .transaction-kd{
-  font-size:13px;
-  color:#999;
+  font-size:18px;
+
+  font-weight:700;
+
+  color:#111827;
 }
 
+
+/* NOTE */
+
 .transaction-note{
-  margin-top:5px;
-  font-size:14px;
-  color:#777;
+  margin-top:10px;
+
+  font-size:19px;
+
+  color:#64748b;
+
   font-weight:400;
+
+  line-height:1.3;
 }
+
+
+/* ==============================
+   LOGOUT
+============================== */
 
 .logout{
   background:white;
+
   color:#555;
+
   border:1px solid #ddd;
+
   margin-top:8px;
+
+  margin-bottom:10px;
 }
+
+
+/* ==============================
+   MESSAGE
+============================== */
 
 .message{
   text-align:center;
+
   min-height:20px;
+
   margin-top:12px;
+
   font-size:14px;
 }
 
@@ -236,25 +394,112 @@ button:disabled{
   color:#777;
 }
 
+
+/* ==============================
+   HIDDEN
+============================== */
+
 .hidden{
   display:none !important;
 }
 
+
+/* ==============================
+   FOOTER
+============================== */
+
 .footer{
   text-align:center;
+
   padding:18px;
+
   font-size:12px;
+
   color:#999;
+}
+
+
+/* ==============================
+   MOBILE ADJUSTMENT
+============================== */
+
+@media(max-width:480px){
+
+  .due-card{
+    min-height:140px;
+    padding:28px 15px;
+  }
+
+  .due-number{
+    font-size:46px;
+  }
+
+  .due-kd{
+    font-size:18px;
+  }
+
+  .history-title{
+    font-size:22px;
+  }
+
+  .transaction{
+    padding:24px 24px;
+    border-radius:23px;
+  }
+
+  .transaction-type{
+    top:24px;
+    right:24px;
+  }
+
+  .transaction-main{
+    font-size:32px;
+  }
+
+  .transaction-note{
+    font-size:18px;
+  }
+
+}
+
+
+/* ==============================
+   SMALL PHONE
+============================== */
+
+@media(max-width:360px){
+
+  .due-number{
+    font-size:40px;
+  }
+
+  .transaction{
+    padding:22px 20px;
+  }
+
+  .transaction-type{
+    right:20px;
+  }
+
+  .transaction-main{
+    font-size:29px;
+  }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
 <div class="app">
 
+
+<!-- ==============================
+     HEADER
+============================== -->
 
 <div class="header">
 
@@ -269,7 +514,10 @@ button:disabled{
 </div>
 
 
-<!-- LOGIN -->
+
+<!-- ==============================
+     LOGIN PAGE
+============================== -->
 
 <div id="loginPage" class="container">
 
@@ -283,6 +531,7 @@ button:disabled{
       আপনার WhatsApp Number এবং Password দিয়ে Login করুন
     </div>
 
+
     <label>
       WhatsApp Number
     </label>
@@ -295,6 +544,7 @@ button:disabled{
       autocomplete="username"
     >
 
+
     <label>
       Password
     </label>
@@ -306,15 +556,20 @@ button:disabled{
       autocomplete="current-password"
     >
 
+
     <button
       id="loginButton"
       onclick="login()">
+
       Login
+
     </button>
+
 
     <div
       id="loginMessage"
       class="message">
+
     </div>
 
   </div>
@@ -322,12 +577,17 @@ button:disabled{
 </div>
 
 
-<!-- CUSTOMER -->
+
+<!-- ==============================
+     CUSTOMER PAGE
+============================== -->
 
 <div
-id="customerPage"
-class="container hidden">
+  id="customerPage"
+  class="container hidden">
 
+
+  <!-- GREETING -->
 
   <div class="greeting">
 
@@ -337,41 +597,54 @@ class="container hidden">
   </div>
 
 
-  <!-- GLOBAL NOTICE -->
+
+  <!-- ==============================
+       GLOBAL NOTICE
+  ============================== -->
 
   <div
-  id="noticeBox"
-  class="notice hidden">
+    id="noticeBox"
+    class="notice hidden">
 
     <div class="notice-title">
       📢 Notice
     </div>
 
     <div
-    id="noticeText"
-    class="notice-text">
+      id="noticeText"
+      class="notice-text">
+
     </div>
 
   </div>
 
 
-  <!-- PERSONAL NOTICE -->
+
+  <!-- ==============================
+       PERSONAL NOTICE
+  ============================== -->
 
   <div
-  id="personalNoticeBox"
-  class="personal-notice hidden">
+    id="personalNoticeBox"
+    class="personal-notice hidden">
 
     <div class="notice-title">
       ⚠️ আপনার জন্য বার্তা
     </div>
 
     <div
-    id="personalNoticeText"
-    class="notice-text">
+      id="personalNoticeText"
+      class="notice-text">
+
     </div>
 
   </div>
 
+
+
+  <!-- ==============================
+       CURRENT DUE
+  ============================== -->
 
   <div class="due-card">
 
@@ -394,24 +667,40 @@ class="container hidden">
   </div>
 
 
+
+  <!-- ==============================
+       TRANSACTION HISTORY
+  ============================== -->
+
   <div class="history-title">
     লেনদেনের ইতিহাস
   </div>
 
 
   <div id="transactions">
+
   </div>
 
 
+
+  <!-- ==============================
+       LOGOUT
+  ============================== -->
+
   <button
-  class="logout"
-  onclick="logout()">
+    class="logout"
+    onclick="logout()">
+
     Logout
+
   </button>
 
 
 </div>
 
+
+
+<!-- FOOTER -->
 
 <div class="footer">
   Customer Due System
@@ -421,7 +710,13 @@ class="container hidden">
 </div>
 
 
+
 <script>
+
+
+/* ==============================
+   API
+============================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
@@ -430,22 +725,31 @@ const API_URL =
 let currentCustomer = null;
 
 
-/* LOGIN */
+
+/* ==============================
+   LOGIN
+============================== */
 
 async function login(){
 
   const phone =
-    document.getElementById("phone")
-    .value
-    .trim();
+    document
+      .getElementById("phone")
+      .value
+      .trim();
+
 
   const password =
-    document.getElementById("password")
-    .value
-    .trim();
+    document
+      .getElementById("password")
+      .value
+      .trim();
+
 
   const button =
-    document.getElementById("loginButton");
+    document.getElementById(
+      "loginButton"
+    );
 
 
   if(!phone || !password){
@@ -493,7 +797,9 @@ async function login(){
 
       localStorage.setItem(
         "customerSession",
-        JSON.stringify(currentCustomer)
+        JSON.stringify(
+          currentCustomer
+        )
       );
 
 
@@ -525,27 +831,37 @@ async function login(){
 
   button.textContent =
     "Login";
+
 }
 
 
-/* SHOW CUSTOMER */
+
+/* ==============================
+   SHOW CUSTOMER
+============================== */
 
 function showCustomer(){
 
   document
-    .getElementById("loginPage")
+    .getElementById(
+      "loginPage"
+    )
     .classList
     .add("hidden");
 
 
   document
-    .getElementById("customerPage")
+    .getElementById(
+      "customerPage"
+    )
     .classList
     .remove("hidden");
 
 
   document
-    .getElementById("customerName")
+    .getElementById(
+      "customerName"
+    )
     .textContent =
     currentCustomer.name;
 
@@ -555,10 +871,14 @@ function showCustomer(){
   loadPersonalNotice();
 
   loadTransactions();
+
 }
 
 
-/* GLOBAL NOTICE */
+
+/* ==============================
+   GLOBAL NOTICE
+============================== */
 
 async function loadNotice(){
 
@@ -576,25 +896,37 @@ async function loadNotice(){
 
 
     const box =
-      document.getElementById("noticeBox");
+      document.getElementById(
+        "noticeBox"
+      );
+
 
     const text =
-      document.getElementById("noticeText");
+      document.getElementById(
+        "noticeText"
+      );
 
 
     if(
       data.notice &&
-      String(data.notice).trim() !== ""
+      String(
+        data.notice
+      ).trim() !== ""
     ){
 
       text.textContent =
         data.notice;
 
-      box.classList.remove("hidden");
+
+      box.classList.remove(
+        "hidden"
+      );
 
     }else{
 
-      box.classList.add("hidden");
+      box.classList.add(
+        "hidden"
+      );
 
     }
 
@@ -603,10 +935,14 @@ async function loadNotice(){
     console.log(error);
 
   }
+
 }
 
 
-/* PERSONAL NOTICE */
+
+/* ==============================
+   PERSONAL NOTICE
+============================== */
 
 async function loadPersonalNotice(){
 
@@ -615,13 +951,16 @@ async function loadPersonalNotice(){
       "personalNoticeBox"
     );
 
+
   const text =
     document.getElementById(
       "personalNoticeText"
     );
 
 
-  box.classList.add("hidden");
+  box.classList.add(
+    "hidden"
+  );
 
 
   if(
@@ -630,6 +969,7 @@ async function loadPersonalNotice(){
   ){
 
     return;
+
   }
 
 
@@ -652,11 +992,14 @@ async function loadPersonalNotice(){
 
     if(
       data.notice &&
-      String(data.notice).trim() !== ""
+      String(
+        data.notice
+      ).trim() !== ""
     ){
 
       text.textContent =
         data.notice;
+
 
       box.classList.remove(
         "hidden"
@@ -677,10 +1020,14 @@ async function loadPersonalNotice(){
     );
 
   }
+
 }
 
 
-/* TRANSACTIONS */
+
+/* ==============================
+   TRANSACTIONS
+============================== */
 
 async function loadTransactions(){
 
@@ -713,16 +1060,25 @@ async function loadTransactions(){
       await response.json();
 
 
+
+    /* CURRENT DUE */
+
     document
-      .getElementById("currentDue")
+      .getElementById(
+        "currentDue"
+      )
       .textContent =
       Number(
         data.currentDue || 0
       ).toFixed(3);
 
 
+
     box.innerHTML = "";
 
+
+
+    /* NO TRANSACTION */
 
     if(
       !data.transactions ||
@@ -733,11 +1089,16 @@ async function loadTransactions(){
         '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
 
       return;
+
     }
 
 
+
+    /* TRANSACTION LOOP */
+
     data.transactions.forEach(
       function(t){
+
 
         const item =
           document.createElement(
@@ -749,15 +1110,24 @@ async function loadTransactions(){
           "transaction";
 
 
+
+        /* SIGN */
+
         const sign =
           t.type === "বাকি"
           ? "+"
           : "−";
 
 
+
+        /* NOTE */
+
         let note =
           t.note || "";
 
+
+
+        /* TK AMOUNT */
 
         if(
           t.amountTk !== "" &&
@@ -791,22 +1161,33 @@ async function loadTransactions(){
         }
 
 
+
+        /* TRANSACTION HTML */
+
         item.innerHTML = `
 
           <div class="transaction-date">
             ${escapeHTML(t.date)}
           </div>
 
+
+          <div class="transaction-type">
+            ${escapeHTML(t.type)}
+          </div>
+
+
           <div class="transaction-main">
 
-            ${escapeHTML(t.type)}
-            ${sign}${Number(t.amount).toFixed(3)}
+            ${sign}${Number(
+              t.amount
+            ).toFixed(3)}
 
             <span class="transaction-kd">
               KD
             </span>
 
           </div>
+
 
           ${
             note
@@ -823,10 +1204,13 @@ async function loadTransactions(){
         `;
 
 
-        box.appendChild(item);
+        box.appendChild(
+          item
+        );
 
       }
     );
+
 
   }catch(error){
 
@@ -834,10 +1218,14 @@ async function loadTransactions(){
       '<div class="message error">লেনদেন লোড হয়নি</div>';
 
   }
+
 }
 
 
-/* LOGOUT */
+
+/* ==============================
+   LOGOUT
+============================== */
 
 function logout(){
 
@@ -851,30 +1239,41 @@ function logout(){
 
 
   document
-    .getElementById("customerPage")
+    .getElementById(
+      "customerPage"
+    )
     .classList
     .add("hidden");
 
 
   document
-    .getElementById("loginPage")
+    .getElementById(
+      "loginPage"
+    )
     .classList
     .remove("hidden");
 
 
   document
-    .getElementById("phone")
+    .getElementById(
+      "phone"
+    )
     .value = "";
 
 
   document
-    .getElementById("password")
+    .getElementById(
+      "password"
+    )
     .value = "";
 
 }
 
 
-/* SAVED LOGIN */
+
+/* ==============================
+   SAVED LOGIN
+============================== */
 
 function checkSavedLogin(){
 
@@ -887,6 +1286,7 @@ function checkSavedLogin(){
   if(!saved){
 
     return;
+
   }
 
 
@@ -913,10 +1313,14 @@ function checkSavedLogin(){
     );
 
   }
+
 }
 
 
-/* MESSAGE */
+
+/* ==============================
+   MESSAGE
+============================== */
 
 function showMessage(
   id,
@@ -925,7 +1329,9 @@ function showMessage(
 ){
 
   const element =
-    document.getElementById(id);
+    document.getElementById(
+      id
+    );
 
 
   element.textContent =
@@ -939,21 +1345,42 @@ function showMessage(
 }
 
 
-/* HTML SAFE */
+
+/* ==============================
+   HTML SAFE
+============================== */
 
 function escapeHTML(text){
 
   return String(text)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 
-/* START */
+
+/* ==============================
+   START
+============================== */
 
 checkSavedLogin();
 
