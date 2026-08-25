@@ -12,9 +12,9 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <style>
 
-/* ==============================
-   BASIC
-============================== */
+/* =========================================
+   RESET
+========================================= */
 
 *{
   box-sizing:border-box;
@@ -26,12 +26,12 @@ html,
 body{
   width:100%;
   min-height:100%;
-  background:#f5f6f8;
-  font-family:Arial,sans-serif;
-  color:#111827;
 }
 
 body{
+  background:#f4f6f8;
+  font-family:Arial,sans-serif;
+  color:#111827;
   overflow-x:hidden;
 }
 
@@ -46,31 +46,33 @@ input{
 }
 
 
-/* ==============================
+/* =========================================
    HEADER
-============================== */
+========================================= */
 
 .header{
   background:#111827;
-  color:white;
-  padding:17px 15px;
+  color:#fff;
+  padding:17px 15px 16px;
 }
 
 .header-title{
   font-size:19px;
+  line-height:1.2;
   font-weight:700;
 }
 
 .header-sub{
-  margin-top:3px;
+  margin-top:4px;
   color:#cbd5e1;
   font-size:11px;
+  line-height:1.3;
 }
 
 
-/* ==============================
-   CONTAINER
-============================== */
+/* =========================================
+   MAIN CONTAINER
+========================================= */
 
 .container{
   width:100%;
@@ -78,74 +80,92 @@ input{
 }
 
 
-/* ==============================
+/* =========================================
    LOGIN CARD
-============================== */
+========================================= */
 
 .card{
   width:100%;
-  background:white;
+  background:#fff;
   border-radius:17px;
-  padding:17px;
+  padding:18px;
   margin-bottom:12px;
-  box-shadow:0 3px 14px rgba(0,0,0,.06);
+  box-shadow:0 3px 14px rgba(0,0,0,.055);
 }
 
 .login-title{
   font-size:20px;
   font-weight:700;
+  color:#111827;
   margin-bottom:5px;
 }
 
 .login-sub{
   font-size:13px;
+  line-height:1.4;
   color:#777;
-  margin-bottom:16px;
+  margin-bottom:17px;
 }
 
 
-/* ==============================
+/* =========================================
    INPUT
-============================== */
+========================================= */
 
 label{
   display:block;
   font-size:13px;
   font-weight:700;
+  color:#374151;
   margin:13px 0 6px;
-  color:#444;
 }
 
 input{
   width:100%;
   height:49px;
-  border:1px solid #d6d9df;
+
+  border:1px solid #d8dce2;
   border-radius:11px;
-  padding:0 12px;
+
+  padding:0 13px;
+
+  background:#fff;
+  color:#111827;
+
   font-size:16px;
+
   outline:none;
-  background:white;
+
+  transition:border-color .15s,
+             box-shadow .15s;
 }
 
 input:focus{
   border-color:#111827;
+  box-shadow:0 0 0 2px rgba(17,24,39,.06);
 }
 
 
-/* ==============================
+/* =========================================
    BUTTON
-============================== */
+========================================= */
 
 button{
   width:100%;
   height:49px;
+
   border:0;
   border-radius:11px;
+
   background:#111827;
-  color:white;
+  color:#fff;
+
   font-size:15px;
   font-weight:700;
+
   margin-top:18px;
+
+  cursor:pointer;
 }
 
 button:disabled{
@@ -153,64 +173,82 @@ button:disabled{
 }
 
 
-/* ==============================
+/* =========================================
    NOTICE
-============================== */
+========================================= */
 
 .notice{
-  background:#fff8e6;
-  border:1px solid #f5df9d;
+  background:#fff9e9;
+  border:1px solid #f3dfaa;
+
   border-radius:14px;
-  padding:13px;
+
+  padding:13px 14px;
+
   margin-bottom:12px;
 }
 
 .notice-title{
   font-size:13px;
   font-weight:700;
+
+  color:#5f4a10;
+
   margin-bottom:5px;
 }
 
 .notice-text{
   font-size:13px;
-  line-height:1.45;
-  color:#555;
+  line-height:1.5;
+
+  color:#625b46;
+
   white-space:pre-wrap;
 }
 
 
-/* ==============================
+/* =========================================
    GREETING
-============================== */
+========================================= */
 
 .greeting{
-  font-size:16px;
-  font-weight:600;
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:2px;
+
   color:#111827;
+
+  font-size:15px;
+  font-weight:600;
+
   margin-bottom:13px;
 }
 
 .customer-name{
   font-size:20px;
   font-weight:800;
-  margin-left:3px;
+  color:#111827;
 }
 
 
-/* ==============================
-   CURRENT DUE CARD
-============================== */
+/* =========================================
+   CURRENT DUE
+========================================= */
 
 .due-card{
+
+  width:100%;
+
   background:#111827;
 
-  border-radius:22px;
+  border-radius:21px;
 
-  padding:17px 12px;
+  padding:17px 12px 18px;
 
-  margin-bottom:16px;
+  min-height:103px;
 
-  box-shadow:0 5px 16px rgba(0,0,0,.09);
+  margin-bottom:17px;
 
   display:flex;
   flex-direction:column;
@@ -219,176 +257,217 @@ button:disabled{
 
   text-align:center;
 
-  min-height:96px;
+  box-shadow:
+    0 5px 17px rgba(0,0,0,.10);
 }
 
 .due-label{
+  color:#aeb8c7;
+
   font-size:12px;
   font-weight:500;
 
-  color:#aeb8c7;
-
-  margin-bottom:4px;
+  margin-bottom:6px;
 }
 
 .due-number{
-  font-size:34px;
+  color:#fff;
+
+  font-size:35px;
   line-height:1;
 
   font-weight:800;
 
-  color:#ffffff;
-
-  letter-spacing:-.5px;
+  letter-spacing:-.6px;
 }
 
 .due-kd{
+  color:#aeb8c7;
+
   font-size:13px;
   font-weight:500;
 
-  color:#aeb8c7;
-
   margin-left:3px;
-
-  letter-spacing:0;
 }
 
 
-/* ==============================
-   HISTORY TITLE
-============================== */
+/* =========================================
+   HISTORY HEADER
+========================================= */
+
+.history-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:9px;
+}
 
 .history-title{
   font-size:18px;
-  font-weight:800;
+  line-height:1.2;
 
-  margin-bottom:9px;
+  font-weight:800;
 
   color:#111827;
 }
 
 
-/* ==============================
+/* =========================================
    TRANSACTION CARD
-============================== */
+========================================= */
 
 .transaction{
+
   position:relative;
 
-  background:#ffffff;
+  width:100%;
 
-  border:1px solid #edf0f4;
+  background:#fff;
+
+  border:1px solid #e9edf1;
 
   border-radius:15px;
 
-  padding:12px 14px;
+  padding:12px 14px 11px;
 
   margin-bottom:6px;
 
-  box-shadow:0 1px 5px rgba(0,0,0,.035);
+  box-shadow:
+    0 1px 5px rgba(0,0,0,.035);
 }
 
 
-/* ==============================
+/* =========================================
    DATE
-============================== */
+========================================= */
 
 .transaction-date{
-  font-size:11px;
-
-  font-weight:400;
 
   color:#9ca3af;
 
-  margin-bottom:5px;
+  font-size:11px;
+  font-weight:400;
+
+  line-height:1.2;
+
+  margin-bottom:6px;
+
+  padding-right:70px;
 }
 
 
-/* ==============================
+/* =========================================
    TYPE
-============================== */
+========================================= */
 
 .transaction-type{
+
   position:absolute;
 
   top:12px;
   right:14px;
 
   font-size:12px;
-
   font-weight:700;
+
+  line-height:1.2;
 
   color:#111827;
 }
 
 
-/* ==============================
+/* =========================================
    AMOUNT
-============================== */
+========================================= */
 
 .transaction-main{
+
+  color:#111827;
+
   font-size:21px;
+  line-height:1.05;
 
   font-weight:800;
 
-  line-height:1.05;
-
-  color:#111827;
+  letter-spacing:-.2px;
 }
 
-
-/* ==============================
-   KD
-============================== */
-
 .transaction-kd{
+
+  color:#111827;
+
   font-size:12px;
 
   font-weight:700;
 
-  color:#111827;
+  margin-left:2px;
 }
 
 
-/* ==============================
+/* =========================================
    NOTE
-============================== */
+========================================= */
 
 .transaction-note{
-  margin-top:4px;
-
-  font-size:12px;
 
   color:#64748b;
 
+  font-size:12px;
   font-weight:400;
 
-  line-height:1.2;
+  line-height:1.25;
+
+  margin-top:5px;
+
+  padding-right:5px;
 }
 
 
-/* ==============================
+/* =========================================
+   TYPE DIFFERENCE
+========================================= */
+
+.transaction.due-type{
+  border-left:3px solid #111827;
+}
+
+.transaction.paid-type{
+  border-left:3px solid #94a3b8;
+}
+
+
+/* =========================================
    LOGOUT
-============================== */
+========================================= */
 
 .logout{
-  background:white;
+
+  background:#fff;
 
   color:#555;
 
-  border:1px solid #ddd;
+  border:1px solid #dcdfe3;
 
-  margin-top:8px;
+  height:46px;
 
-  margin-bottom:8px;
+  font-size:14px;
+
+  margin-top:10px;
+  margin-bottom:7px;
+
+  box-shadow:none;
 }
 
 
-/* ==============================
+/* =========================================
    MESSAGE
-============================== */
+========================================= */
 
 .message{
+
+  width:100%;
+
   text-align:center;
 
   min-height:18px;
@@ -407,35 +486,48 @@ button:disabled{
 }
 
 
-/* ==============================
+/* =========================================
    HIDDEN
-============================== */
+========================================= */
 
 .hidden{
   display:none !important;
 }
 
 
-/* ==============================
+/* =========================================
    FOOTER
-============================== */
+========================================= */
 
 .footer{
+
   text-align:center;
 
-  padding:15px;
+  padding:14px 10px 16px;
 
-  font-size:11px;
+  color:#9ca3af;
 
-  color:#999;
+  font-size:10px;
 }
 
 
-/* ==============================
+/* =========================================
    MOBILE
-============================== */
+========================================= */
 
 @media(max-width:480px){
+
+  .header{
+    padding:16px 14px;
+  }
+
+  .header-title{
+    font-size:18px;
+  }
+
+  .header-sub{
+    font-size:10px;
+  }
 
   .container{
     padding:11px;
@@ -451,15 +543,15 @@ button:disabled{
   }
 
   .due-card{
-    min-height:96px;
-    padding:17px 12px;
-    border-radius:21px;
+    min-height:101px;
+    padding:17px 11px 18px;
+    border-radius:20px;
     margin-bottom:16px;
   }
 
   .due-label{
-    font-size:12px;
-    margin-bottom:4px;
+    font-size:11px;
+    margin-bottom:6px;
   }
 
   .due-number{
@@ -471,82 +563,18 @@ button:disabled{
   }
 
   .history-title{
-    font-size:18px;
-    margin-bottom:9px;
-  }
-
-  .transaction{
-    padding:12px 14px;
-    border-radius:15px;
-    margin-bottom:6px;
-  }
-
-  .transaction-date{
-    font-size:11px;
-    margin-bottom:5px;
-  }
-
-  .transaction-type{
-    top:12px;
-    right:14px;
-    font-size:12px;
-  }
-
-  .transaction-main{
-    font-size:21px;
-  }
-
-  .transaction-kd{
-    font-size:12px;
-  }
-
-  .transaction-note{
-    font-size:12px;
-    margin-top:4px;
-  }
-
-}
-
-
-/* ==============================
-   SMALL PHONE
-============================== */
-
-@media(max-width:360px){
-
-  .container{
-    padding:10px;
-  }
-
-  .greeting{
-    font-size:14px;
-  }
-
-  .customer-name{
-    font-size:19px;
-  }
-
-  .due-card{
-    min-height:92px;
-    padding:16px 10px;
-  }
-
-  .due-number{
-    font-size:32px;
-  }
-
-  .history-title{
     font-size:17px;
   }
 
   .transaction{
-    padding:11px 13px;
+    padding:11px 13px 10px;
     border-radius:14px;
     margin-bottom:5px;
   }
 
   .transaction-date{
     font-size:10px;
+    margin-bottom:5px;
   }
 
   .transaction-type{
@@ -565,6 +593,69 @@ button:disabled{
 
   .transaction-note{
     font-size:11px;
+    margin-top:4px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media(max-width:360px){
+
+  .container{
+    padding:9px;
+  }
+
+  .greeting{
+    font-size:14px;
+  }
+
+  .customer-name{
+    font-size:19px;
+  }
+
+  .due-card{
+    min-height:96px;
+    padding:16px 9px;
+    border-radius:18px;
+  }
+
+  .due-number{
+    font-size:32px;
+  }
+
+  .history-title{
+    font-size:16px;
+  }
+
+  .transaction{
+    padding:10px 12px 9px;
+    border-radius:13px;
+  }
+
+  .transaction-date{
+    font-size:10px;
+  }
+
+  .transaction-type{
+    top:10px;
+    right:12px;
+    font-size:10px;
+  }
+
+  .transaction-main{
+    font-size:19px;
+  }
+
+  .transaction-kd{
+    font-size:10px;
+  }
+
+  .transaction-note{
+    font-size:10px;
   }
 
 }
@@ -579,9 +670,9 @@ button:disabled{
 <div class="app">
 
 
-<!-- ==============================
+<!-- =====================================
      HEADER
-============================== -->
+===================================== -->
 
 <div class="header">
 
@@ -596,9 +687,10 @@ button:disabled{
 </div>
 
 
-<!-- ==============================
+
+<!-- =====================================
      LOGIN PAGE
-============================== -->
+===================================== -->
 
 <div id="loginPage" class="container">
 
@@ -650,7 +742,6 @@ button:disabled{
     <div
       id="loginMessage"
       class="message">
-
     </div>
 
   </div>
@@ -658,9 +749,10 @@ button:disabled{
 </div>
 
 
-<!-- ==============================
+
+<!-- =====================================
      CUSTOMER PAGE
-============================== -->
+===================================== -->
 
 <div
   id="customerPage"
@@ -671,10 +763,21 @@ button:disabled{
 
   <div class="greeting">
 
-    আসসালামু আলাইকুম,
-    <span id="customerName" class="customer-name"></span> 👋
+    <span>
+      আসসালামু আলাইকুম,
+    </span>
+
+    <span
+      id="customerName"
+      class="customer-name">
+    </span>
+
+    <span>
+      👋
+    </span>
 
   </div>
+
 
 
   <!-- GLOBAL NOTICE -->
@@ -690,10 +793,10 @@ button:disabled{
     <div
       id="noticeText"
       class="notice-text">
-
     </div>
 
   </div>
+
 
 
   <!-- CURRENT DUE -->
@@ -701,7 +804,7 @@ button:disabled{
   <div class="due-card">
 
     <div class="due-label">
-      বর্তমান বাকি
+      CURRENT DUE
     </div>
 
     <div class="due-number">
@@ -719,14 +822,20 @@ button:disabled{
   </div>
 
 
-  <!-- TRANSACTION HISTORY -->
 
-  <div class="history-title">
-    Transaction History
+  <!-- HISTORY -->
+
+  <div class="history-header">
+
+    <div class="history-title">
+      Transaction History
+    </div>
+
   </div>
 
 
   <div id="transactions"></div>
+
 
 
   <!-- LOGOUT -->
@@ -743,6 +852,7 @@ button:disabled{
 </div>
 
 
+
 <!-- FOOTER -->
 
 <div class="footer">
@@ -756,10 +866,9 @@ button:disabled{
 
 <script>
 
-
-/* ==============================
+/* =========================================
    API
-============================== */
+========================================= */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
@@ -768,9 +877,9 @@ const API_URL =
 let currentCustomer = null;
 
 
-/* ==============================
+/* =========================================
    LOGIN
-============================== */
+========================================= */
 
 async function login(){
 
@@ -877,9 +986,9 @@ async function login(){
 }
 
 
-/* ==============================
+/* =========================================
    SHOW CUSTOMER
-============================== */
+========================================= */
 
 function showCustomer(){
 
@@ -914,9 +1023,9 @@ function showCustomer(){
 }
 
 
-/* ==============================
-   GLOBAL NOTICE
-============================== */
+/* =========================================
+   NOTICE
+========================================= */
 
 async function loadNotice(){
 
@@ -977,9 +1086,9 @@ async function loadNotice(){
 }
 
 
-/* ==============================
+/* =========================================
    TRANSACTIONS
-============================== */
+========================================= */
 
 async function loadTransactions(){
 
@@ -1053,8 +1162,19 @@ async function loadTransactions(){
           );
 
 
-        item.className =
-          "transaction";
+        /* TYPE CLASS */
+
+        if(t.type === "বাকি"){
+
+          item.className =
+            "transaction due-type";
+
+        }else{
+
+          item.className =
+            "transaction paid-type";
+
+        }
 
 
         /* SIGN */
@@ -1154,6 +1274,7 @@ async function loadTransactions(){
       }
     );
 
+
   }catch(error){
 
     box.innerHTML =
@@ -1164,9 +1285,9 @@ async function loadTransactions(){
 }
 
 
-/* ==============================
+/* =========================================
    LOGOUT
-============================== */
+========================================= */
 
 function logout(){
 
@@ -1211,9 +1332,9 @@ function logout(){
 }
 
 
-/* ==============================
+/* =========================================
    SAVED LOGIN
-============================== */
+========================================= */
 
 function checkSavedLogin(){
 
@@ -1257,9 +1378,9 @@ function checkSavedLogin(){
 }
 
 
-/* ==============================
+/* =========================================
    MESSAGE
-============================== */
+========================================= */
 
 function showMessage(
   id,
@@ -1284,9 +1405,9 @@ function showMessage(
 }
 
 
-/* ==============================
+/* =========================================
    HTML SAFE
-============================== */
+========================================= */
 
 function escapeHTML(text){
 
@@ -1315,9 +1436,9 @@ function escapeHTML(text){
 }
 
 
-/* ==============================
+/* =========================================
    START
-============================== */
+========================================= */
 
 checkSavedLogin();
 
