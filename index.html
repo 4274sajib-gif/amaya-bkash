@@ -8,7 +8,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>Customer Account</title>
+<title>Amaya Exchange & Telkom</title>
 
 <style>
 
@@ -56,6 +56,13 @@ input{
   padding:17px 15px 16px;
 }
 
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
 .header-title{
   font-size:19px;
   line-height:1.2;
@@ -71,7 +78,61 @@ input{
 
 
 /* =========================================
-   MAIN CONTAINER
+   CONTACT BUTTON
+========================================= */
+
+.contact-button{
+
+  flex-shrink:0;
+
+  width:auto;
+  height:34px;
+
+  margin:0;
+
+  padding:0 12px;
+
+  border:1px solid rgba(255,255,255,.22);
+
+  border-radius:18px;
+
+  background:#ffffff;
+
+  color:#111827;
+
+  font-size:11px;
+
+  font-weight:700;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:5px;
+
+  box-shadow:
+    0 3px 9px rgba(0,0,0,.20);
+
+  cursor:pointer;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.contact-button:active{
+
+  transform:scale(.94);
+
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.15);
+}
+
+
+/* =========================================
+   CONTAINER
 ========================================= */
 
 .container{
@@ -268,6 +329,8 @@ button:disabled{
   font-weight:500;
 
   margin-bottom:6px;
+
+transform:translateX(-7px);
 }
 
 .due-number{
@@ -310,6 +373,30 @@ button:disabled{
   font-weight:800;
 
   color:#111827;
+}
+
+
+/* =========================================
+   TRANSACTION SCROLL
+========================================= */
+
+.transactions-scroll{
+
+  width:100%;
+
+  max-height:52vh;
+
+  overflow-y:auto;
+
+  overflow-x:hidden;
+
+  padding:1px 2px 2px 1px;
+
+  -webkit-overflow-scrolling:touch;
+
+  scrollbar-width:thin;
+
+  overscroll-behavior:contain;
 }
 
 
@@ -369,6 +456,7 @@ button:disabled{
   right:14px;
 
   font-size:12px;
+
   font-weight:700;
 
   line-height:1.2;
@@ -529,6 +617,13 @@ button:disabled{
     font-size:10px;
   }
 
+  .contact-button{
+    height:33px;
+    padding:0 11px;
+    font-size:11px;
+    border-radius:18px;
+  }
+
   .container{
     padding:11px;
   }
@@ -564,6 +659,10 @@ button:disabled{
 
   .history-title{
     font-size:17px;
+  }
+
+  .transactions-scroll{
+    max-height:52vh;
   }
 
   .transaction{
@@ -609,6 +708,20 @@ button:disabled{
     padding:9px;
   }
 
+  .header-title{
+    font-size:16px;
+  }
+
+  .header-sub{
+    font-size:9px;
+  }
+
+  .contact-button{
+    height:32px;
+    padding:0 10px;
+    font-size:10px;
+  }
+
   .greeting{
     font-size:14px;
   }
@@ -629,6 +742,10 @@ button:disabled{
 
   .history-title{
     font-size:16px;
+  }
+
+  .transactions-scroll{
+    max-height:50vh;
   }
 
   .transaction{
@@ -676,12 +793,29 @@ button:disabled{
 
 <div class="header">
 
-  <div class="header-title">
-    Customer Account
-  </div>
+  <div class="header-row">
 
-  <div class="header-sub">
-    Your account & transaction history
+    <div>
+
+      <div class="header-title">
+        Amaya Exchange
+      </div>
+
+      <div class="header-sub">
+        লেনদেনে আস্থা, সেবায় নির্ভরতা
+      </div>
+
+    </div>
+
+
+    <button
+      class="contact-button"
+      onclick="contactWhatsApp()">
+
+      📞 Contact
+
+    </button>
+
   </div>
 
 </div>
@@ -804,7 +938,7 @@ button:disabled{
   <div class="due-card">
 
     <div class="due-label">
-      CURRENT DUE
+      বর্তমান বাকি
     </div>
 
     <div class="due-number">
@@ -834,7 +968,13 @@ button:disabled{
   </div>
 
 
-  <div id="transactions"></div>
+  <!-- TRANSACTION SCROLL AREA -->
+
+  <div
+    id="transactions"
+    class="transactions-scroll">
+
+  </div>
 
 
 
@@ -856,7 +996,7 @@ button:disabled{
 <!-- FOOTER -->
 
 <div class="footer">
-  Customer Due System
+  Amaya Exchange
 </div>
 
 
@@ -872,6 +1012,28 @@ button:disabled{
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
+
+
+/* =========================================
+   CONTACT WHATSAPP
+========================================= */
+
+const CONTACT_WHATSAPP =
+"8801354304315";
+
+
+function contactWhatsApp(){
+
+  const url =
+    "https://wa.me/" +
+    CONTACT_WHATSAPP;
+
+  window.open(
+    url,
+    "_blank"
+  );
+
+}
 
 
 let currentCustomer = null;
