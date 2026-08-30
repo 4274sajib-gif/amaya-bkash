@@ -1378,33 +1378,27 @@ async function loadTransactions(firstLoad){
         t.note || "";
 
 
-      const bdAmount =
-  t.bdAmount !== undefined &&
-  t.bdAmount !== null &&
-  String(t.bdAmount).trim() !== ""
-    ? t.bdAmount
-    : "";
+      const bdAmount = t.bdAmount;
 
+if(
+  bdAmount !== "" &&
+  bdAmount !== null &&
+  bdAmount !== undefined &&
+  Number(bdAmount) !== 0
+){
 
-      if(
-        bdAmount !== "" &&
-        bdAmount !== null &&
-        bdAmount !== undefined
-      ){
+  const tk =
+    Number(
+      String(bdAmount)
+        .replace(/,/g,"")
+    ).toLocaleString("en-IN");
 
-        const tk =
-          Number(
-            String(bdAmount)
-              .replace(/,/g,"")
-          ).toLocaleString("en-IN");
+  note =
+    note
+    ? note + " • " + tk + " Tk"
+    : tk + " Tk";
 
-
-        note =
-          note
-          ? note + " • " + tk + " Tk"
-          : tk + " Tk";
-
-      }
+}
 
 
       const kdAmount =
