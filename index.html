@@ -1378,7 +1378,12 @@ async function loadTransactions(firstLoad){
         t.note || "";
 
 
-      const bdAmount = t.bdAmount;
+      const bdAmount =
+  t.bdAmount !== undefined &&
+  t.bdAmount !== null &&
+  String(t.bdAmount).trim() !== ""
+    ? t.bdAmount
+    : "";
 
 
       if(
