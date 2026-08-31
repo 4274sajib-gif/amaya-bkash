@@ -110,6 +110,25 @@ button{
   box-shadow:0 2px 6px rgba(0,0,0,.12);
 }
 
+.contact-button{
+  background:#f8fafc;
+  color:#111827;
+  border:1px solid #e2e8f0;
+  box-shadow:
+    0 3px 0 #cbd5e1,
+    0 5px 10px rgba(0,0,0,.20);
+  font-size:10px;
+  font-weight:700;
+  transition:all .15s ease;
+}
+
+.contact-button:active{
+  transform:translateY(2px);
+  box-shadow:
+    0 1px 0 #cbd5e1,
+    0 3px 6px rgba(0,0,0,.15);
+}
+
 
 /* ================= CONTAINER ================= */
 
@@ -792,9 +811,9 @@ button:disabled{
     <div class="header-actions">
 
       <button
-        class="header-button"
-        onclick="contactWhatsApp()">
-        📞 Contact Us
+  class="header-button contact-button"
+  onclick="contactWhatsApp()">
+  📞 Contact Us
       </button>
 
     </div>
