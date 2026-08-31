@@ -1,207 +1,204 @@
-<!DOCTYPE html>  <html lang="bn">  <head>  <meta charset="UTF-8">  <meta name="viewport"  
-content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<!DOCTYPE html>
+<html lang="bn">
 
-<title>Amaya Exchange</title>  <style>  
-  
-/* ================= GLOBAL ================= */  
-  
-*{  
-  box-sizing:border-box;  
-  margin:0;  
-  padding:0;  
-}  
-  
-html,  
-body{  
-  width:100%;  
-  height:100%;  
-}  
-  
-body{  
-  background:#f4f6f8;  
-  color:#111827;  
-  font-family:Arial,sans-serif;  
-  overflow:hidden;  
-}  
-  
-button,  
-input{  
-  font-family:inherit;  
-}  
-  
-button{  
-  border:0;  
-}  
-  
-.hidden{  
-  display:none!important;  
-}  
-  
-  
-/* ================= APP ================= */  
-  
-.app{  
-  width:100%;  
-  height:100dvh;  
-  display:flex;  
-  flex-direction:column;  
-  overflow:hidden;  
-}  
-  
-  
-/* ================= HEADER ================= */  
-  
-.header{  
-  flex-shrink:0;  
-  background:#111827;  
-  color:#fff;  
-  padding:14px 12px;  
-}  
-  
-.header-row{  
-  display:flex;  
-  align-items:center;  
-  justify-content:space-between;  
-  gap:8px;  
-}  
-  
-.header-left{  
-  min-width:0;  
-}  
-  
-.header-title{  
-  font-size:18px;  
-  font-weight:700;  
-}  
-  
-.header-sub{  
-  margin-top:3px;  
-  color:#cbd5e1;  
-  font-size:10px;  
-}  
-  
-.header-actions{  
-  display:flex;  
-  align-items:center;  
-  gap:5px;  
-  flex-shrink:0;  
-}  
-  
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>Amaya Exchange</title>
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+}
+
+body{
+  background:#f4f6f8;
+  color:#111827;
+  font-family:Arial,sans-serif;
+  overflow:hidden;
+}
+
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  border:0;
+}
+
+.hidden{
+  display:none!important;
+}
+
+
+/* ================= APP ================= */
+
+.app{
+  width:100%;
+  height:100dvh;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+
+/* ================= HEADER ================= */
+
+.header{
+  flex-shrink:0;
+  background:#111827;
+  color:#fff;
+  padding:14px 12px;
+}
+
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.header-left{
+  min-width:0;
+}
+
+.header-title{
+  font-size:18px;
+  font-weight:700;
+}
+
+.header-sub{
+  margin-top:3px;
+  color:#cbd5e1;
+  font-size:10px;
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  flex-shrink:0;
+}
+
 .header-button{
   width:auto;
-  height:32px;
+  height:31px;
   margin:0;
-  padding:0 12px;
-  border:1px solid #d1d5db;
-  border-radius:18px;
+  padding:0 9px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;
   background:#fff;
   color:#111827;
-  font-size:11px;
+  font-size:10px;
   font-weight:700;
-  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  box-shadow:0 2px 6px rgba(0,0,0,.12);
 }
 
-.header-logout{
-  background:#fef2f2;
-  color:#dc2626;
-  border:1px solid #fecaca;
-  box-shadow:0 2px 6px rgba(220,38,38,.08);
-  font-size:11px;
-  font-weight:700;
-  border-radius:18px;
-  padding:0 12px;
-  height:32px;
+
+/* ================= CONTAINER ================= */
+
+.container{
+  width:100%;
+  padding:9px;
 }
-  
-  
-/* ================= CONTAINER ================= */  
-  
-.container{  
-  width:100%;  
-  padding:9px;  
-}  
-  
-  
-/* ================= LOGIN ================= */  
-  
-#loginPage{  
-  flex:1;  
-  overflow-y:auto;  
-}  
-  
-.card{  
-  background:#fff;  
-  border-radius:15px;  
-  padding:17px;  
-  box-shadow:0 2px 10px rgba(0,0,0,.04);  
-}  
-  
-.login-title{  
-  font-size:20px;  
-  font-weight:700;  
-  margin-bottom:5px;  
-}  
-  
-.login-sub{  
-  font-size:13px;  
-  line-height:1.4;  
-  color:#777;  
-  margin-bottom:16px;  
-}  
-  
-label{  
-  display:block;  
-  font-size:13px;  
-  font-weight:700;  
-  color:#374151;  
-  margin:12px 0 6px;  
-}  
-  
-input{  
-  width:100%;  
-  height:47px;  
-  border:1px solid #d8dce2;  
-  border-radius:10px;  
-  padding:0 12px;  
-  background:#fff;  
-  color:#111827;  
-  font-size:16px;  
-  outline:none;  
-}  
-  
-input:focus{  
-  border-color:#111827;  
-}  
-  
-button{  
-  width:100%;  
-  height:47px;  
-  border-radius:10px;  
-  background:#111827;  
-  color:#fff;  
-  font-size:15px;  
-  font-weight:700;  
-  margin-top:17px;  
-}  
-  
-button:disabled{  
-  opacity:.55;  
-}  
-  
-  
-/* ================= CUSTOMER ================= */  
-  
-#customerPage{  
-  flex:1;  
-  min-height:0;  
-  display:flex;  
-  flex-direction:column;  
-  overflow:hidden;  
-}  
-  
-  
-/* ================= GREETING ================= */  
-  
+
+
+/* ================= LOGIN ================= */
+
+#loginPage{
+  flex:1;
+  overflow-y:auto;
+}
+
+.card{
+  background:#fff;
+  border-radius:15px;
+  padding:17px;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+
+.login-title{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.login-sub{
+  font-size:13px;
+  line-height:1.4;
+  color:#777;
+  margin-bottom:16px;
+}
+
+label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  color:#374151;
+  margin:12px 0 6px;
+}
+
+input{
+  width:100%;
+  height:47px;
+  border:1px solid #d8dce2;
+  border-radius:10px;
+  padding:0 12px;
+  background:#fff;
+  color:#111827;
+  font-size:16px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#111827;
+}
+
+button{
+  width:100%;
+  height:47px;
+  border-radius:10px;
+  background:#111827;
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  margin-top:17px;
+}
+
+button:disabled{
+  opacity:.55;
+}
+
+
+/* ================= CUSTOMER ================= */
+
+#customerPage{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+
+/* ================= GREETING ================= */
+
 .greeting{
   flex-shrink:0;
   display:flex;
@@ -209,1301 +206,1605 @@ button:disabled{
   justify-content:space-between;
   gap:8px;
   margin-bottom:8px;
-}  
-  
-.greeting-text{  
-  display:flex;  
-  align-items:baseline;  
-  flex-wrap:wrap;  
-  gap:2px;  
-  min-width:0;  
-  color:#111827;  
-  font-size:14px;  
-  font-weight:600;  
-}  
-  
-.customer-name{  
-  font-size:19px;  
-  font-weight:800;  
-}  
-  
-  
-/* ================= NOTICE ================= */  
-  
-.notice{  
-  flex-shrink:0;  
-  background:#fff9e9;  
-  border:1px solid #f3dfaa;  
-  border-radius:10px;  
-  padding:8px 10px;  
-  margin-bottom:8px;  
-}  
-  
-.notice-title{  
-  font-size:11px;  
-  font-weight:700;  
-  color:#5f4a10;  
-  margin-bottom:3px;  
-}  
-  
-.notice-text{  
-  font-size:11px;  
-  line-height:1.4;  
-  color:#625b46;  
-  white-space:pre-wrap;  
-}  
-  
-  
-/* ================= BALANCE + RATE ================= */  
-  
-.balance-rate-row{  
-  flex-shrink:0;  
-  display:flex;  
-  align-items:stretch;  
-  gap:7px;  
-  width:100%;  
-  margin-bottom:4px;  
-}  
-  
-  
-/* ================= CURRENT DUE ================= */  
-  
-.due-card{  
-  flex:1;  
-  min-width:0;  
-  height:51px;  
-  background:#111827;  
-  border-radius:11px;  
-  padding:4px 7px;  
-  display:flex;  
-  flex-direction:column;  
-  align-items:center;  
-  justify-content:center;  
-  text-align:center;  
-  box-shadow:0 2px 6px rgba(0,0,0,.07);  
-}  
-  
-.due-label{  
-  color:#aeb8c7;  
-  font-size:9px;  
-  line-height:1;  
-  margin-bottom:3px;  
-}  
-  
-.due-number{  
-  color:#fff;  
-  font-size:20px;  
-  line-height:1;  
-  font-weight:800;  
-  letter-spacing:-.3px;  
-}  
-  
-.due-kd{  
-  color:#aeb8c7;  
-  font-size:8px;  
-  font-weight:500;  
-}  
-  
-  
-/* ================= RATE BOX ================= */  
-  
-.rate-box{  
-  flex:1;  
-  min-width:0;  
-  height:51px;  
-  background:#111827;  
-  border:1px solid #e5e9ee;  
-  border-radius:11px;  
-  padding:5px;  
-  position:relative;  
-}  
-  
-.rate-input{  
-  width:100%;  
-  height:32px;  
-  border:1px solid #d8dce2;  
-  border-radius:18px;  
-  font-size:14px;  
-  padding:0 10px;  
-  margin-top:3px;  
-  Background:#EFF6FF;  
-}  
-  
-.rate-input:focus{  
-  border-color:#111827;  
-}  
-  
-  
-/* ================= RATE POPUP ================= */  
-  
-.rate-popup{  
-  position:absolute;  
-  left:0;  
-  right:0;  
-  top:calc(100% + 6px);  
-  
-  background:#111827;  
-  color:#fff;  
-  
-  border-radius:10px;  
-  padding:7px 9px;  
-  
-  display:flex;  
-  align-items:center;  
-  justify-content:space-between;  
-  gap:7px;  
-  
-  opacity:0;  
-  visibility:hidden;  
-  transform:translateY(8px);  
-  
-  transition:  
-    opacity .18s ease,  
-    transform .18s ease,  
-    visibility .18s ease;  
-  
-  box-shadow:0 5px 16px rgba(0,0,0,.18);  
-  
-  z-index:50;  
-}  
-  
-.rate-popup.show{  
-  opacity:1;  
-  visibility:visible;  
-  transform:translateY(0);  
-}  
-  
-.rate-popup-left{  
-  min-width:0;  
-}  
-  
-.rate-popup-label{  
-  color:#aeb8c7;  
-  font-size:8px;  
-  line-height:1;  
-  margin-bottom:2px;  
-}  
-  
-.rate-popup-amount{  
-  font-size:13px;  
-  font-weight:700;  
-  white-space:nowrap;  
-}  
-  
-.rate-popup-right{  
-  text-align:right;  
-  flex-shrink:0;  
-}  
-  
-.rate-popup-kd{  
-  font-size:17px;  
-  font-weight:800;  
-  line-height:1;  
-  white-space:nowrap;  
-}  
-  
-.rate-popup::after{  
-  content:"";  
-  position:absolute;  
-  right:25%;  
-  top:-5px;  
-  width:10px;  
-  height:10px;  
-  background:#111827;  
-  transform:rotate(45deg);  
-}  
-  
-  
-/* ================= TRANSACTIONS ================= */  
-
-.transection-history-title{
-  flex-shrink:0;
-  font-size:8px;
-  font-weight:1000;
-  color:#64748b
-  margin:2px 0 4px;}
-  
-.transactions-scroll{  
-  flex:1;  
-  min-height:0;  
-  width:100%;  
-  overflow-y:auto;  
-  overflow-x:hidden;  
-  -webkit-overflow-scrolling:touch;  
-  overscroll-behavior:contain;  
-  padding-bottom:2px;  
-}  
-  
-.transaction{  
-  position:relative;  
-  width:100%;  
-  background:#fff;  
-  border:1px solid #e9edf1;  
-  border-radius:9px;  
-  padding:9px 10px 8px;  
-  margin-bottom:3px;  
-  box-shadow:0 1px 2px rgba(0,0,0,.025);  
-}  
-  
-.transaction-date{  
-  color:#64748b;  
-  font-size:9px;  
-  line-height:1.1;  
-  margin-bottom:2px;  
-  padding-right:55px;  
-}  
-  
-.transaction-type{  
-  position:absolute;  
-  top:6px;  
-  right:9px;  
-  color:#111827;  
-  font-size:11px;  
-  font-weight:800;  
-}  
-  
-.transaction-main{  
-  color:#111827;  
-  font-size:18px;  
-  line-height:1;  
-  font-weight:800;  
-}  
-  
-.transaction-kd{  
-  font-size:8px;  
-  font-weight:700;  
-}  
-  
-.transaction-note{  
-  color:#64748b;  
-  font-size:9px;  
-  line-height:1.15;  
-  margin-top:2px;  
-}  
-  
-.transaction.due-type{  
-  border-left:4px solid #111827;  
-}  
-  
-.transaction.paid-type{  
-  border-left:4px solid #ef4444;  
-  background:#fef2f2;  
-}  
-
-.transaction.paid-type.transection-main{
- color:#dc2626;
 }
 
-  
-/* ================= MESSAGE ================= */  
-  
-.message{  
-  width:100%;  
-  text-align:center;  
-  min-height:18px;  
-  margin-top:7px;  
-  font-size:11px;  
-}  
-  
-.error{  
-  color:#dc2626;  
-}  
-  
-.loading{  
-  color:#777;  
-}  
-  
-  
-/* ================= FOOTER ================= */  
-  
-.footer{  
-  flex-shrink:0;  
-  text-align:center;  
-  padding:6px 8px;  
-  color:#9ca3af;  
-  font-size:9px;  
-}  
-  
-  
-/* ================= SMALL PHONE ================= */  
-  
-@media(max-width:360px){  
-  
-  .header{  
-    padding:13px 10px;  
-  }  
-  
-  .header-title{  
-    font-size:16px;  
-  }  
-  
-  .header-sub{  
-    font-size:9px;  
-  }  
-  
-  .header-actions{  
-    gap:4px;  
-  }  
-  
-  .header-button{  
-    height:29px;  
-    padding:0 7px;  
-    font-size:9px;  
-  }  
-  
-  .container{  
-    padding:8px;  
-  }  
-  
-  .greeting{  
-    margin-bottom:7px;  
-  }  
-  
-  .customer-name{  
-    font-size:18px;  
-  }  
-  
-  .greeting-text{  
-    font-size:13px;  
-  }  
-  
-  .notice{  
-    padding:7px 9px;  
-    margin-bottom:7px;  
-  }  
-  
-  .notice-title{  
-    font-size:10px;  
-  }  
-  
-  .notice-text{  
-    font-size:10px;  
-  }  
-  
-  .balance-rate-row{  
-    gap:5px;  
-    margin-bottom:7px;  
-  }  
-  
-  .due-card{  
-    height:47px;  
-    border-radius:10px;  
-    padding:3px 5px;  
-  }  
-  
-  .due-label{  
-    font-size:8px;  
-  }  
-  
-  .due-number{  
-    font-size:18px;  
-  }  
-  
-  .due-kd{  
-    font-size:7px;  
-  }  
-  
-  .rate-box{  
-    height:30px;  
-    padding:13px;  
-    border-radius:16px;  
-  }  
-  
-  .rate-input{  
-    height:37px;  
-    font-size:13px;  
-    border-radius:7px;  
-  }  
-  
-  .rate-popup{  
-    padding:6px 8px;  
-  }  
-  
-  .rate-popup-amount{  
-    font-size:12px;  
-  }  
-  
-  .rate-popup-kd{  
-    font-size:16px;  
-  }  
-  
-  .transaction{  
-    padding:8px 9px 7px;  
-    margin-bottom:3px;  
-  }  
-  
-  .transaction-main{  
-    font-size:15px;  
-  }  
-  
-  .footer{  
-    padding:5px 8px;  
-  }  
-  
-}  
-  
-</style>  </head>  <body>  <div class="app">  <!-- ================= HEADER ================= -->  <div class="header">    <div class="header-row">  <div class="header-left">  
+.greeting-text{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:2px;
+  min-width:0;
+  color:#111827;
+  font-size:15px;
+  font-weight:600;
+}
 
-  <div class="header-title">  
-    Amaya Exchange  
-  </div>  
+.customer-name{
+  font-size:20px;
+  font-weight:800;
+}
 
-  <div class="header-sub">  
-    লেনদেনে আস্থা, সেবায় নির্ভরতা  
-  </div>  
 
-</div>  
+/* ================= CUSTOMER LOGOUT ================= */
 
-<div class="header-actions">  
+.customer-logout{
+  flex-shrink:0;
+  width:auto;
+  height:32px;
+  margin:0;
+  padding:0 12px;
 
-  <div class="header-actions">
+  background:#fff1f2;
+  color:#dc2626;
 
-  <button  
-    class="header-button"  
-    onclick="contactWhatsApp()">  
-    📞 Contact Us  
-  </button>  
+  border:1px solid #fecdd3;
+  border-radius:17px;
 
-</div>
+  font-size:11px;
+  font-weight:800;
 
-  </div>  </div>  <!-- ================= LOGIN ================= -->  <div  
-  id="loginPage"  
-  class="container">    <div class="card">  <div class="login-title">  
-  Customer Login  
-</div>  
+  box-shadow:0 2px 5px rgba(220,38,38,.08);
 
-<div class="login-sub">  
-  আপনার WhatsApp Number এবং Password দিয়ে Login করুন  
-</div>  
+  transition:
+    background .15s ease,
+    transform .15s ease;
+}
 
-<label>  
-  WhatsApp Number  
-</label>  
+.customer-logout:active{
+  background:#ffe4e6;
+  transform:scale(.97);
+}
 
-<input  
-  id="phone"  
-  type="tel"  
-  inputmode="tel"  
-  placeholder="WhatsApp Number"  
-  autocomplete="username"  
->  
 
-<label>  
-  Password  
-</label>  
+/* ================= NOTICE ================= */
 
-<input  
-  id="password"  
-  type="password"  
-  placeholder="Password"  
-  autocomplete="current-password"  
->  
+.notice{
+  flex-shrink:0;
+  background:#fff9e9;
+  border:1px solid #f3dfaa;
+  border-radius:10px;
+  padding:8px 10px;
+  margin-bottom:8px;
+}
 
-<button  
-  id="loginButton"  
-  onclick="login()">  
-  Login  
-</button>  
+.notice-title{
+  font-size:11px;
+  font-weight:700;
+  color:#5f4a10;
+  margin-bottom:3px;
+}
 
-<div  
-  id="loginMessage"  
-  class="message">  
-</div>
+.notice-text{
+  font-size:12px;
+  line-height:1.4;
+  color:#625b46;
+  white-space:pre-wrap;
+}
 
-  </div>  </div>  <!-- ================= CUSTOMER ================= -->  <div  
-  id="customerPage"  
-  class="container hidden">    <div class="greeting">
 
-  <div class="greeting-text">
+/* ================= BALANCE + RATE ================= */
 
-    <span>
-      আসসালামু আলাইকুম,
-    </span>
+.balance-rate-row{
+  flex-shrink:0;
+  display:flex;
+  align-items:stretch;
+  gap:7px;
+  width:100%;
+  margin-bottom:4px;
+}
 
-    <span
-      id="customerName"
-      class="customer-name">
-    </span>
 
-    <span>
-      👋
-    </span>
+/* ================= CURRENT DUE ================= */
+
+.due-card{
+  flex:1;
+  min-width:0;
+  height:51px;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:11px;
+  padding:4px 7px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.due-label{
+  color:#64748b;
+  font-size:11px;
+  line-height:1;
+  margin-bottom:3px;
+}
+
+.due-number{
+  color:#111827;
+  font-size:20px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-.3px;
+}
+
+.due-kd{
+  color:#64748b;
+  font-size:9px;
+  font-weight:500;
+}
+
+
+/* ================= RATE BOX ================= */
+
+.rate-box{
+  flex:1;
+  min-width:0;
+  height:51px;
+
+  background:#f8fafc;
+
+  border:1px solid #e2e8f0;
+  border-radius:11px;
+
+  padding:5px;
+
+  position:relative;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.rate-input{
+  width:100%;
+  height:34px;
+  border:1px solid #dbe4ee;
+  border-radius:18px;
+  font-size:13px;
+  font-weight:600;
+  padding:0 12px;
+  margin-top:3px;
+  background:#f8fbff;
+  color:#111827;
+  outline:none;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.04);
+  transition:
+    border-color .18s ease,
+    box-shadow .18s ease,
+    background .18s ease;
+}
+
+.rate-input::placeholder{
+  color:#64748b;
+  font-weight:500;
+}
+
+.rate-input:focus{
+  border-color:#93c5fd;
+  background:#fff;
+  box-shadow:
+    0 0 0 3px rgba(147,197,253,.18),
+    inset 0 1px 2px rgba(0,0,0,.03);
+}
+
+
+/* ================= RATE POPUP ================= */
+
+.rate-popup{
+  position:absolute;
+  left:0;
+  right:0;
+  top:calc(100% + 6px);
+
+  background:#111827;
+  color:#fff;
+
+  border-radius:10px;
+  padding:7px 9px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:7px;
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:translateY(8px);
+
+  transition:
+    opacity .18s ease,
+    transform .18s ease,
+    visibility .18s ease;
+
+  box-shadow:0 5px 16px rgba(0,0,0,.18);
+
+  z-index:50;
+}
+
+.rate-popup.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.rate-popup-left{
+  min-width:0;
+}
+
+.rate-popup-label{
+  color:#aeb8c7;
+  font-size:8px;
+  line-height:1;
+  margin-bottom:2px;
+}
+
+.rate-popup-amount{
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.rate-popup-right{
+  text-align:right;
+  flex-shrink:0;
+}
+
+.rate-popup-kd{
+  font-size:17px;
+  font-weight:800;
+  line-height:1;
+  white-space:nowrap;
+}
+
+.rate-popup::after{
+  content:"";
+  position:absolute;
+  right:25%;
+  top:-5px;
+
+  width:10px;
+  height:10px;
+
+  background:#111827;
+
+  transform:rotate(45deg);
+}
+
+
+/* ================= TRANSACTIONS ================= */
+
+.transaction-history-title{
+  flex-shrink:0;
+
+  font-size:10px;
+  font-weight:800;
+  color:#64748b;
+
+  margin:2px 0 4px;
+}
+
+.transactions-scroll{
+  flex:1;
+  min-height:0;
+  width:100%;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+
+  padding-bottom:2px;
+}
+
+.transaction{
+  position:relative;
+
+  width:100%;
+
+  background:#fff;
+
+  border:1px solid #e9edf1;
+  border-radius:9px;
+
+  padding:9px 10px 8px;
+  margin-bottom:3px;
+
+  box-shadow:0 1px 2px rgba(0,0,0,.025);
+}
+
+.transaction-date{
+  color:#64748b;
+
+  font-size:9px;
+  line-height:1.1;
+
+  margin-bottom:2px;
+  padding-right:55px;
+}
+
+.transaction-type{
+  position:absolute;
+
+  top:6px;
+  right:9px;
+
+  color:#111827;
+
+  font-size:11px;
+  font-weight:800;
+}
+
+.transaction-main{
+  color:#111827;
+
+  font-size:18px;
+  line-height:1;
+
+  font-weight:800;
+}
+
+.transaction-kd{
+  font-size:8px;
+  font-weight:700;
+}
+
+.transaction-note{
+  color:#64748b;
+
+  font-size:9px;
+  line-height:1.15;
+
+  margin-top:2px;
+}
+
+.transaction.due-type{
+  border-left:4px solid #111827;
+}
+
+
+/* ================= PAYMENT CARD ================= */
+
+.transaction.paid-type{
+  border-left:4px solid #ef4444;
+  background:#fef2f2;
+}
+
+.transaction.paid-type .transaction-main{
+  color:#dc2626;
+}
+
+.transaction.paid-type .transaction-type{
+  color:#dc2626;
+}
+
+
+/* ================= MESSAGE ================= */
+
+.message{
+  width:100%;
+  text-align:center;
+
+  min-height:18px;
+
+  margin-top:7px;
+
+  font-size:11px;
+}
+
+.error{
+  color:#dc2626;
+}
+
+.loading{
+  color:#777;
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer{
+  flex-shrink:0;
+
+  text-align:center;
+
+  padding:6px 8px;
+
+  color:#9ca3af;
+
+  font-size:9px;
+}
+
+
+/* ================= SMALL PHONE ================= */
+
+@media(max-width:360px){
+
+  .header{
+    padding:13px 10px;
+  }
+
+  .header-title{
+    font-size:16px;
+  }
+
+  .header-sub{
+    font-size:9px;
+  }
+
+  .header-actions{
+    gap:4px;
+  }
+
+  .header-button{
+    height:29px;
+    padding:0 7px;
+    font-size:9px;
+  }
+
+  .container{
+    padding:8px;
+  }
+
+  .greeting{
+    margin-bottom:7px;
+  }
+
+  .customer-name{
+    font-size:18px;
+  }
+
+  .greeting-text{
+    font-size:13px;
+  }
+
+  .customer-logout{
+    height:30px;
+    padding:0 10px;
+    font-size:10px;
+  }
+
+  .notice{
+    padding:7px 9px;
+    margin-bottom:7px;
+  }
+
+  .notice-title{
+    font-size:10px;
+  }
+
+  .notice-text{
+    font-size:10px;
+  }
+
+  .balance-rate-row{
+    gap:5px;
+    margin-bottom:7px;
+  }
+
+  .due-card{
+    height:47px;
+    border-radius:10px;
+    padding:3px 5px;
+  }
+
+  .due-label{
+    font-size:8px;
+  }
+
+  .due-number{
+    font-size:18px;
+  }
+
+  .due-kd{
+    font-size:7px;
+  }
+
+  .rate-box{
+    height:30px;
+    padding:13px;
+    border-radius:16px;
+  }
+
+  .rate-input{
+    height:34px;
+    font-size:12px;
+    border-radius:17px;
+    padding:0 10px;
+  }
+
+  .rate-popup{
+    padding:6px 8px;
+  }
+
+  .rate-popup-amount{
+    font-size:12px;
+  }
+
+  .rate-popup-kd{
+    font-size:16px;
+  }
+
+  .transaction{
+    padding:8px 9px 7px;
+    margin-bottom:3px;
+  }
+
+  .transaction-main{
+    font-size:15px;
+  }
+
+  .footer{
+    padding:5px 8px;
+  }
+
+}
+
+
+/* ================= EXTRA SMALL ================= */
+
+@media(max-width:330px){
+
+  .customer-name{
+    font-size:17px;
+  }
+
+  .greeting-text{
+    font-size:12px;
+  }
+
+  .customer-logout{
+    padding:0 8px;
+    font-size:9px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+
+  <div class="header-row">
+
+    <div class="header-left">
+
+      <div class="header-title">
+        Amaya Exchange
+      </div>
+
+      <div class="header-sub">
+        লেনদেনে আস্থা, সেবায় নির্ভরতা
+      </div>
+
+    </div>
+
+
+    <!-- শুধু Contact Us থাকবে -->
+
+    <div class="header-actions">
+
+      <button
+        class="header-button"
+        onclick="contactWhatsApp()">
+        📞 Contact Us
+      </button>
+
+    </div>
 
   </div>
 
-  <button
-  class="header-button header-logout"
-  onclick="logout()">
-  ↪ Logout
-  </button>
-
-  </div>    <div  
-    id="noticeBox"  
-    class="notice hidden">  <div class="notice-title">  
-  📢 Notice  
-</div>  
-
-<div  
-  id="noticeText"  
-  class="notice-text">  
 </div>
 
-  </div>    <div class="balance-rate-row">  <!-- CURRENT DUE -->  
 
-<div class="due-card">  
-
-  <div class="due-label">  
-    বর্তমান বাকি  
-  </div>  
-
-  <div class="due-number">  
-
-    <span id="currentDue">  
-      0.000  
-    </span>  
-
-    <span class="due-kd">  
-      KD  
-    </span>  
-
-  </div>  
-
-</div>  
-
-
-<!-- RATE -->  
-
-<div class="rate-box">  
-
-  <div  
-    id="ratePopup"  
-    class="rate-popup">  
-
-    <div class="rate-popup-left">  
-
-      <div class="rate-popup-label">  
-        Amount  
-      </div>  
-
-      <div  
-        id="ratePopupAmount"  
-        class="rate-popup-amount">  
-        0 Tk  
-      </div>  
-
-    </div>  
-
-    <div class="rate-popup-right">  
-
-      <div  
-        id="ratePopupKD"  
-        class="rate-popup-kd">  
-        0.000 KD  
-      </div>  
-
-    </div>  
-
-  </div>  
-
-
-  <input  
-    id="rateAmount"  
-    class="rate-input"  
-    type="text"  
-    inputmode="numeric"  
-    autocomplete="off"  
-    placeholder="💱 রেট জানতে টাকা লিখুন"  
-    oninput="calculateRate()"  
-  >  
-
-</div>
-
-  </div>    <div class="transaction-history-title">
-  Transaction History
-</div>
+<!-- ================= LOGIN ================= -->
 
 <div
+  id="loginPage"
+  class="container">
+
+  <div class="card">
+
+    <div class="login-title">
+      Customer Login
+    </div>
+
+    <div class="login-sub">
+      আপনার WhatsApp Number এবং Password দিয়ে Login করুন
+    </div>
+
+
+    <label>
+      WhatsApp Number
+    </label>
+
+    <input
+      id="phone"
+      type="tel"
+      inputmode="tel"
+      placeholder="WhatsApp Number"
+      autocomplete="username"
+    >
+
+
+    <label>
+      Password
+    </label>
+
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
+
+
+    <button
+      id="loginButton"
+      onclick="login()">
+      Login
+    </button>
+
+
+    <div
+      id="loginMessage"
+      class="message">
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= CUSTOMER ================= -->
+
+<div
+  id="customerPage"
+  class="container hidden">
+
+
+  <!-- GREETING -->
+
+  <div class="greeting">
+
+    <div class="greeting-text">
+
+      <span>
+        আসসালামু আলাইকুম,
+      </span>
+
+      <span
+        id="customerName"
+        class="customer-name">
+      </span>
+
+      <span>
+        👋
+      </span>
+
+    </div>
+
+
+    <!-- CUSTOMER LOGOUT -->
+
+    <button
+      class="customer-logout"
+      onclick="logout()">
+      Logout
+    </button>
+
+  </div>
+
+
+  <!-- NOTICE -->
+
+  <div
+    id="noticeBox"
+    class="notice hidden">
+
+    <div class="notice-title">
+      📢 Notice
+    </div>
+
+    <div
+      id="noticeText"
+      class="notice-text">
+    </div>
+
+  </div>
+
+
+  <!-- BALANCE + RATE -->
+
+  <div class="balance-rate-row">
+
+
+    <!-- CURRENT DUE -->
+
+    <div class="due-card">
+
+      <div class="due-label">
+        বর্তমান বাকি
+      </div>
+
+      <div class="due-number">
+
+        <span id="currentDue">
+          0.000
+        </span>
+
+        <span class="due-kd">
+          KD
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- RATE -->
+
+    <div class="rate-box">
+
+      <div
+        id="ratePopup"
+        class="rate-popup">
+
+        <div class="rate-popup-left">
+
+          <div class="rate-popup-label">
+            Amount
+          </div>
+
+          <div
+            id="ratePopupAmount"
+            class="rate-popup-amount">
+            0 Tk
+          </div>
+
+        </div>
+
+
+        <div class="rate-popup-right">
+
+          <div
+            id="ratePopupKD"
+            class="rate-popup-kd">
+            0.000 KD
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <input
+        id="rateAmount"
+        class="rate-input"
+        type="text"
+        inputmode="numeric"
+        autocomplete="off"
+        placeholder="💱 রেট জানতে টাকা লিখুন"
+        oninput="calculateRate()"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- TRANSACTION TITLE -->
+
+  <div class="transaction-history-title">
+    Transaction History
+  </div>
+
+
+  <!-- TRANSACTIONS -->
+
+  <div
     id="transactions"
     class="transactions-scroll">
-</div>  </div>  <!-- ================= FOOTER ================= -->  <div class="footer">  
-  Amaya Exchange  
-</div>  </div>  <script>  
-  
-/* ================= CONFIG ================= */  
-  
-const API_URL =  
-"https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";  
-  
-const CONTACT_WHATSAPP = "8801354304315";  
-  
-const RATE_1 = 333.333333;  
-const RATE_2 = 363.636363;  
-const RATE_3 = 357.142857;  
-  
-const REFRESH_TIME = 5000;  
-  
-  
-/* ================= STATE ================= */  
-  
-let currentCustomer = null;  
-let refreshTimer = null;  
-let loadingTransactions = false;  
-let lastTransactionId = "";  
-  
-  
-/* ================= DOM CACHE ================= */  
-  
-const $ = id => document.getElementById(id);  
-  
-const loginPage = $("loginPage");  
-const customerPage = $("customerPage");  
-const phoneInput = $("phone");  
-const passwordInput = $("password");  
-const loginButton = $("loginButton");  
-const loginMessage = $("loginMessage");  
-const customerName = $("customerName");  
-const noticeBox = $("noticeBox");  
-const noticeText = $("noticeText");  
-const currentDue = $("currentDue");  
-const transactionsBox = $("transactions");  
-const rateAmount = $("rateAmount");  
-const ratePopup = $("ratePopup");  
-const ratePopupAmount = $("ratePopupAmount");  
-const ratePopupKD = $("ratePopupKD");  
-  
-  
-/* ================= CONTACT ================= */  
-  
-function contactWhatsApp(){  
-  
-  window.open(  
-    "https://wa.me/" + CONTACT_WHATSAPP,  
-    "_blank"  
-  );  
-  
-}  
-  
-  
-/* ================= NUMBER ================= */  
-  
-function convertBanglaNumbers(value){  
-  
-  const bn = "০১২৩৪৫৬৭৮৯";  
-  const en = "0123456789";  
-  
-  return String(value).replace(  
-    /[০-৯]/g,  
-    d => en[bn.indexOf(d)]  
-  );  
-  
-}  
-  
-  
-/* ================= FORMAT ================= */  
-  
-function formatAmount(number){  
-  
-  return Number(number).toLocaleString("en-IN");  
-  
-}  
-  
-  
-/* ================= RATE ================= */  
-  
-function calculateRate(){  
-  
-  let value =  
-    convertBanglaNumbers(  
-      rateAmount.value  
-    ).replace(  
-      /[^0-9]/g,  
-      ""  
-    );  
-  
-  
-  if(!value){  
-  
-    ratePopup.classList.remove("show");  
-    return;  
-  
-  }  
-  
-  
-  const amount = parseInt(value,10);  
-  
-  
-  if(!Number.isFinite(amount) || amount <= 0){  
-  
-    ratePopup.classList.remove("show");  
-    return;  
-  
-  }  
-  
-  
-  let rate;  
-  
-  if(amount < 1000){  
-  
-    rate = RATE_1;  
-  
-  }else if(amount % 1000 === 0){  
-  
-    rate = RATE_2;  
-  
-  }else{  
-  
-    rate = RATE_3;  
-  
-  }  
-  
-  
-  const kd = amount / rate;  
-  
-  
-  rateAmount.value = formatAmount(amount);  
-  
-  ratePopupAmount.textContent =  
-    formatAmount(amount) + " Tk";  
-  
-  ratePopupKD.textContent =  
-    kd.toFixed(3) + " KD";  
-  
-  ratePopup.classList.add("show");  
-  
-}  
-  
-  
-/* ================= LOGIN ================= */  
-  
-async function login(){  
-  
-  const phone =  
-    phoneInput.value  
-      .trim()  
-      .replace(/\s+/g,"");  
-  
-  const password =  
-    passwordInput.value.trim();  
-  
-  
-  if(!phone || !password){  
-  
-    showMessage(  
-      "WhatsApp Number এবং Password দিন",  
-      "error"  
-    );  
-  
-    return;  
-  
-  }  
-  
-  
-  loginButton.disabled = true;  
-  loginButton.textContent = "Login হচ্ছে...";  
-  
-  
-  try{  
-  
-    const url =  
-      API_URL +  
-      "?action=customerLogin" +  
-      "&phone=" +  
-      encodeURIComponent(phone) +  
-      "&password=" +  
-      encodeURIComponent(password);  
-  
-  
-    const response =  
-      await fetch(url);  
-  
-  
-    const data =  
-      await response.json();  
-  
-  
-    if(data.success){  
-  
-      currentCustomer =  
-        data.data?.customer ||  
-        data.customer;  
-  
-  
-      if(!currentCustomer?.id){  
-  
-        showMessage(  
-          "Customer তথ্য পাওয়া যায়নি",  
-          "error"  
-        );  
-  
-        return;  
-  
-      }  
-  
-  
-      localStorage.setItem(  
-        "customerSession",  
-        JSON.stringify(currentCustomer)  
-      );  
-  
-  
-      showCustomer();  
-  
-  
-    }else{  
-  
-      showMessage(  
-        data.error ||  
-        data.message ||  
-        "Phone Number অথবা Password ভুল",  
-        "error"  
-      );  
-  
-    }  
-  
-  
-  }catch(error){  
-  
-    showMessage(  
-      "Server-এর সাথে যোগাযোগ করা যাচ্ছে না",  
-      "error"  
-    );  
-  
-  }finally{  
-  
-    loginButton.disabled = false;  
-    loginButton.textContent = "Login";  
-  
-  }  
-  
-}  
-  
-  
-/* ================= SHOW CUSTOMER ================= */  
-  
-function showCustomer(){  
-  
-  loginPage.classList.add("hidden");  
-  customerPage.classList.remove("hidden");  
-  
-  customerName.textContent =  
-    currentCustomer.name || "";  
-  
-  
-  loadNotice();  
-  loadTransactions(true);  
-  startAutoRefresh();  
-  
-}  
-  
-  
-/* ================= AUTO REFRESH ================= */  
-  
-function startAutoRefresh(){  
-  
-  stopAutoRefresh();  
-  
-  refreshTimer =  
-    setInterval(  
-      () => {  
-  
-        if(  
-          currentCustomer &&  
-          !customerPage.classList.contains("hidden")  
-        ){  
-  
-          loadTransactions(false);  
-  
-        }  
-  
-      },  
-      REFRESH_TIME  
-    );  
-  
-}  
-  
-  
-/* ================= STOP REFRESH ================= */  
-  
-function stopAutoRefresh(){  
-  
-  if(refreshTimer){  
-  
-    clearInterval(refreshTimer);  
-    refreshTimer = null;  
-  
-  }  
-  
-}  
-  
-  
-/* ================= NOTICE ================= */  
-  
-async function loadNotice(){  
-  
-  try{  
-  
-    const response =  
-      await fetch(  
-        API_URL + "?action=notice",  
-        {cache:"no-store"}  
-      );  
-  
-  
-    const data =  
-      await response.json();  
-  
-  
-    const notice =  
-      data.data?.notice ??  
-      data.notice;  
-  
-  
-    if(  
-      notice &&  
-      String(notice).trim() !== ""  
-    ){  
-  
-      noticeText.textContent = notice;  
-      noticeBox.classList.remove("hidden");  
-  
-    }else{  
-  
-      noticeBox.classList.add("hidden");  
-  
-    }  
-  
-  }catch(error){}  
-  
-}  
-  
-  
-/* ================= TRANSACTIONS ================= */  
-  
-async function loadTransactions(firstLoad){  
-  
-  if(  
-    !currentCustomer ||  
-    loadingTransactions  
-  ){  
-  
-    return;  
-  
-  }  
-  
-  
-  loadingTransactions = true;  
-  
-  
-  if(firstLoad){  
-  
-    transactionsBox.innerHTML =  
-      '<div class="message loading">লেনদেন লোড হচ্ছে...</div>';  
-  
-  }  
-  
-  
-  try{  
-  
-    const url =  
-      API_URL +  
-      "?action=transactions" +  
-      "&customerId=" +  
-      encodeURIComponent(currentCustomer.id);  
-  
-  
-    const response =  
-      await fetch(  
-        url,  
-        {cache:"no-store"}  
-      );  
-  
-  
-    const data =  
-      await response.json();  
-  
-  
-    if(!data.success){  
-  
-      if(firstLoad){  
-  
-        transactionsBox.innerHTML =  
-          '<div class="message error">লেনদেন লোড হয়নি</div>';  
-  
-      }  
-  
-      return;  
-  
-    }  
-  
-  
-    const result = data.data || {};  
-  
-  
-    /* CURRENT DUE */  
-  
-    const due =  
-      Number(result.currentDue || 0);  
-  
-    const dueText =  
-      due.toFixed(3);  
-  
-  
-    if(currentDue.textContent !== dueText){  
-  
-      currentDue.textContent = dueText;  
-  
-    }  
-  
-  
-    /* TRANSACTIONS */  
-  
-    const transactions =  
-      result.transactions || [];  
-  
-  
-    if(!transactions.length){  
-  
-      if(firstLoad){  
-  
-        transactionsBox.innerHTML =  
-          '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';  
-  
-      }  
-  
-      return;  
-  
-    }  
-  
-  
-    /* LATEST ID */  
-  
-    const latest = transactions[0];  
-  
-    const latestId =  
-      latest.transactionId ||  
-      (  
-        latest.date +  
-        "|" +  
-        latest.kdAmount +  
-        "|" +  
-        latest.type +  
-        "|" +  
-        latest.note  
-      );  
-  
-  
-    if(  
-      !firstLoad &&  
-      latestId === lastTransactionId  
-    ){  
-  
-      return;  
-  
-    }  
-  
-  
-    lastTransactionId = latestId;  
-  
-  
-    /* BUILD */  
-  
-    const fragment =  
-      document.createDocumentFragment();  
-  
-  
-    for(const t of transactions){  
-  
-      const item =  
-        document.createElement("div");  
-  
-  
-      item.className =  
-        t.type === "বাকি"  
-        ? "transaction due-type"  
-        : "transaction paid-type";  
-  
-  
-      const sign =  
-        t.type === "বাকি"  
-        ? "+"  
-        : "−";  
-  
-  
-      let note =  
-        t.note || "";  
-  
-  
-      const bdAmount = t.bdAmount;  
-  
-if(  
-  bdAmount !== "" &&  
-  bdAmount !== null &&  
-  bdAmount !== undefined &&  
-  Number(bdAmount) !== 0  
-){  
-  
-  const tk =  
-    Number(  
-      String(bdAmount)  
-        .replace(/,/g,"")  
-    ).toLocaleString("en-IN");  
-  
-  note =  
-    note  
-    ? note + " • " + tk + " Tk"  
-    : tk + " Tk";  
-  
-}  
-  
-  
-      const kdAmount =  
-        Number(t.kdAmount || 0);  
-  
-  
-      const noteHTML =  
-        note  
-        ? `<div class="transaction-note">  
-             ${escapeHTML(note)}  
-           </div>`  
-        : "";  
-  
-  
-      item.innerHTML =  
-        `<div class="transaction-date">  
-           ${escapeHTML(t.date)}  
-         </div>  
-  
-         <div class="transaction-type">  
-           ${escapeHTML(t.type)}  
-         </div>  
-  
-         <div class="transaction-main">  
-           ${sign}${kdAmount.toFixed(3)}  
-           <span class="transaction-kd">KD</span>  
-         </div>  
-  
-         ${noteHTML}`;  
-  
-  
-      fragment.appendChild(item);  
-  
-    }  
-  
-  
-    transactionsBox.replaceChildren(fragment);  
-  
-  
-  }catch(error){  
-  
-    if(firstLoad){  
-  
-      transactionsBox.innerHTML =  
-        '<div class="message error">লেনদেন লোড হয়নি</div>';  
-  
-    }  
-  
-  }finally{  
-  
-    loadingTransactions = false;  
-  
-  }  
-  
-}  
-  
-  
-/* ================= LOGOUT ================= */  
-  
-function logout(){  
-  
-  stopAutoRefresh();  
-  
-  localStorage.removeItem("customerSession");  
-  
-  currentCustomer = null;  
-  lastTransactionId = "";  
-  
-  customerPage.classList.add("hidden");  
-  loginPage.classList.remove("hidden");  
-  
-  phoneInput.value = "";  
-  passwordInput.value = "";  
-  
-  rateAmount.value = "";  
-  ratePopup.classList.remove("show");  
-  
-  loginMessage.textContent = "";  
-  
-}  
-  
-  
-/* ================= SAVED LOGIN ================= */  
-  
-function checkSavedLogin(){  
-  
-  const saved =  
-    localStorage.getItem(  
-      "customerSession"  
-    );  
-  
-  
-  if(!saved) return;  
-  
-  
-  try{  
-  
-    currentCustomer =  
-      JSON.parse(saved);  
-  
-  
-    if(  
-      currentCustomer &&  
-      currentCustomer.id &&  
-      currentCustomer.name  
-    ){  
-  
-      showCustomer();  
-  
-    }  
-  
-  }catch(error){  
-  
-    localStorage.removeItem(  
-      "customerSession"  
-    );  
-  
-  }  
-  
-}  
-  
-  
-/* ================= MESSAGE ================= */  
-  
-function showMessage(text,type){  
-  
-  loginMessage.textContent = text;  
-  
-  loginMessage.className =  
-    "message " + (type || "");  
-  
-}  
-  
-  
-/* ================= ESCAPE ================= */  
-  
-function escapeHTML(text){  
-  
-  return String(text)  
-    .replace(/&/g,"&amp;")  
-    .replace(/</g,"&lt;")  
-    .replace(/>/g,"&gt;")  
-    .replace(/"/g,"&quot;")  
-    .replace(/'/g,"&#039;");  
-  
-}  
-  
-  
-/* ================= START ================= */  
-  
-checkSavedLogin();  
-  
-</script>  </body>  </html>
+  </div>
+
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+  Amaya Exchange
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* ================= CONFIG ================= */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
+
+const CONTACT_WHATSAPP = "8801354304315";
+
+const RATE_1 = 333.333333;
+const RATE_2 = 363.636363;
+const RATE_3 = 357.142857;
+
+const REFRESH_TIME = 5000;
+
+
+/* ================= STATE ================= */
+
+let currentCustomer = null;
+
+let refreshTimer = null;
+
+let loadingTransactions = false;
+
+let lastTransactionId = "";
+
+
+/* ================= DOM CACHE ================= */
+
+const $ = id => document.getElementById(id);
+
+const loginPage = $("loginPage");
+
+const customerPage = $("customerPage");
+
+const phoneInput = $("phone");
+
+const passwordInput = $("password");
+
+const loginButton = $("loginButton");
+
+const loginMessage = $("loginMessage");
+
+const customerName = $("customerName");
+
+const noticeBox = $("noticeBox");
+
+const noticeText = $("noticeText");
+
+const currentDue = $("currentDue");
+
+const transactionsBox = $("transactions");
+
+const rateAmount = $("rateAmount");
+
+const ratePopup = $("ratePopup");
+
+const ratePopupAmount = $("ratePopupAmount");
+
+const ratePopupKD = $("ratePopupKD");
+
+
+/* ================= CONTACT ================= */
+
+function contactWhatsApp(){
+
+  window.open(
+    "https://wa.me/" + CONTACT_WHATSAPP,
+    "_blank"
+  );
+
+}
+
+
+/* ================= NUMBER ================= */
+
+function convertBanglaNumbers(value){
+
+  const bn = "০১২৩৪৫৬৭৮৯";
+
+  const en = "0123456789";
+
+  return String(value).replace(
+    /[০-৯]/g,
+    d => en[bn.indexOf(d)]
+  );
+
+}
+
+
+/* ================= FORMAT ================= */
+
+function formatAmount(number){
+
+  return Number(number).toLocaleString("en-IN");
+
+}
+
+
+/* ================= RATE ================= */
+
+function calculateRate(){
+
+  let value =
+    convertBanglaNumbers(
+      rateAmount.value
+    ).replace(
+      /[^0-9]/g,
+      ""
+    );
+
+
+  if(!value){
+
+    ratePopup.classList.remove("show");
+
+    return;
+
+  }
+
+
+  const amount = parseInt(value,10);
+
+
+  if(
+    !Number.isFinite(amount) ||
+    amount <= 0
+  ){
+
+    ratePopup.classList.remove("show");
+
+    return;
+
+  }
+
+
+  let rate;
+
+
+  if(amount < 1000){
+
+    rate = RATE_1;
+
+  }else if(amount % 1000 === 0){
+
+    rate = RATE_2;
+
+  }else{
+
+    rate = RATE_3;
+
+  }
+
+
+  const kd = amount / rate;
+
+
+  rateAmount.value =
+    formatAmount(amount);
+
+
+  ratePopupAmount.textContent =
+    formatAmount(amount) + " Tk";
+
+
+  ratePopupKD.textContent =
+    kd.toFixed(3) + " KD";
+
+
+  ratePopup.classList.add("show");
+
+}
+
+
+/* ================= LOGIN ================= */
+
+async function login(){
+
+  const phone =
+    phoneInput.value
+      .trim()
+      .replace(/\s+/g,"");
+
+
+  const password =
+    passwordInput.value.trim();
+
+
+  if(!phone || !password){
+
+    showMessage(
+      "WhatsApp Number এবং Password দিন",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  loginButton.disabled = true;
+
+  loginButton.textContent =
+    "Login হচ্ছে...";
+
+
+  try{
+
+    const url =
+      API_URL +
+      "?action=customerLogin" +
+      "&phone=" +
+      encodeURIComponent(phone) +
+      "&password=" +
+      encodeURIComponent(password);
+
+
+    const response =
+      await fetch(url);
+
+
+    const data =
+      await response.json();
+
+
+    if(data.success){
+
+      currentCustomer =
+        data.data?.customer ||
+        data.customer;
+
+
+      if(!currentCustomer?.id){
+
+        showMessage(
+          "Customer তথ্য পাওয়া যায়নি",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      localStorage.setItem(
+        "customerSession",
+        JSON.stringify(currentCustomer)
+      );
+
+
+      showCustomer();
+
+
+    }else{
+
+      showMessage(
+        data.error ||
+        data.message ||
+        "Phone Number অথবা Password ভুল",
+        "error"
+      );
+
+    }
+
+
+  }catch(error){
+
+    showMessage(
+      "Server-এর সাথে যোগাযোগ করা যাচ্ছে না",
+      "error"
+    );
+
+  }finally{
+
+    loginButton.disabled = false;
+
+    loginButton.textContent =
+      "Login";
+
+  }
+
+}
+
+
+/* ================= SHOW CUSTOMER ================= */
+
+function showCustomer(){
+
+  loginPage.classList.add("hidden");
+
+  customerPage.classList.remove("hidden");
+
+
+  customerName.textContent =
+    currentCustomer.name || "";
+
+
+  loadNotice();
+
+  loadTransactions(true);
+
+  startAutoRefresh();
+
+}
+
+
+/* ================= AUTO REFRESH ================= */
+
+function startAutoRefresh(){
+
+  stopAutoRefresh();
+
+
+  refreshTimer =
+    setInterval(
+      () => {
+
+        if(
+          currentCustomer &&
+          !customerPage.classList.contains("hidden")
+        ){
+
+          loadTransactions(false);
+
+        }
+
+      },
+      REFRESH_TIME
+    );
+
+}
+
+
+/* ================= STOP REFRESH ================= */
+
+function stopAutoRefresh(){
+
+  if(refreshTimer){
+
+    clearInterval(refreshTimer);
+
+    refreshTimer = null;
+
+  }
+
+}
+
+
+/* ================= NOTICE ================= */
+
+async function loadNotice(){
+
+  try{
+
+    const response =
+      await fetch(
+        API_URL + "?action=notice",
+        {cache:"no-store"}
+      );
+
+
+    const data =
+      await response.json();
+
+
+    const notice =
+      data.data?.notice ??
+      data.notice;
+
+
+    if(
+      notice &&
+      String(notice).trim() !== ""
+    ){
+
+      noticeText.textContent =
+        notice;
+
+      noticeBox.classList.remove(
+        "hidden"
+      );
+
+    }else{
+
+      noticeBox.classList.add(
+        "hidden"
+      );
+
+    }
+
+  }catch(error){}
+
+}
+
+
+/* ================= TRANSACTIONS ================= */
+
+async function loadTransactions(firstLoad){
+
+  if(
+    !currentCustomer ||
+    loadingTransactions
+  ){
+
+    return;
+
+  }
+
+
+  loadingTransactions = true;
+
+
+  if(firstLoad){
+
+    transactionsBox.innerHTML =
+      '<div class="message loading">লেনদেন লোড হচ্ছে...</div>';
+
+  }
+
+
+  try{
+
+    const url =
+      API_URL +
+      "?action=transactions" +
+      "&customerId=" +
+      encodeURIComponent(
+        currentCustomer.id
+      );
+
+
+    const response =
+      await fetch(
+        url,
+        {cache:"no-store"}
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(!data.success){
+
+      if(firstLoad){
+
+        transactionsBox.innerHTML =
+          '<div class="message error">লেনদেন লোড হয়নি</div>';
+
+      }
+
+      return;
+
+    }
+
+
+    const result =
+      data.data || {};
+
+
+    /* CURRENT DUE */
+
+    const due =
+      Number(
+        result.currentDue || 0
+      );
+
+
+    const dueText =
+      due.toFixed(3);
+
+
+    if(
+      currentDue.textContent !==
+      dueText
+    ){
+
+      currentDue.textContent =
+        dueText;
+
+    }
+
+
+    /* TRANSACTIONS */
+
+    const transactions =
+      result.transactions || [];
+
+
+    if(!transactions.length){
+
+      if(firstLoad){
+
+        transactionsBox.innerHTML =
+          '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
+
+      }
+
+      return;
+
+    }
+
+
+    /* LATEST ID */
+
+    const latest =
+      transactions[0];
+
+
+    const latestId =
+      latest.transactionId ||
+
+      (
+        latest.date +
+        "|" +
+        latest.kdAmount +
+        "|" +
+        latest.type +
+        "|" +
+        latest.note
+      );
+
+
+    if(
+      !firstLoad &&
+      latestId === lastTransactionId
+    ){
+
+      return;
+
+    }
+
+
+    lastTransactionId =
+      latestId;
+
+
+    /* BUILD */
+
+    const fragment =
+      document.createDocumentFragment();
+
+
+    for(const t of transactions){
+
+      const item =
+        document.createElement("div");
+
+
+      item.className =
+        t.type === "বাকি"
+        ? "transaction due-type"
+        : "transaction paid-type";
+
+
+      const sign =
+        t.type === "বাকি"
+        ? "+"
+        : "−";
+
+
+      let note =
+        t.note || "";
+
+
+      const bdAmount =
+        t.bdAmount;
+
+
+      if(
+        bdAmount !== "" &&
+        bdAmount !== null &&
+        bdAmount !== undefined &&
+        Number(bdAmount) !== 0
+      ){
+
+        const tk =
+          Number(
+            String(bdAmount)
+              .replace(/,/g,"")
+          ).toLocaleString("en-IN");
+
+
+        note =
+          note
+          ? note + " • " + tk + " Tk"
+          : tk + " Tk";
+
+      }
+
+
+      const kdAmount =
+        Number(
+          t.kdAmount || 0
+        );
+
+
+      const noteHTML =
+        note
+
+        ? `<div class="transaction-note">
+             ${escapeHTML(note)}
+           </div>`
+
+        : "";
+
+
+      item.innerHTML =
+
+        `<div class="transaction-date">
+           ${escapeHTML(t.date)}
+         </div>
+
+         <div class="transaction-type">
+           ${escapeHTML(t.type)}
+         </div>
+
+         <div class="transaction-main">
+           ${sign}${kdAmount.toFixed(3)}
+           <span class="transaction-kd">KD</span>
+         </div>
+
+         ${noteHTML}`;
+
+
+      fragment.appendChild(item);
+
+    }
+
+
+    transactionsBox.replaceChildren(
+      fragment
+    );
+
+
+  }catch(error){
+
+    if(firstLoad){
+
+      transactionsBox.innerHTML =
+        '<div class="message error">লেনদেন লোড হয়নি</div>';
+
+    }
+
+  }finally{
+
+    loadingTransactions = false;
+
+  }
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+  stopAutoRefresh();
+
+
+  localStorage.removeItem(
+    "customerSession"
+  );
+
+
+  currentCustomer = null;
+
+  lastTransactionId = "";
+
+
+  customerPage.classList.add(
+    "hidden"
+  );
+
+  loginPage.classList.remove(
+    "hidden"
+  );
+
+
+  phoneInput.value = "";
+
+  passwordInput.value = "";
+
+
+  rateAmount.value = "";
+
+  ratePopup.classList.remove(
+    "show"
+  );
+
+
+  loginMessage.textContent = "";
+
+}
+
+
+/* ================= SAVED LOGIN ================= */
+
+function checkSavedLogin(){
+
+  const saved =
+    localStorage.getItem(
+      "customerSession"
+    );
+
+
+  if(!saved) return;
+
+
+  try{
+
+    currentCustomer =
+      JSON.parse(saved);
+
+
+    if(
+      currentCustomer &&
+      currentCustomer.id &&
+      currentCustomer.name
+    ){
+
+      showCustomer();
+
+    }
+
+
+  }catch(error){
+
+    localStorage.removeItem(
+      "customerSession"
+    );
+
+  }
+
+}
+
+
+/* ================= MESSAGE ================= */
+
+function showMessage(text,type){
+
+  loginMessage.textContent =
+    text;
+
+
+  loginMessage.className =
+    "message " + (type || "");
+
+}
+
+
+/* ================= ESCAPE ================= */
+
+function escapeHTML(text){
+
+  return String(text)
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* ================= START ================= */
+
+checkSavedLogin();
+
+</script>
+
+</body>
+
+</html>
