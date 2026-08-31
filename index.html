@@ -102,11 +102,16 @@ button{
 }
 
 .header-logout{
-  background:#111827;
-  color:#fff;
-  border:1px solid #374151;
-  box-shadow:0 2px 7px rgba(0,0,0,.15);
-}  
+  background:#fef2f2;
+  color:#dc2626;
+  border:1px solid #fecaca;
+  box-shadow:0 2px 6px rgba(220,38,38,.08);
+  font-size:11px;
+  font-weight:700;
+  border-radius:18px;
+  padding:0 12px;
+  height:32px;
+}
   
   
 /* ================= CONTAINER ================= */  
@@ -481,10 +486,14 @@ button:disabled{
 }  
   
 .transaction.paid-type{  
-  border-left:4px solid #94a3b8;  
-  background:#f1f5f9  
+  border-left:4px solid #ef4444;  
+  background:#fef2f2;  
 }  
-  
+
+.transaction.paid-type.transection-main{
+ color:#dc2626;
+}
+
   
 /* ================= MESSAGE ================= */  
   
@@ -649,14 +658,6 @@ button:disabled{
 
   <div class="header-actions">
 
-  <button
-    class="header-button"
-    onclick="contactWhatsApp()">
-    📞 Contact Us
-  </button>
-
-  </div>  
-
   <button  
     class="header-button"  
     onclick="contactWhatsApp()">  
@@ -731,9 +732,9 @@ button:disabled{
   </div>
 
   <button
-    class="header-button header-logout"
-    onclick="logout()">
-    Logout
+  class="header-button header-logout"
+  onclick="logout()">
+  ↪ Logout
   </button>
 
   </div>    <div  
