@@ -1823,7 +1823,27 @@ function escapeHTML(text){
 checkSavedLogin();
 
 </script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
 
+    try {
+      const registration =
+        await navigator.serviceWorker.register('./service-worker.js');
+
+      // নতুন Service Worker খুঁজবে
+      registration.update();
+
+      console.log('AMX PWA ready');
+
+    } catch (error) {
+      console.error('AMX PWA error:', error);
+    }
+
+  });
+}
+</script>
+      
 </body>
 
 </html>
