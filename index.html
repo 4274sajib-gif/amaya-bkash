@@ -9,21 +9,30 @@
 <meta name="theme-color" content="#0B6B4F">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-touch-icon" href="icons/icon-192.png">
 
 <style>
-/* Global */
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%}
+
+html,body{
+  width:100%;
+  height:100%
+}
+
 body{
   background:#f4f6f8;
   color:#111827;
   font-family:Arial,sans-serif;
   overflow:hidden
 }
-button,input,select{font-family:inherit}
-.hidden{display:none!important}
+
+button,input,select{
+  font-family:inherit
+}
+
+.hidden{
+  display:none!important
+}
 
 /* App */
 .app{
@@ -41,32 +50,38 @@ button,input,select{font-family:inherit}
   color:#fff;
   padding:12px
 }
+
 .header-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:8px
 }
+
 .header-left{
   min-width:0;
   flex:1
 }
+
 .header-title{
   font-size:18px;
   font-weight:700;
   white-space:nowrap
 }
+
 .header-sub{
   margin-top:3px;
   color:#cbd5e1;
   font-size:10px
 }
+
 .header-actions{
   display:flex;
   align-items:center;
   gap:5px;
   flex-shrink:0
 }
+
 .header-button{
   width:auto;
   height:31px;
@@ -80,28 +95,40 @@ button,input,select{font-family:inherit}
   font-weight:700;
   box-shadow:0 2px 6px rgba(0,0,0,.12)
 }
+
 .contact-button{
   background:#f8fafc;
   color:#111827;
   border:1px solid #e2e8f0;
-  box-shadow:0 3px 0 #cbd5e1,0 5px 10px rgba(0,0,0,.2);
+  box-shadow:
+    0 3px 0 #cbd5e1,
+    0 5px 10px rgba(0,0,0,.2);
   transition:all .15s ease
 }
+
 .contact-button:active{
   transform:translateY(2px);
-  box-shadow:0 1px 0 #cbd5e1,0 3px 6px rgba(0,0,0,.15)
+  box-shadow:
+    0 1px 0 #cbd5e1,
+    0 3px 6px rgba(0,0,0,.15)
 }
+
 .header-logout{
   background:#fff1f2;
   color:#dc2626;
   border:1px solid #fecdd3;
-  box-shadow:0 3px 0 #fecdd3,0 5px 10px rgba(220,38,38,.15);
+  box-shadow:
+    0 3px 0 #fecdd3,
+    0 5px 10px rgba(220,38,38,.15);
   transition:all .15s ease
 }
+
 .header-logout:active{
   transform:translateY(2px);
   background:#ffe4e6;
-  box-shadow:0 1px 0 #fecdd3,0 3px 6px rgba(220,38,38,.12)
+  box-shadow:
+    0 1px 0 #fecdd3,
+    0 3px 6px rgba(220,38,38,.12)
 }
 
 /* Container */
@@ -115,23 +142,27 @@ button,input,select{font-family:inherit}
   flex:1;
   overflow-y:auto
 }
+
 .card{
   background:#fff;
   border-radius:15px;
   padding:17px;
   box-shadow:0 2px 10px rgba(0,0,0,.04)
 }
+
 .login-title{
   font-size:20px;
   font-weight:700;
   margin-bottom:5px
 }
+
 .login-sub{
   font-size:13px;
   line-height:1.4;
   color:#777;
   margin-bottom:16px
 }
+
 label{
   display:block;
   font-size:13px;
@@ -139,6 +170,7 @@ label{
   color:#374151;
   margin:12px 0 6px
 }
+
 input{
   width:100%;
   height:47px;
@@ -150,9 +182,11 @@ input{
   font-size:16px;
   outline:none
 }
+
 input:focus{
   border-color:#111827
 }
+
 button{
   width:100%;
   height:47px;
@@ -163,6 +197,7 @@ button{
   font-weight:700;
   margin-top:17px
 }
+
 button:disabled{
   opacity:.55
 }
@@ -185,6 +220,7 @@ button:disabled{
   width:100%;
   margin-bottom:5px
 }
+
 .filter-box{
   flex:.85;
   min-width:0;
@@ -199,6 +235,7 @@ button:disabled{
   outline:none;
   box-shadow:0 2px 5px rgba(0,0,0,.05)
 }
+
 .customer-name-card{
   flex:1.25;
   min-width:0;
@@ -217,6 +254,7 @@ button:disabled{
   overflow:hidden;
   box-shadow:0 2px 5px rgba(0,0,0,.05)
 }
+
 #customerNameText{
   width:100%;
   font-size:13px;
@@ -224,6 +262,7 @@ button:disabled{
   overflow:hidden;
   text-overflow:ellipsis
 }
+
 #customerPhone{
   width:100%;
   margin-top:1px;
@@ -247,7 +286,7 @@ button:disabled{
   background:#f0f9f6;
   border:1px solid #cce9df;
   border-radius:11px;
-  box-shadow:0 3px 8px rgba(0,0,0,.08);
+  box-shadow:0 3px 8px rgba(0,0,0,.08)
 }
 
 .balance-box{
@@ -258,7 +297,7 @@ button:disabled{
   flex-direction:column;
   justify-content:center;
   padding:2px 4px;
-  background:transparent;
+  background:transparent
 }
 
 .due-label{
@@ -266,7 +305,7 @@ button:disabled{
   font-size:9px;
   line-height:1;
   margin-bottom:3px;
-  font-weight:500;
+  font-weight:500
 }
 
 .due-number{
@@ -274,14 +313,14 @@ button:disabled{
   font-size:18px;
   line-height:1;
   font-weight:800;
-  letter-spacing:-.3px;
+  letter-spacing:-.3px
 }
 
 .due-kd{
   color:#64748B;
   font-size:9px;
   font-weight:600;
-  margin-left:2px;
+  margin-left:2px
 }
 
 .rate-box{
@@ -295,7 +334,7 @@ button:disabled{
   padding:0;
   background:transparent;
   border:0;
-  box-shadow:none;
+  box-shadow:none
 }
 
 .rate-input{
@@ -311,12 +350,14 @@ button:disabled{
   background:#fff;
   color:#111827;
   outline:none;
-  box-shadow:none;
+  box-shadow:none
 }
+
 .rate-input::placeholder{
   color:#64748b;
   font-weight:500
 }
+
 .rate-input:focus{
   border-color:#93c5fd;
   background:#fff;
@@ -340,39 +381,49 @@ button:disabled{
   opacity:0;
   visibility:hidden;
   transform:translateY(8px);
-  transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+  transition:
+    opacity .18s ease,
+    transform .18s ease,
+    visibility .18s ease;
   box-shadow:0 5px 16px rgba(0,0,0,.18);
   z-index:50
 }
+
 .rate-popup.show{
   opacity:1;
   visibility:visible;
   transform:translateY(0)
 }
+
 .rate-popup-left{
   min-width:0
 }
+
 .rate-popup-label{
   color:#aeb8c7;
   font-size:8px;
   line-height:1;
   margin-bottom:2px
 }
+
 .rate-popup-amount{
   font-size:13px;
   font-weight:700;
   white-space:nowrap
 }
+
 .rate-popup-right{
   text-align:right;
   flex-shrink:0
 }
+
 .rate-popup-kd{
   font-size:17px;
   font-weight:800;
   line-height:1;
   white-space:nowrap
 }
+
 .rate-popup::after{
   content:"";
   position:absolute;
@@ -393,12 +444,14 @@ button:disabled{
   padding:8px 10px;
   margin-bottom:8px
 }
+
 .notice-title{
   font-size:11px;
   font-weight:700;
   color:#5f4a10;
   margin-bottom:3px
 }
+
 .notice-text{
   font-size:12px;
   line-height:1.4;
@@ -414,6 +467,7 @@ button:disabled{
   color:#64748b;
   margin:2px 0 3px
 }
+
 .transactions-scroll{
   flex:1;
   min-height:0;
@@ -424,6 +478,7 @@ button:disabled{
   overscroll-behavior:contain;
   padding-bottom:2px
 }
+
 .transaction{
   position:relative;
   width:100%;
@@ -434,6 +489,7 @@ button:disabled{
   margin-bottom:3px;
   box-shadow:0 1px 2px rgba(0,0,0,.025)
 }
+
 .transaction-date{
   color:#64748b;
   font-size:9px;
@@ -441,6 +497,7 @@ button:disabled{
   margin-bottom:2px;
   padding-right:55px
 }
+
 .transaction-type{
   position:absolute;
   top:6px;
@@ -449,29 +506,35 @@ button:disabled{
   font-size:11px;
   font-weight:800
 }
+
 .transaction-main{
   color:#111827;
   font-size:18px;
   line-height:1;
   font-weight:800
 }
+
 .transaction-kd{
   font-size:8px;
   font-weight:700
 }
+
 .transaction-note{
   color:#64748b;
   font-size:9px;
   line-height:1.15;
   margin-top:2px
 }
+
 .transaction.due-type{
   border-left:4px solid #111827
 }
+
 .transaction.paid-type{
   border-left:4px solid #ef4444;
   background:#fef2f2
 }
+
 .transaction.paid-type .transaction-main,
 .transaction.paid-type .transaction-type{
   color:#dc2626
@@ -485,9 +548,11 @@ button:disabled{
   margin-top:7px;
   font-size:11px
 }
+
 .error{
   color:#dc2626
 }
+
 .loading{
   color:#777
 }
@@ -503,38 +568,59 @@ button:disabled{
 
 /* Small Phone */
 @media(max-width:360px){
-  .header{padding:11px 10px}
-  .header-title{font-size:16px}
-  .header-sub{font-size:9px}
-  .header-actions{gap:4px}
+
+  .header{
+    padding:11px 10px
+  }
+
+  .header-title{
+    font-size:16px
+  }
+
+  .header-sub{
+    font-size:9px
+  }
+
+  .header-actions{
+    gap:4px
+  }
+
   .header-button{
     height:29px;
     padding:0 7px;
     font-size:9px
   }
-  .container{padding:8px}
+
+  .container{
+    padding:8px
+  }
 
   .customer-filter-row{
     gap:3px;
     margin-bottom:5px
   }
+
   .filter-box{
     height:34px;
     padding:0 3px;
     font-size:8px;
     border-radius:8px
   }
+
   .filter-box option{
     font-size:9px
   }
+
   .customer-name-card{
     height:34px;
     padding:3px 4px;
     border-radius:8px
   }
+
   #customerNameText{
     font-size:12px
   }
+
   #customerPhone{
     font-size:8px
   }
@@ -544,55 +630,98 @@ button:disabled{
     padding:4px;
     border-radius:10px
   }
+
   .balance-box{
     padding-left:5px
   }
-  .due-label{font-size:8px}
-  .due-number{font-size:17px}
-  .due-kd{font-size:8px}
+
+  .due-label{
+    font-size:8px
+  }
+
+  .due-number{
+    font-size:17px
+  }
+
+  .due-kd{
+    font-size:8px
+  }
 
   .rate-box{
     height:39px;
     padding:0
   }
+
   .rate-input{
     height:31px;
     font-size:8px;
     padding:0 5px
   }
 
-  .rate-popup{padding:6px 8px}
-  .rate-popup-amount{font-size:12px}
-  .rate-popup-kd{font-size:16px}
+  .rate-popup{
+    padding:6px 8px
+  }
+
+  .rate-popup-amount{
+    font-size:12px
+  }
+
+  .rate-popup-kd{
+    font-size:16px
+  }
 
   .notice{
     padding:7px 9px;
     margin-bottom:7px
   }
-  .notice-title{font-size:10px}
-  .notice-text{font-size:10px}
+
+  .notice-title{
+    font-size:10px
+  }
+
+  .notice-text{
+    font-size:10px
+  }
 
   .transaction{
     padding:8px 9px 7px;
     margin-bottom:3px
   }
-  .transaction-main{font-size:15px}
-  .footer{padding:5px 8px}
+
+  .transaction-main{
+    font-size:15px
+  }
+
+  .footer{
+    padding:5px 8px
+  }
 }
 
 /* Extra Small */
 @media(max-width:330px){
-  .header-title{font-size:15px}
-  .header-sub{font-size:8px}
+
+  .header-title{
+    font-size:15px
+  }
+
+  .header-sub{
+    font-size:8px
+  }
+
   .header-button{
     padding:0 6px;
     font-size:8px
   }
-  .customer-name-card{font-size:9px}
+
+  .customer-name-card{
+    font-size:9px
+  }
+
   .filter-box{
     font-size:8px;
     padding:0 3px
   }
+
   .rate-input{
     font-size:9px;
     padding:0 5px
@@ -607,14 +736,23 @@ button:disabled{
 
 <!-- Header -->
 <div class="header">
+
   <div class="header-row">
 
     <div class="header-left">
-      <div class="header-title">Amaya Exchange</div>
-      <div class="header-sub">লেনদেনে আস্থা, সেবায় নির্ভরতা</div>
+
+      <div class="header-title">
+        Amaya Exchange
+      </div>
+
+      <div class="header-sub">
+        লেনদেনে আস্থা, সেবায় নির্ভরতা
+      </div>
+
     </div>
 
     <div class="header-actions">
+
       <button
         class="header-button contact-button"
         onclick="contactWhatsApp()"
@@ -625,23 +763,31 @@ button:disabled{
         class="header-button header-logout hidden"
         onclick="logout()"
       >Logout</button>
+
     </div>
 
   </div>
+
 </div>
+
 
 <!-- Login -->
 <div id="loginPage" class="container">
 
   <div class="card">
 
-    <div class="login-title">Customer Login</div>
+    <div class="login-title">
+      Customer Login
+    </div>
 
     <div class="login-sub">
       আপনার WhatsApp Number এবং Password দিয়ে Login করুন
     </div>
 
-    <label>WhatsApp Number</label>
+    <label>
+      WhatsApp Number
+    </label>
+
     <input
       id="phone"
       type="tel"
@@ -650,7 +796,10 @@ button:disabled{
       autocomplete="username"
     >
 
-    <label>Password</label>
+    <label>
+      Password
+    </label>
+
     <input
       id="password"
       type="password"
@@ -658,16 +807,26 @@ button:disabled{
       autocomplete="current-password"
     >
 
-    <button id="loginButton" onclick="login()">Login</button>
+    <button
+      id="loginButton"
+      onclick="login()"
+    >Login</button>
 
-    <div id="loginMessage" class="message"></div>
+    <div
+      id="loginMessage"
+      class="message"
+    ></div>
 
   </div>
 
 </div>
 
+
 <!-- Customer -->
-<div id="customerPage" class="container hidden">
+<div
+  id="customerPage"
+  class="container hidden"
+>
 
   <!-- Filter -->
   <div class="customer-filter-row">
@@ -683,56 +842,134 @@ button:disabled{
       class="filter-box"
       onchange="applyTransactionFilter()"
     >
-      <option value="all">All Transaction</option>
-      <option value="0">January</option>
-      <option value="1">February</option>
-      <option value="2">March</option>
-      <option value="3">April</option>
-      <option value="4">May</option>
-      <option value="5">June</option>
-      <option value="6">July</option>
-      <option value="7">August</option>
-      <option value="8">September</option>
-      <option value="9">October</option>
-      <option value="10">November</option>
-      <option value="11">December</option>
+
+      <option value="all">
+        All Transaction
+      </option>
+
+      <option value="0">
+        January
+      </option>
+
+      <option value="1">
+        February
+      </option>
+
+      <option value="2">
+        March
+      </option>
+
+      <option value="3">
+        April
+      </option>
+
+      <option value="4">
+        May
+      </option>
+
+      <option value="5">
+        June
+      </option>
+
+      <option value="6">
+        July
+      </option>
+
+      <option value="7">
+        August
+      </option>
+
+      <option value="8">
+        September
+      </option>
+
+      <option value="9">
+        October
+      </option>
+
+      <option value="10">
+        November
+      </option>
+
+      <option value="11">
+        December
+      </option>
+
     </select>
 
-    <div id="customerName" class="customer-name-card">
+    <div
+      id="customerName"
+      class="customer-name-card"
+    >
+
       <div id="customerNameText"></div>
+
       <div id="customerPhone"></div>
+
     </div>
 
   </div>
+
 
   <!-- Balance + Rate -->
   <div class="balance-rate-row">
 
     <div class="balance-box">
 
-      <div class="due-label">আপনার বর্তমান বাকি</div>
+      <div class="due-label">
+        আপনার বর্তমান বাকি
+      </div>
 
       <div class="due-number">
-        <span id="currentDue">0.000</span>
-        <span class="due-kd">KD</span>
+
+        <span id="currentDue">
+          0.000
+        </span>
+
+        <span class="due-kd">
+          KD
+        </span>
+
       </div>
 
     </div>
 
+
     <div class="rate-box">
 
-      <div id="ratePopup" class="rate-popup">
+      <div
+        id="ratePopup"
+        class="rate-popup"
+      >
 
         <div class="rate-popup-left">
-          <div class="rate-popup-label">Amount</div>
-          <div id="ratePopupAmount" class="rate-popup-amount">0 Tk</div>
+
+          <div class="rate-popup-label">
+            Amount
+          </div>
+
+          <div
+            id="ratePopupAmount"
+            class="rate-popup-amount"
+          >
+            0 Tk
+          </div>
+
         </div>
 
         <div class="rate-popup-right">
-          <div id="ratePopupKD" class="rate-popup-kd">0.000 KD</div>
+
+          <div
+            id="ratePopupKD"
+            class="rate-popup-kd"
+          >
+            0.000 KD
+          </div>
+
         </div>
 
       </div>
+
 
       <input
         id="rateAmount"
@@ -748,23 +985,37 @@ button:disabled{
 
   </div>
 
+
   <!-- Notice -->
-  <div id="noticeBox" class="notice hidden">
+  <div
+    id="noticeBox"
+    class="notice hidden"
+  >
 
-    <div class="notice-title">📢 Notice</div>
+    <div class="notice-title">
+      📢 Notice
+    </div>
 
-    <div id="noticeText" class="notice-text"></div>
+    <div
+      id="noticeText"
+      class="notice-text"
+    ></div>
 
   </div>
+
 
   <!-- Transactions -->
   <div class="transaction-history-title">
     Transaction History
   </div>
 
-  <div id="transactions" class="transactions-scroll"></div>
+  <div
+    id="transactions"
+    class="transactions-scroll"
+  ></div>
 
 </div>
+
 
 <!-- Footer -->
 <div class="footer">
@@ -773,164 +1024,485 @@ button:disabled{
 
 </div>
 
+
 <script>
 
-// Config
-const API_URL="https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
+// ==================================================
+// CONFIG
+// ==================================================
 
-const CONTACT_WHATSAPP="8801354304315";
+const API_URL=
+"https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
 
-const RATE_1=333.333333,
-      RATE_2=363.636363,
-      RATE_3=357.142857,
-      REFRESH_TIME=5000;
+const CONTACT_WHATSAPP=
+"8801354304315";
+
+const RATE_1=
+333.333333;
+
+const RATE_2=
+363.636363;
+
+const RATE_3=
+357.142857;
+
+const REFRESH_TIME=
+5000;
 
 
-// State
+// ==================================================
+// STATE
+// ==================================================
+
 let currentCustomer=null;
+
 let refreshTimer=null;
+
 let loadingTransactions=false;
+
 let lastTransactionId="";
+
 let allTransactions=[];
 
 
+// ==================================================
+// LOCAL CACHE
+// ==================================================
+
+const LOCAL_CACHE_PREFIX=
+"amayaExchangeCache_";
+
+const LOCAL_CUSTOMER_KEY=
+"customerSession";
+
+
+function getCacheKey(){
+
+  if(!currentCustomer?.id){
+
+    return null;
+
+  }
+
+  return LOCAL_CACHE_PREFIX+
+    String(currentCustomer.id);
+
+}
+
+
+function saveLocalData(data){
+
+  try{
+
+    const key=
+      getCacheKey();
+
+    if(!key){
+
+      return;
+
+    }
+
+    localStorage.setItem(
+      key,
+      JSON.stringify({
+
+        savedAt:
+          Date.now(),
+
+        data:
+          data
+
+      })
+    );
+
+  }catch(error){}
+
+}
+
+
+function getLocalData(){
+
+  try{
+
+    const key=
+      getCacheKey();
+
+    if(!key){
+
+      return null;
+
+    }
+
+    const saved=
+      localStorage.getItem(key);
+
+    if(!saved){
+
+      return null;
+
+    }
+
+    const parsed=
+      JSON.parse(saved);
+
+    if(
+      !parsed||
+      !parsed.data
+    ){
+
+      return null;
+
+    }
+
+    return parsed.data;
+
+  }catch(error){
+
+    return null;
+
+  }
+
+}
+
+
+// ==================================================
+// TRANSACTION FINGERPRINT
+// ==================================================
+
+function createTransactionFingerprint(
+  transactions
+){
+
+  if(
+    !Array.isArray(transactions)
+  ){
+
+    return "";
+
+  }
+
+  return JSON.stringify(
+
+    transactions.map(
+      t=>({
+
+        transactionId:
+          t.transactionId||
+          "",
+
+        date:
+          t.date||
+          "",
+
+        kdAmount:
+          t.kdAmount||
+          "",
+
+        bdAmount:
+          t.bdAmount||
+          "",
+
+        type:
+          t.type||
+          "",
+
+        note:
+          t.note||
+          ""
+
+      })
+    )
+
+  );
+
+}
+
+
+// ==================================================
 // DOM
-const $=id=>document.getElementById(id);
+// ==================================================
 
-const loginPage=$("loginPage");
-const customerPage=$("customerPage");
-
-const phoneInput=$("phone");
-const passwordInput=$("password");
-
-const loginButton=$("loginButton");
-const loginMessage=$("loginMessage");
-
-const customerNameText=$("customerNameText");
-const customerPhone=$("customerPhone");
-
-const noticeBox=$("noticeBox");
-const noticeText=$("noticeText");
-
-const currentDue=$("currentDue");
-const transactionsBox=$("transactions");
-
-const rateAmount=$("rateAmount");
-const ratePopup=$("ratePopup");
-const ratePopupAmount=$("ratePopupAmount");
-const ratePopupKD=$("ratePopupKD");
-
-const yearFilter=$("yearFilter");
-const monthFilter=$("monthFilter");
-
-const headerLogout=$("headerLogout");
+const $=
+  id=>
+    document.getElementById(id);
 
 
-// Contact
+const loginPage=
+  $("loginPage");
+
+const customerPage=
+  $("customerPage");
+
+const phoneInput=
+  $("phone");
+
+const passwordInput=
+  $("password");
+
+const loginButton=
+  $("loginButton");
+
+const loginMessage=
+  $("loginMessage");
+
+const customerNameText=
+  $("customerNameText");
+
+const customerPhone=
+  $("customerPhone");
+
+const noticeBox=
+  $("noticeBox");
+
+const noticeText=
+  $("noticeText");
+
+const currentDue=
+  $("currentDue");
+
+const transactionsBox=
+  $("transactions");
+
+const rateAmount=
+  $("rateAmount");
+
+const ratePopup=
+  $("ratePopup");
+
+const ratePopupAmount=
+  $("ratePopupAmount");
+
+const ratePopupKD=
+  $("ratePopupKD");
+
+const yearFilter=
+  $("yearFilter");
+
+const monthFilter=
+  $("monthFilter");
+
+const headerLogout=
+  $("headerLogout");
+
+
+// ==================================================
+// CONTACT
+// ==================================================
+
 function contactWhatsApp(){
+
   window.open(
-    "https://wa.me/"+CONTACT_WHATSAPP,
+    "https://wa.me/"+
+    CONTACT_WHATSAPP,
     "_blank"
   );
+
 }
 
 
-// Number
-function convertBanglaNumbers(value){
+// ==================================================
+// NUMBER
+// ==================================================
 
-  const bn="০১২৩৪৫৬৭৮৯";
-  const en="0123456789";
+function convertBanglaNumbers(
+  value
+){
 
-  return String(value).replace(
-    /[০-৯]/g,
-    d=>en[bn.indexOf(d)]
-  );
+  const bn=
+    "০১২৩৪৫৬৭৮৯";
+
+  const en=
+    "0123456789";
+
+  return String(value)
+    .replace(
+      /[০-৯]/g,
+      d=>
+        en[
+          bn.indexOf(d)
+        ]
+    );
+
 }
 
-function formatAmount(number){
-  return Number(number).toLocaleString("en-IN");
+
+function formatAmount(
+  number
+){
+
+  return Number(number)
+    .toLocaleString("en-IN");
+
 }
 
 
-// Rate
+// ==================================================
+// RATE
+// ==================================================
+
 function calculateRate(){
 
-  let value=convertBanglaNumbers(rateAmount.value)
-    .replace(/[^0-9]/g,"");
+  let value=
+    convertBanglaNumbers(
+      rateAmount.value
+    )
+    .replace(
+      /[^0-9]/g,
+      ""
+    );
+
 
   if(!value){
-    ratePopup.classList.remove("show");
+
+    ratePopup.classList.remove(
+      "show"
+    );
+
     return;
+
   }
 
-  const amount=parseInt(value,10);
 
-  if(!Number.isFinite(amount)||amount<=0){
-    ratePopup.classList.remove("show");
+  const amount=
+    parseInt(
+      value,
+      10
+    );
+
+
+  if(
+    !Number.isFinite(amount)||
+    amount<=0
+  ){
+
+    ratePopup.classList.remove(
+      "show"
+    );
+
     return;
+
   }
+
 
   let rate;
 
+
   if(amount<1000){
-    rate=RATE_1;
-  }else if(amount%1000===0){
-    rate=RATE_2;
+
+    rate=
+      RATE_1;
+
+  }else if(
+    amount%1000===0
+  ){
+
+    rate=
+      RATE_2;
+
   }else{
-    rate=RATE_3;
+
+    rate=
+      RATE_3;
+
   }
 
-  const kd=amount/rate;
 
-  rateAmount.value=formatAmount(amount);
+  const kd=
+    amount/rate;
+
+
+  rateAmount.value=
+    formatAmount(amount);
+
 
   ratePopupAmount.textContent=
-    formatAmount(amount)+" Tk";
+    formatAmount(amount)+
+    " Tk";
+
 
   ratePopupKD.textContent=
-    kd.toFixed(3)+" KD";
+    kd.toFixed(3)+
+    " KD";
 
-  ratePopup.classList.add("show");
+
+  ratePopup.classList.add(
+    "show"
+  );
+
 }
 
 
-// Login
+// ==================================================
+// LOGIN
+// ==================================================
+
 async function login(){
 
   const phone=
-    phoneInput.value.trim().replace(/\s+/g,"");
+    phoneInput.value
+      .trim()
+      .replace(
+        /\s+/g,
+        ""
+      );
+
 
   const password=
     passwordInput.value.trim();
 
-  if(!phone||!password){
+
+  if(
+    !phone||
+    !password
+  ){
+
     showMessage(
       "WhatsApp Number এবং Password দিন",
       "error"
     );
+
     return;
+
   }
 
-  loginButton.disabled=true;
-  loginButton.textContent="Login হচ্ছে...";
+
+  loginButton.disabled=
+    true;
+
+  loginButton.textContent=
+    "Login হচ্ছে...";
+
 
   try{
 
     const url=
       API_URL+
       "?action=customerLogin"+
-      "&phone="+encodeURIComponent(phone)+
-      "&password="+encodeURIComponent(password);
+      "&phone="+
+      encodeURIComponent(phone)+
+      "&password="+
+      encodeURIComponent(password);
 
-    const response=await fetch(url);
-    const data=await response.json();
+
+    const response=
+      await fetch(url);
+
+
+    const data=
+      await response.json();
+
 
     if(data.success){
 
       currentCustomer=
-        data.data?.customer||data.customer;
+        data.data?.customer||
+        data.customer;
 
-      if(!currentCustomer?.id){
+
+      if(
+        !currentCustomer?.id
+      ){
 
         showMessage(
           "Customer তথ্য পাওয়া যায়নি",
@@ -938,14 +1510,20 @@ async function login(){
         );
 
         return;
+
       }
 
+
       localStorage.setItem(
-        "customerSession",
-        JSON.stringify(currentCustomer)
+        LOCAL_CUSTOMER_KEY,
+        JSON.stringify(
+          currentCustomer
+        )
       );
 
+
       showCustomer();
+
 
     }else{
 
@@ -955,6 +1533,7 @@ async function login(){
         "Phone Number অথবা Password ভুল",
         "error"
       );
+
     }
 
   }catch(error){
@@ -966,88 +1545,252 @@ async function login(){
 
   }finally{
 
-    loginButton.disabled=false;
-    loginButton.textContent="Login";
+    loginButton.disabled=
+      false;
+
+    loginButton.textContent=
+      "Login";
 
   }
+
 }
 
 
-// Customer
+// ==================================================
+// CUSTOMER
+// ==================================================
+
 function showCustomer(){
 
-  loginPage.classList.add("hidden");
-  customerPage.classList.remove("hidden");
+  loginPage.classList.add(
+    "hidden"
+  );
+
+
+  customerPage.classList.remove(
+    "hidden"
+  );
+
 
   customerNameText.textContent=
-    currentCustomer.name||"";
+    currentCustomer.name||
+    "";
+
 
   customerPhone.textContent=
-    currentCustomer.phone||"";
+    currentCustomer.phone||
+    "";
 
-  headerLogout.classList.remove("hidden");
 
+  headerLogout.classList.remove(
+    "hidden"
+  );
+
+
+  /*
+   * প্রথমে Local Cache
+   */
+  loadLocalTransactions();
+
+
+  /*
+   * Notice background-এ
+   */
   loadNotice();
-  loadTransactions(true);
 
+
+  /*
+   * তারপর Server থেকে
+   * নতুন data background-এ
+   */
+  loadTransactions(false);
+
+
+  /*
+   * প্রতি 5 সেকেন্ডে automatic sync
+   */
   startAutoRefresh();
+
 }
 
 
-// Refresh
+// ==================================================
+// LOCAL TRANSACTIONS
+// ==================================================
+
+function loadLocalTransactions(){
+
+  if(!currentCustomer){
+
+    return;
+
+  }
+
+
+  const localData=
+    getLocalData();
+
+
+  if(!localData){
+
+    return;
+
+  }
+
+
+  const due=
+    Number(
+      localData.currentDue||
+      0
+    );
+
+
+  currentDue.textContent=
+    due.toFixed(3);
+
+
+  const transactions=
+    localData.transactions||
+    [];
+
+
+  allTransactions=
+    Array.isArray(
+      transactions
+    )
+    ?transactions
+    :[];
+
+
+  if(
+    !allTransactions.length
+  ){
+
+    transactionsBox.innerHTML=
+      '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
+
+    return;
+
+  }
+
+
+  /*
+   * Local data-এর fingerprint
+   */
+  lastTransactionId=
+    createTransactionFingerprint(
+      allTransactions
+    );
+
+
+  buildYearFilter(
+    allTransactions
+  );
+
+
+  applyTransactionFilter();
+
+}
+
+
+// ==================================================
+// AUTO REFRESH
+// ==================================================
+
 function startAutoRefresh(){
 
   stopAutoRefresh();
 
-  refreshTimer=setInterval(()=>{
 
-    if(
-      currentCustomer&&
-      !customerPage.classList.contains("hidden")
-    ){
-      loadTransactions(false);
-    }
+  refreshTimer=
+    setInterval(
 
-  },REFRESH_TIME);
+      ()=>{
+
+        if(
+          currentCustomer&&
+          !customerPage.classList.contains(
+            "hidden"
+          )
+        ){
+
+          loadTransactions(
+            false
+          );
+
+        }
+
+      },
+
+      REFRESH_TIME
+
+    );
+
 }
+
 
 function stopAutoRefresh(){
 
   if(refreshTimer){
 
-    clearInterval(refreshTimer);
-    refreshTimer=null;
+    clearInterval(
+      refreshTimer
+    );
+
+    refreshTimer=
+      null;
 
   }
+
 }
 
 
-// Notice
+// ==================================================
+// NOTICE
+// ==================================================
+
 async function loadNotice(){
 
   try{
 
-    const response=await fetch(
-      API_URL+"?action=notice",
-      {cache:"no-store"}
-    );
+    const response=
+      await fetch(
+        API_URL+
+        "?action=notice",
+        {
+          cache:
+            "no-store"
+        }
+      );
 
-    const data=await response.json();
+
+    const data=
+      await response.json();
+
 
     const notice=
-      data.data?.notice??data.notice;
+      data.data?.notice??
+      data.notice;
+
 
     if(
       notice&&
       String(notice).trim()!==""
     ){
 
-      noticeText.textContent=notice;
-      noticeBox.classList.remove("hidden");
+      noticeText.textContent=
+        notice;
+
+
+      noticeBox.classList.remove(
+        "hidden"
+      );
 
     }else{
 
-      noticeBox.classList.add("hidden");
+      noticeBox.classList.add(
+        "hidden"
+      );
 
     }
 
@@ -1056,19 +1799,41 @@ async function loadNotice(){
 }
 
 
-// Transactions
-async function loadTransactions(firstLoad){
+// ==================================================
+// LOAD TRANSACTIONS
+// ==================================================
 
-  if(!currentCustomer||loadingTransactions)return;
+async function loadTransactions(
+  firstLoad
+){
 
-  loadingTransactions=true;
+  if(
+    !currentCustomer||
+    loadingTransactions
+  ){
 
-  if(firstLoad){
+    return;
+
+  }
+
+
+  loadingTransactions=
+    true;
+
+
+  /*
+   * Cache না থাকলে loading দেখাবে
+   */
+  if(
+    firstLoad&&
+    !getLocalData()
+  ){
 
     transactionsBox.innerHTML=
       '<div class="message loading">লেনদেন লোড হচ্ছে...</div>';
 
   }
+
 
   try{
 
@@ -1076,18 +1841,33 @@ async function loadTransactions(firstLoad){
       API_URL+
       "?action=transactions"+
       "&customerId="+
-      encodeURIComponent(currentCustomer.id);
+      encodeURIComponent(
+        currentCustomer.id
+      );
 
-    const response=await fetch(
-      url,
-      {cache:"no-store"}
-    );
 
-    const data=await response.json();
+    const response=
+      await fetch(
+        url,
+        {
+          cache:
+            "no-store"
+        }
+      );
 
-    if(!data.success){
 
-      if(firstLoad){
+    const data=
+      await response.json();
+
+
+    if(
+      !data.success
+    ){
+
+      if(
+        firstLoad&&
+        !allTransactions.length
+      ){
 
         transactionsBox.innerHTML=
           '<div class="message error">লেনদেন লোড হয়নি</div>';
@@ -1095,65 +1875,147 @@ async function loadTransactions(firstLoad){
       }
 
       return;
+
     }
 
-    const result=data.data||{};
 
-    const due=Number(result.currentDue||0);
+    const result=
+      data.data||
+      {};
 
-    const dueText=due.toFixed(3);
 
-    if(currentDue.textContent!==dueText){
-      currentDue.textContent=dueText;
-    }
+    const due=
+      Number(
+        result.currentDue||
+        0
+      );
+
 
     const transactions=
-      result.transactions||[];
+      result.transactions||
+      [];
 
-    allTransactions=
-      Array.isArray(transactions)
+
+    const cleanTransactions=
+      Array.isArray(
+        transactions
+      )
       ?transactions
       :[];
 
-    if(!allTransactions.length){
 
-      if(firstLoad){
+    /*
+     * Server data Local Storage-এ save
+     */
+    saveLocalData({
 
-        transactionsBox.innerHTML=
-          '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
+      currentDue:
+        due,
 
-      }
+      transactions:
+        cleanTransactions
 
-      return;
-    }
+    });
 
-    const latest=allTransactions[0];
 
-    const latestId=
-      latest.transactionId||
-      (
-        latest.date+
-        "|"+
-        latest.kdAmount+
-        "|"+
-        latest.type+
-        "|"+
-        latest.note
-      );
+    /*
+     * Balance update
+     */
+    const dueText=
+      due.toFixed(3);
+
 
     if(
-      !firstLoad&&
-      latestId===lastTransactionId
-    )return;
+      currentDue.textContent!==
+      dueText
+    ){
 
-    lastTransactionId=latestId;
+      currentDue.textContent=
+        dueText;
 
-    buildYearFilter(allTransactions);
-    applyTransactionFilter();
+    }
+
+
+    /*
+     * Server-এর নতুন fingerprint
+     */
+    const newFingerprint=
+      createTransactionFingerprint(
+        cleanTransactions
+      );
+
+
+    /*
+     * আগের data-এর সাথে compare
+     */
+    const dataChanged=
+      newFingerprint!==
+      lastTransactionId;
+
+
+    /*
+     * সবসময় latest server data memory-তে রাখবে
+     */
+    allTransactions=
+      cleanTransactions;
+
+
+    /*
+     * কোনো transaction নেই
+     */
+    if(
+      !allTransactions.length
+    ){
+
+      transactionsBox.innerHTML=
+        '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
+
+      lastTransactionId=
+        newFingerprint;
+
+      return;
+
+    }
+
+
+    /*
+     * Data পরিবর্তন হলে
+     * Transaction Card নতুন করে render হবে
+     *
+     * Add
+     * Edit
+     * Delete
+     * সব detect হবে
+     */
+    if(
+      firstLoad||
+      dataChanged
+    ){
+
+      lastTransactionId=
+        newFingerprint;
+
+
+      buildYearFilter(
+        allTransactions
+      );
+
+
+      applyTransactionFilter();
+
+    }
 
   }catch(error){
 
-    if(firstLoad){
+    /*
+     * Local data থাকলে
+     * screen থেকে remove করবে না।
+     */
+
+    if(
+      firstLoad&&
+      !allTransactions.length
+    ){
 
       transactionsBox.innerHTML=
         '<div class="message error">লেনদেন লোড হয়নি</div>';
@@ -1162,122 +2024,240 @@ async function loadTransactions(firstLoad){
 
   }finally{
 
-    loadingTransactions=false;
+    loadingTransactions=
+      false;
 
   }
+
 }
 
 
-// Year Filter
-function buildYearFilter(transactions){
+// ==================================================
+// YEAR FILTER
+// ==================================================
 
-  const years=new Set();
+function buildYearFilter(
+  transactions
+){
 
-  transactions.forEach(t=>{
+  const years=
+    new Set();
 
-    const parsed=
-      parseTransactionDate(t.date);
 
-    if(parsed){
-      years.add(parsed.getFullYear());
+  transactions.forEach(
+    t=>{
+
+      const parsed=
+        parseTransactionDate(
+          t.date
+        );
+
+
+      if(parsed){
+
+        years.add(
+          parsed.getFullYear()
+        );
+
+      }
+
     }
+  );
 
-  });
 
   const sortedYears=
-    Array.from(years).sort((a,b)=>b-a);
+    Array.from(years)
+      .sort(
+        (a,b)=>
+          b-a
+      );
 
-  if(!sortedYears.length)return;
+
+  if(
+    !sortedYears.length
+  ){
+
+    return;
+
+  }
+
 
   const firstLoad=
     !yearFilter.dataset.initialized;
 
+
   const oldYear=
     yearFilter.value;
+
 
   const oldMonth=
     monthFilter.value;
 
-  yearFilter.innerHTML="";
 
-  sortedYears.forEach(year=>{
+  yearFilter.innerHTML=
+    "";
 
-    const option=
-      document.createElement("option");
 
-    option.value=String(year);
-    option.textContent=String(year);
+  sortedYears.forEach(
+    year=>{
 
-    yearFilter.appendChild(option);
+      const option=
+        document.createElement(
+          "option"
+        );
 
-  });
+
+      option.value=
+        String(year);
+
+
+      option.textContent=
+        String(year);
+
+
+      yearFilter.appendChild(
+        option
+      );
+
+    }
+  );
+
 
   if(firstLoad){
 
     const currentYear=
-      new Date().getFullYear();
+      new Date()
+        .getFullYear();
+
 
     const currentMonth=
-      new Date().getMonth();
+      new Date()
+        .getMonth();
+
 
     yearFilter.value=
-      sortedYears.includes(currentYear)
-      ?String(currentYear)
-      :String(sortedYears[0]);
+      sortedYears.includes(
+        currentYear
+      )
+      ?String(
+        currentYear
+      )
+      :String(
+        sortedYears[0]
+      );
+
 
     monthFilter.value=
-      String(currentMonth);
+      String(
+        currentMonth
+      );
 
-    yearFilter.dataset.initialized="true";
+
+    yearFilter.dataset.initialized=
+      "true";
+
 
   }else{
 
     if(
       oldYear&&
-      sortedYears.includes(Number(oldYear))
+      sortedYears.includes(
+        Number(oldYear)
+      )
     ){
-      yearFilter.value=oldYear;
+
+      yearFilter.value=
+        oldYear;
+
     }
 
-    if(oldMonth!==""){
-      monthFilter.value=oldMonth;
+
+    if(
+      oldMonth!==""
+    ){
+
+      monthFilter.value=
+        oldMonth;
+
     }
 
   }
+
 }
 
 
-// Date
-function parseTransactionDate(value){
+// ==================================================
+// DATE
+// ==================================================
 
-  if(!value)return null;
+function parseTransactionDate(
+  value
+){
 
-  const text=String(value).trim();
+  if(!value){
 
-  const match=text.match(
-    /^(\d{1,2})[-\/](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[-\/](\d{4})$/i
-  );
+    return null;
+
+  }
+
+
+  const text=
+    String(value)
+      .trim();
+
+
+  const match=
+    text.match(
+      /^(\d{1,2})[-\/](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[-\/](\d{4})$/i
+    );
+
 
   if(match){
 
     const day=
-      parseInt(match[1],10);
+      parseInt(
+        match[1],
+        10
+      );
+
 
     const monthText=
-      match[2].toLowerCase();
+      match[2]
+        .toLowerCase();
+
 
     const year=
-      parseInt(match[3],10);
+      parseInt(
+        match[3],
+        10
+      );
+
 
     const months=[
-      "jan","feb","mar","apr","may","jun",
-      "jul","aug","sep","oct","nov","dec"
+      "jan",
+      "feb",
+      "mar",
+      "apr",
+      "may",
+      "jun",
+      "jul",
+      "aug",
+      "sep",
+      "oct",
+      "nov",
+      "dec"
     ];
 
-    const month=
-      months.indexOf(monthText);
 
-    if(month>=0){
+    const month=
+      months.indexOf(
+        monthText
+      );
+
+
+    if(
+      month>=0
+    ){
 
       return new Date(
         year,
@@ -1286,104 +2266,168 @@ function parseTransactionDate(value){
       );
 
     }
+
   }
+
 
   const fallback=
     new Date(text);
 
-  return isNaN(fallback.getTime())
-    ?null
-    :fallback;
+
+  return isNaN(
+    fallback.getTime()
+  )
+  ?null
+  :fallback;
+
 }
 
 
-// Filter
+// ==================================================
+// FILTER
+// ==================================================
+
 function applyTransactionFilter(){
 
-  if(!allTransactions.length){
+  if(
+    !allTransactions.length
+  ){
 
     transactionsBox.innerHTML=
       '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
 
     return;
+
   }
 
+
   const selectedYear=
-    Number(yearFilter.value);
+    Number(
+      yearFilter.value
+    );
+
 
   const selectedMonth=
     monthFilter.value;
 
+
   let filtered;
 
-  if(selectedMonth==="all"){
+
+  if(
+    selectedMonth===
+    "all"
+  ){
 
     filtered=
-      allTransactions.filter(t=>{
+      allTransactions.filter(
+        t=>{
 
-        const date=
-          parseTransactionDate(t.date);
+          const date=
+            parseTransactionDate(
+              t.date
+            );
 
-        return date&&
-          date.getFullYear()===selectedYear;
 
-      });
+          return date&&
+            date.getFullYear()===
+            selectedYear;
+
+        }
+      );
+
 
   }else{
 
     const month=
-      Number(selectedMonth);
+      Number(
+        selectedMonth
+      );
+
 
     filtered=
-      allTransactions.filter(t=>{
+      allTransactions.filter(
+        t=>{
 
-        const date=
-          parseTransactionDate(t.date);
+          const date=
+            parseTransactionDate(
+              t.date
+            );
 
-        return date&&
-          date.getFullYear()===selectedYear&&
-          date.getMonth()===month;
 
-      });
+          return date&&
+            date.getFullYear()===
+            selectedYear&&
+            date.getMonth()===
+            month;
+
+        }
+      );
 
   }
 
-  renderTransactions(filtered);
+
+  renderTransactions(
+    filtered
+  );
+
 }
 
 
-// Render
-function renderTransactions(transactions){
+// ==================================================
+// RENDER
+// ==================================================
 
-  if(!transactions.length){
+function renderTransactions(
+  transactions
+){
+
+  if(
+    !transactions.length
+  ){
 
     transactionsBox.innerHTML=
       '<div class="message loading">এই সময়ে কোনো লেনদেন পাওয়া যায়নি</div>';
 
     return;
+
   }
+
 
   const fragment=
     document.createDocumentFragment();
 
-  for(const t of transactions){
+
+  for(
+    const t of transactions
+  ){
 
     const item=
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     item.className=
       t.type==="বাকি"
       ?"transaction due-type"
       :"transaction paid-type";
 
+
     const sign=
       t.type==="বাকি"
       ?"+"
       :"−";
 
-    let note=t.note||"";
 
-    const bdAmount=t.bdAmount;
+    let note=
+      t.note||
+      "";
+
+
+    const bdAmount=
+      t.bdAmount;
+
 
     if(
       bdAmount!==""&&
@@ -1394,23 +2438,41 @@ function renderTransactions(transactions){
 
       const tk=
         Number(
-          String(bdAmount)
-            .replace(/,/g,"")
-        ).toLocaleString("en-IN");
+          String(
+            bdAmount
+          ).replace(
+            /,/g,
+            ""
+          )
+        ).toLocaleString(
+          "en-IN"
+        );
+
 
       note=
         note
-        ?note+" • "+tk+" Tk"
-        :tk+" Tk";
+        ?note+
+          " • "+
+          tk+
+          " Tk"
+        :tk+
+          " Tk";
+
     }
 
+
     const kdAmount=
-      Number(t.kdAmount||0);
+      Number(
+        t.kdAmount||
+        0
+      );
+
 
     const noteHTML=
       note
       ?`<div class="transaction-note">${escapeHTML(note)}</div>`
       :"";
+
 
     item.innerHTML=
       `<div class="transaction-date">${escapeHTML(t.date)}</div>`+
@@ -1418,53 +2480,111 @@ function renderTransactions(transactions){
       `<div class="transaction-main">${sign}${kdAmount.toFixed(3)} <span class="transaction-kd">KD</span></div>`+
       noteHTML;
 
-    fragment.appendChild(item);
+
+    fragment.appendChild(
+      item
+    );
+
   }
 
-  transactionsBox.replaceChildren(fragment);
+
+  transactionsBox.replaceChildren(
+    fragment
+  );
+
 }
 
 
-// Logout
+// ==================================================
+// LOGOUT
+// ==================================================
+
 function logout(){
 
   stopAutoRefresh();
 
+
   localStorage.removeItem(
-    "customerSession"
+    LOCAL_CUSTOMER_KEY
   );
 
-  currentCustomer=null;
-  lastTransactionId="";
-  allTransactions=[];
 
-  customerPage.classList.add("hidden");
-  loginPage.classList.remove("hidden");
+  currentCustomer=
+    null;
 
-  headerLogout.classList.add("hidden");
 
-  phoneInput.value="";
-  passwordInput.value="";
-  rateAmount.value="";
+  lastTransactionId=
+    "";
 
-  ratePopup.classList.remove("show");
 
-  loginMessage.textContent="";
+  allTransactions=
+    [];
+
+
+  customerPage.classList.add(
+    "hidden"
+  );
+
+
+  loginPage.classList.remove(
+    "hidden"
+  );
+
+
+  headerLogout.classList.add(
+    "hidden"
+  );
+
+
+  phoneInput.value=
+    "";
+
+
+  passwordInput.value=
+    "";
+
+
+  rateAmount.value=
+    "";
+
+
+  ratePopup.classList.remove(
+    "show"
+  );
+
+
+  loginMessage.textContent=
+    "";
+
 }
 
 
-// Session
+// ==================================================
+// SESSION
+// ==================================================
+
 function checkSavedLogin(){
 
   const saved=
-    localStorage.getItem("customerSession");
+    localStorage.getItem(
+      LOCAL_CUSTOMER_KEY
+    );
 
-  if(!saved)return;
+
+  if(!saved){
+
+    return;
+
+  }
+
 
   try{
 
     currentCustomer=
-      JSON.parse(saved);
+      JSON.parse(
+        saved
+      );
+
 
     if(
       currentCustomer&&
@@ -1479,45 +2599,90 @@ function checkSavedLogin(){
   }catch(error){
 
     localStorage.removeItem(
-      "customerSession"
+      LOCAL_CUSTOMER_KEY
     );
 
   }
+
 }
 
 
-// Message
-function showMessage(text,type){
+// ==================================================
+// MESSAGE
+// ==================================================
 
-  loginMessage.textContent=text;
+function showMessage(
+  text,
+  type
+){
+
+  loginMessage.textContent=
+    text;
+
 
   loginMessage.className=
-    "message "+(type||"");
+    "message "+
+    (type||"");
+
 }
 
 
-// Escape
-function escapeHTML(text){
+// ==================================================
+// ESCAPE HTML
+// ==================================================
+
+function escapeHTML(
+  text
+){
 
   return String(text)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 
-// Start
+// ==================================================
+// START
+// ==================================================
+
 checkSavedLogin();
 
 </script>
 
+
 <script>
 
-// PWA
-if("serviceWorker"in navigator){
+// ==================================================
+// PWA SERVICE WORKER
+// ==================================================
+
+if(
+  "serviceWorker" in navigator
+){
 
   window.addEventListener(
     "load",
@@ -1529,6 +2694,7 @@ if("serviceWorker"in navigator){
           await navigator.serviceWorker.register(
             "./service-worker.js"
           );
+
 
         registration.update();
 
