@@ -459,7 +459,10 @@ button:disabled{
   white-space:pre-wrap
 }
 
-/* Transactions */
+/* =========================================================
+   TRANSACTIONS — Final Premium Design
+========================================================= */
+
 .transaction-history-title{
   flex-shrink:0;
   font-size:10px;
@@ -483,81 +486,197 @@ button:disabled{
   position:relative;
   width:100%;
   background:#fff;
-  border:1px solid #e9edf1;
-  border-radius:9px;
-  padding:9px 10px 8px;
-  margin-bottom:3px;
-  box-shadow:0 1px 2px rgba(0,0,0,.025)
-}
-
-.transaction-date{
-  color:#64748b;
-  font-size:9px;
-  line-height:1.1;
-  margin-bottom:2px;
-  padding-right:55px
-}
-
-.transaction-type{
-  position:absolute;
-  top:6px;
-  right:9px;
-  color:#111827;
-  font-size:11px;
-  font-weight:800
-}
-
-.transaction-main{
-  color:#111827;
-  font-size:18px;
-  line-height:1;
-  font-weight:800
-}
-
-.transaction-kd{
-  font-size:8px;
-  font-weight:700
-}
-
-.transaction-note{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-  color:#64748b;
-  font-size:9px;
-  line-height:1.15;
-  margin-top:2px
-}
-
-.transaction-note-text{
-  flex:1;
-  min-width:0;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap
-}
-
-.transaction-note-agent{
-  flex-shrink:0;
-  color:#64748b;
-  font-size:9px;
-  font-weight:600;
-  white-space:nowrap
-}
-
-.transaction.due-type{
-  border-left:4px solid #111827
+  border:1px solid #eef1f4;
+  border-left:4px solid #16A34A;
+  border-radius:12px;
+  padding:10px 12px;
+  margin-bottom:6px;
+  box-shadow:0 1px 3px rgba(0,0,0,.02);
+  display:grid;
+  grid-template-columns:auto 1px 1fr auto;
+  gap:11px;
+  align-items:center
 }
 
 .transaction.paid-type{
-  border-left:4px solid #ef4444;
-  background:#fef2f2
+  background:#FFF7F7;
+  border-color:#FDE1E1;
+  border-left-color:#DC2626
 }
 
-.transaction.paid-type .transaction-main,
-.transaction.paid-type .transaction-type{
-  color:#dc2626
+/* Date */
+.transaction-date{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1;
+  min-width:56px;
+  padding:2px 0;
+  color:inherit;
+  font-size:inherit;
+  margin:0
+}
+
+.transaction-date .d{
+  font-size:16px;
+  font-weight:900;
+  color:#166534;
+  letter-spacing:-.3px;
+  line-height:1;
+  display:block
+}
+
+.transaction-date .m{
+  font-size:9px;
+  font-weight:800;
+  color:#16A34A;
+  letter-spacing:.5px;
+  margin-top:3px;
+  text-transform:uppercase;
+  line-height:1;
+  display:block
+}
+
+.transaction-date .y{
+  font-size:7.5px;
+  font-weight:800;
+  color:#9ca3af;
+  letter-spacing:.4px;
+  margin-top:2px;
+  line-height:1;
+  display:block
+}
+
+.transaction.paid-type .transaction-date .d{color:#B91C1C}
+.transaction.paid-type .transaction-date .m{color:#DC2626}
+.transaction.paid-type .transaction-date .y{color:#d08a8a}
+
+/* Divider */
+.transaction-line{
+  width:1px;
+  height:36px;
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    #e5e7eb 20%,
+    #e5e7eb 80%,
+    transparent 100%
+  );
+  align-self:center
+}
+
+/* Mid */
+.transaction-mid{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  min-width:0
+}
+
+.transaction-amt{
+  font-size:14px;
+  font-weight:900;
+  color:#166534;
+  letter-spacing:-.2px;
+  white-space:nowrap;
+  line-height:1;
+  display:block
+}
+
+.transaction.paid-type .transaction-amt{color:#DC2626}
+
+.transaction-note-text-full{
+  font-size:10px;
+  color:#8a93a2;
+  font-weight:500;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:block
+}
+
+/* Right */
+.transaction-right{
+  text-align:right;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  align-items:flex-end
+}
+
+/* Payment type (no pin) */
+.payment-type{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  font-size:9px;
+  font-weight:800;
+  color:#B91C1C;
+  white-space:nowrap
+}
+
+.payment-type:before{
+  content:"";
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#DC2626;
+  box-shadow:0 0 0 2px rgba(220,38,38,.15);
+  flex-shrink:0
+}
+
+/* ===== Premium PIN pill — dark green gradient ===== */
+.premium-pin{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:linear-gradient(
+    135deg,
+    #0B6B4F 0%,
+    #0F9D58 50%,
+    #0B6B4F 100%
+  );
+  border-radius:999px;
+  padding:4px 12px 4px 10px;
+  color:#fff;
+  line-height:1;
+  box-shadow:
+    0 3px 10px rgba(11,107,79,.45),
+    inset 0 1px 0 rgba(255,255,255,.15);
+  border:1px solid rgba(11,107,79,.7);
+}
+
+.premium-pin:before{
+  content:"🔑";
+  font-size:10px;
+  filter:brightness(1.3);
+}
+
+.premium-pin .lbl{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.5px;
+  opacity:1;
+  color:#fff;
+  text-transform:uppercase;
+}
+
+.premium-pin .dash{
+  font-size:11px;
+  font-weight:400;
+  opacity:.85;
+  margin:0 1px;
+}
+
+.premium-pin .num{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.6px;
+  color:#fff;
+  font-family:inherit;
+  text-shadow:0 1px 0 rgba(0,0,0,.15);
 }
 
 /* Message */
@@ -704,12 +823,44 @@ button:disabled{
   }
 
   .transaction{
-    padding:8px 9px 7px;
-    margin-bottom:3px
+    padding:9px 10px
   }
 
-  .transaction-main{
+  .transaction-date{
+    min-width:50px
+  }
+
+  .transaction-date .d{
     font-size:15px
+  }
+
+  .transaction-date .m{
+    font-size:8.5px
+  }
+
+  .transaction-date .y{
+    font-size:7px
+  }
+
+  .transaction-amt{
+    font-size:13.5px
+  }
+
+  .transaction-note-text-full{
+    font-size:9.5px
+  }
+
+  .premium-pin{
+    padding:3px 10px 3px 8px;
+    gap:4px
+  }
+
+  .premium-pin .lbl{
+    font-size:10px
+  }
+
+  .premium-pin .num{
+    font-size:10px
   }
 
   .footer{
@@ -745,6 +896,14 @@ button:disabled{
   .rate-input{
     font-size:9px;
     padding:0 5px
+  }
+
+  .premium-pin .lbl{
+    font-size:9.5px
+  }
+
+  .premium-pin .num{
+    font-size:9.5px
   }
 }
 </style>
@@ -1849,8 +2008,7 @@ async function loadTransactions(
    * Cache না থাকলে loading দেখাবে
    */
   if(
-    firstLoad&&
-    !getLocalData()
+    firstLoad&&    !getLocalData()
   ){
 
     transactionsBox.innerHTML=
@@ -2399,7 +2557,7 @@ function applyTransactionFilter(){
 
 
 // ==================================================
-// RENDER
+// RENDER — Final Premium Design
 // ==================================================
 
 function renderTransactions(
@@ -2426,6 +2584,10 @@ function renderTransactions(
     const t of transactions
   ){
 
+    const isDue=
+      t.type==="বাকি";
+
+
     const item=
       document.createElement(
         "div"
@@ -2433,18 +2595,86 @@ function renderTransactions(
 
 
     item.className=
-      t.type==="বাকি"
+      isDue
       ?"transaction due-type"
       :"transaction paid-type";
 
 
+    /* ===== 1. DATE ===== */
+
+    const parsedDate=
+      parseTransactionDate(
+        t.date
+      );
+
+
+    let day="",
+        month="",
+        year="";
+
+
+    if(parsedDate){
+
+      day=
+        String(
+          parsedDate.getDate()
+        )
+        .padStart(
+          2,
+          "0"
+        );
+
+
+      month=
+        parsedDate
+          .toLocaleString(
+            "en-US",
+            {
+              month:
+                "long"
+            }
+          );
+
+
+      year=
+        String(
+          parsedDate.getFullYear()
+        );
+
+    }else{
+
+      day=
+        t.date||
+        "";
+
+    }
+
+
+    /* ===== 2. AMOUNT ===== */
+
+    const kdAmount=
+      Number(
+        t.kdAmount||
+        0
+      );
+
+
     const sign=
-      t.type==="বাকি"
+      isDue
       ?"+"
       :"−";
 
 
-    let note=
+    const amtText=
+      sign+
+      kdAmount
+        .toFixed(3)+
+      " KD";
+
+
+    /* ===== 3. NOTE + BD ===== */
+
+    let noteText=
       t.note||
       "";
 
@@ -2462,20 +2692,20 @@ function renderTransactions(
 
       const tk=
         Number(
-          String(
-            bdAmount
-          ).replace(
-            /,/g,
-            ""
-          )
-        ).toLocaleString(
+          String(bdAmount)
+            .replace(
+              /,/g,
+              ""
+            )
+        )
+        .toLocaleString(
           "en-IN"
         );
 
 
-      note=
-        note
-        ?note+
+      noteText=
+        noteText
+        ?noteText+
           " • "+
           tk+
           " Tk"
@@ -2485,47 +2715,79 @@ function renderTransactions(
     }
 
 
-    const kdAmount=
-      Number(
-        t.kdAmount||
-        0
-      );
+    /* ===== 4. AGENT (পিন) ===== */
+
+    const pinNumber=
+      t.agentOption||
+      "";
 
 
-    const agentPin=
-      t.agentOption
-      ?"পিন - "+
-        escapeHTML(
-          t.agentOption
-        )
-      :"";
+    /* ===== BUILD ===== */
+
+    const dateHTML=
+      `<div class="transaction-date">`+
+        `<span class="d">${escapeHTML(day)}</span>`+
+        `<span class="m">${escapeHTML(month)}</span>`+
+        `<span class="y">${escapeHTML(year)}</span>`+
+      `</div>`;
 
 
-    let noteHTML="";
+    const lineHTML=
+      `<div class="transaction-line"></div>`;
+
+
+    const midHTML=
+      `<div class="transaction-mid">`+
+        `<span class="transaction-amt">${amtText}</span>`+
+        (noteText
+          ?`<span class="transaction-note-text-full">${escapeHTML(noteText)}</span>`
+          :""
+        )+
+      `</div>`;
+
+
+    /* Right — Due তে PIN, Paid তে type */
+    let rightHTML="";
 
     if(
-      note||
-      agentPin
+      isDue&&
+      pinNumber
     ){
 
-      noteHTML=
-        `<div class="transaction-note">`+
-          `<span class="transaction-note-text">${escapeHTML(note)}</span>`+
-          (
-            agentPin
-            ?`<span class="transaction-note-agent">${agentPin}</span>`
-            :""
-          )+
+      /* বিক্রয় — শুধু পিন pill */
+      rightHTML=
+        `<div class="transaction-right">`+
+          `<span class="premium-pin">`+
+            `<span class="lbl">পিন</span>`+
+            `<span class="dash">-</span>`+
+            `<span class="num">${escapeHTML(pinNumber)}</span>`+
+          `</span>`+
         `</div>`;
+
+    }else if(
+      !isDue
+    ){
+
+      /* পেমেন্ট — শুধু type */
+      rightHTML=
+        `<div class="transaction-right">`+
+          `<span class="payment-type">পেমেন্ট</span>`+
+        `</div>`;
+
+    }else{
+
+      /* বিক্রয় কিন্তু পিন নেই — খালি */
+      rightHTML=
+        `<div class="transaction-right"></div>`;
 
     }
 
 
     item.innerHTML=
-      `<div class="transaction-date">${escapeHTML(t.date)}</div>`+
-      `<div class="transaction-type">${escapeHTML(t.type)}</div>`+
-      `<div class="transaction-main">${sign}${kdAmount.toFixed(3)} <span class="transaction-kd">KD</span></div>`+
-      noteHTML;
+      dateHTML+
+      lineHTML+
+      midHTML+
+      rightHTML;
 
 
     fragment.appendChild(
