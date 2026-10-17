@@ -460,7 +460,7 @@ button:disabled{
 }
 
 /* =========================================================
-   TRANSACTIONS — Final Premium Design
+   TRANSACTIONS
 ========================================================= */
 
 .transaction-history-title{
@@ -502,6 +502,12 @@ button:disabled{
   background:#FFF7F7;
   border-color:#FDE1E1;
   border-left-color:#DC2626
+}
+
+.transaction.cash-type{
+  background:#F5F3FF;
+  border-color:#E9D5FF;
+  border-left-color:#7C3AED
 }
 
 /* Date */
@@ -553,6 +559,10 @@ button:disabled{
 .transaction.paid-type .transaction-date .m{color:#DC2626}
 .transaction.paid-type .transaction-date .y{color:#d08a8a}
 
+.transaction.cash-type .transaction-date .d{color:#6D28D9}
+.transaction.cash-type .transaction-date .m{color:#7C3AED}
+.transaction.cash-type .transaction-date .y{color:#a78bfa}
+
 /* Divider */
 .transaction-line{
   width:1px;
@@ -586,6 +596,7 @@ button:disabled{
 }
 
 .transaction.paid-type .transaction-amt{color:#DC2626}
+.transaction.cash-type .transaction-amt{color:#7C3AED}
 
 .transaction-note-text-full{
   font-size:10px;
@@ -597,37 +608,83 @@ button:disabled{
   display:block
 }
 
+/* ⭐ বাকি pill — MID-এ (Bkash-এর নিচে) */
+.balance-pill{
+  font-size:9.5px;
+  font-weight:800;
+  border-radius:5px;
+  padding:2px 7px;
+  display:inline-block;
+  line-height:1;
+  letter-spacing:.1px;
+  width:fit-content;
+  margin-top:2px
+}
+.balance-pill.due{
+  background:#DCFCE7;
+  color:#166534
+}
+.balance-pill.payment{
+  background:#FEE2E2;
+  color:#991B1B
+}
+.balance-pill.cash{
+  background:#EDE9FE;
+  color:#6D28D9
+}
+
 /* Right */
 .transaction-right{
   text-align:right;
   display:flex;
   flex-direction:column;
-  gap:3px;
+  gap:4px;
   align-items:flex-end
 }
 
-/* Payment type (no pin) */
-.payment-type{
+/* ⭐ Type label */
+.type-label{
   display:inline-flex;
   align-items:center;
   gap:3px;
   font-size:9px;
   font-weight:800;
-  color:#B91C1C;
   white-space:nowrap
 }
 
-.payment-type:before{
+.type-label:before{
   content:"";
   width:5px;
   height:5px;
   border-radius:50%;
-  background:#DC2626;
-  box-shadow:0 0 0 2px rgba(220,38,38,.15);
   flex-shrink:0
 }
 
-/* ===== Premium PIN pill — dark green gradient ===== */
+.type-label.due{
+  color:#166534
+}
+.type-label.due:before{
+  background:#16A34A;
+  box-shadow:0 0 0 2px rgba(22,163,74,.15)
+}
+
+.type-label.payment{
+  color:#B91C1C
+}
+.type-label.payment:before{
+  background:#DC2626;
+  box-shadow:0 0 0 2px rgba(220,38,38,.15)
+}
+
+.type-label.cash{
+  color:#7C3AED
+}
+.type-label.cash:before{
+  background:#7C3AED;
+  box-shadow:0 0 0 2px rgba(124,58,237,.15)
+}
+
+/* Premium PIN pill */
 .premium-pin{
   display:inline-flex;
   align-items:center;
@@ -645,13 +702,13 @@ button:disabled{
   box-shadow:
     0 2px 6px rgba(11,107,79,.35),
     inset 0 1px 0 rgba(255,255,255,.15);
-  border:1px solid rgba(11,107,79,.6);
+  border:1px solid rgba(11,107,79,.6)
 }
 
 .premium-pin:before{
   content:"🔑";
   font-size:10px;
-  filter:brightness(1.3);
+  filter:brightness(1.3)
 }
 
 .premium-pin .lbl{
@@ -660,14 +717,14 @@ button:disabled{
   letter-spacing:.5px;
   opacity:1;
   color:#fff;
-  text-transform:uppercase;
+  text-transform:uppercase
 }
 
 .premium-pin .dash{
   font-size:11px;
   font-weight:400;
   opacity:.85;
-  margin:0 1px;
+  margin:0 1px
 }
 
 .premium-pin .num{
@@ -676,7 +733,20 @@ button:disabled{
   letter-spacing:.6px;
   color:#fff;
   font-family:inherit;
-  text-shadow:0 1px 0 rgba(0,0,0,.15);
+  text-shadow:0 1px 0 rgba(0,0,0,.15)
+}
+
+.premium-pin.cash{
+  background:linear-gradient(
+    135deg,
+    #6D28D9 0%,
+    #8B5CF6 50%,
+    #6D28D9 100%
+  );
+  border-color:rgba(109,40,217,.6);
+  box-shadow:
+    0 2px 6px rgba(109,40,217,.35),
+    inset 0 1px 0 rgba(255,255,255,.15)
 }
 
 /* Message */
@@ -848,6 +918,10 @@ button:disabled{
 
   .transaction-note-text-full{
     font-size:9.5px
+  }
+
+  .balance-pill{
+    font-size:9px
   }
 
   .premium-pin{
@@ -1857,9 +1931,6 @@ function loadLocalTransactions(){
   }
 
 
-  /*
-   * Local data-এর fingerprint
-   */
   lastTransactionId=
     createTransactionFingerprint(
       allTransactions
@@ -2004,9 +2075,6 @@ async function loadTransactions(
     true;
 
 
-  /*
-   * Cache না থাকলে loading দেখাবে
-   */
   if(
     firstLoad&&    !getLocalData()
   ){
@@ -2086,9 +2154,6 @@ async function loadTransactions(
       :[];
 
 
-    /*
-     * Server data Local Storage-এ save
-     */
     saveLocalData({
 
       currentDue:
@@ -2100,9 +2165,6 @@ async function loadTransactions(
     });
 
 
-    /*
-     * Balance update
-     */
     const dueText=
       due.toFixed(3);
 
@@ -2118,33 +2180,21 @@ async function loadTransactions(
     }
 
 
-    /*
-     * Server-এর নতুন fingerprint
-     */
     const newFingerprint=
       createTransactionFingerprint(
         cleanTransactions
       );
 
 
-    /*
-     * আগের data-এর সাথে compare
-     */
     const dataChanged=
       newFingerprint!==
       lastTransactionId;
 
 
-    /*
-     * সবসময় latest server data memory-তে রাখবে
-     */
     allTransactions=
       cleanTransactions;
 
 
-    /*
-     * কোনো transaction নেই
-     */
     if(
       !allTransactions.length
     ){
@@ -2160,15 +2210,6 @@ async function loadTransactions(
     }
 
 
-    /*
-     * Data পরিবর্তন হলে
-     * Transaction Card নতুন করে render হবে
-     *
-     * Add
-     * Edit
-     * Delete
-     * সব detect হবে
-     */
     if(
       firstLoad||
       dataChanged
@@ -2188,11 +2229,6 @@ async function loadTransactions(
     }
 
   }catch(error){
-
-    /*
-     * Local data থাকলে
-     * screen থেকে remove করবে না।
-     */
 
     if(
       firstLoad&&
@@ -2557,7 +2593,7 @@ function applyTransactionFilter(){
 
 
 // ==================================================
-// RENDER — Final Premium Design
+// RENDER — Premium Cards with PIN + BAKI
 // ==================================================
 
 function renderTransactions(
@@ -2576,6 +2612,32 @@ function renderTransactions(
   }
 
 
+  /* ⭐ প্রতিটা transaction-এর জন্য বাকি হিসাব */
+  const balanceMap=new Map();
+
+  const chronological=[...allTransactions].sort((a,b)=>{
+    const da=parseTransactionDate(a.date);
+    const db=parseTransactionDate(b.date);
+    if(!da||!db) return 0;
+    const diff=da.getTime()-db.getTime();
+    if(diff!==0) return diff;
+    return String(a.transactionId||'').localeCompare(String(b.transactionId||''));
+  });
+
+  let running=0;
+  chronological.forEach(t=>{
+    const kd=Number(t.kdAmount||0);
+    const type=String(t.type||'').trim();
+
+    if(kd>0){
+      if(type==='বাকি') running+=kd;
+      else if(type==='পেমেন্ট') running-=kd;
+      /* নগদ → প্রভাব নেই */
+    }
+    balanceMap.set(t.transactionId||JSON.stringify(t), Math.max(0,running));
+  });
+
+
   const fragment=
     document.createDocumentFragment();
 
@@ -2584,20 +2646,26 @@ function renderTransactions(
     const t of transactions
   ){
 
-    const isDue=
-      t.type==="বাকি";
+    const typeRaw=String(t.type||'').trim();
 
+    /* ⭐ ৩ ধরনের type আলাদা */
+    const isDue = typeRaw==='বাকি';
+    const isPayment = typeRaw==='পেমেন্ট';
+    const isCash = typeRaw==='নগদ';
 
     const item=
       document.createElement(
         "div"
       );
 
-
-    item.className=
-      isDue
-      ?"transaction due-type"
-      :"transaction paid-type";
+    /* ⭐ কার্ডের className */
+    if(isPayment){
+      item.className='transaction paid-type';
+    }else if(isCash){
+      item.className='transaction cash-type';
+    }else{
+      item.className='transaction due-type';
+    }
 
 
     /* ===== 1. DATE ===== */
@@ -2659,10 +2727,11 @@ function renderTransactions(
       );
 
 
+    /* ⭐ নগদে + চিহ্ন, পেমেন্টে − চিহ্ন */
     const sign=
-      isDue
-      ?"+"
-      :"−";
+      isPayment
+      ?"−"
+      :"+";
 
 
     const amtText=
@@ -2722,6 +2791,12 @@ function renderTransactions(
       "";
 
 
+    /* ===== 5. BAKI (running balance) ===== */
+
+    const tKey=t.transactionId||JSON.stringify(t);
+    const runningBal=balanceMap.get(tKey)||0;
+
+
     /* ===== BUILD ===== */
 
     const dateHTML=
@@ -2736,6 +2811,7 @@ function renderTransactions(
       `<div class="transaction-line"></div>`;
 
 
+    /* ⭐ Mid-এ amount + note + বাকি pill */
     const midHTML=
       `<div class="transaction-mid">`+
         `<span class="transaction-amt">${amtText}</span>`+
@@ -2743,18 +2819,15 @@ function renderTransactions(
           ?`<span class="transaction-note-text-full">${escapeHTML(noteText)}</span>`
           :""
         )+
+        `<span class="balance-pill ${isPayment?'payment':isCash?'cash':'due'}">বাকি ${runningBal.toFixed(3)}</span>`+
       `</div>`;
 
 
-    /* Right — Due তে PIN, Paid তে type */
+    /* ⭐ Right-এ পিন + type label */
     let rightHTML="";
 
-    if(
-      isDue&&
-      pinNumber
-    ){
-
-      /* বিক্রয় — শুধু পিন pill */
+    if(isDue && pinNumber){
+      /* বাকি + পিন */
       rightHTML=
         `<div class="transaction-right">`+
           `<span class="premium-pin">`+
@@ -2762,24 +2835,44 @@ function renderTransactions(
             `<span class="dash">-</span>`+
             `<span class="num">${escapeHTML(pinNumber)}</span>`+
           `</span>`+
+          `<span class="type-label due">বাকি</span>`+
         `</div>`;
 
-    }else if(
-      !isDue
-    ){
-
-      /* পেমেন্ট — শুধু type */
+    }else if(isDue){
+      /* বাকি, পিন নেই */
       rightHTML=
         `<div class="transaction-right">`+
-          `<span class="payment-type">পেমেন্ট</span>`+
+          `<span class="type-label due">বাকি</span>`+
+        `</div>`;
+
+    }else if(isPayment){
+      /* পেমেন্ট */
+      rightHTML=
+        `<div class="transaction-right">`+
+          `<span class="type-label payment">পেমেন্ট</span>`+
+        `</div>`;
+
+    }else if(isCash && pinNumber){
+      /* ⭐ নগদ + পিন */
+      rightHTML=
+        `<div class="transaction-right">`+
+          `<span class="premium-pin cash">`+
+            `<span class="lbl">পিন</span>`+
+            `<span class="dash">-</span>`+
+            `<span class="num">${escapeHTML(pinNumber)}</span>`+
+          `</span>`+
+          `<span class="type-label cash">নগদ</span>`+
+        `</div>`;
+
+    }else if(isCash){
+      /* নগদ, পিন নেই */
+      rightHTML=
+        `<div class="transaction-right">`+
+          `<span class="type-label cash">নগদ</span>`+
         `</div>`;
 
     }else{
-
-      /* বিক্রয় কিন্তু পিন নেই — খালি */
-      rightHTML=
-        `<div class="transaction-right"></div>`;
-
+      rightHTML=`<div class="transaction-right"></div>`;
     }
 
 
