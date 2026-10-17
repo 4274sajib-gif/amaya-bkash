@@ -11,6 +11,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-touch-icon" href="icons/icon-192.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
@@ -20,7 +24,7 @@ html,body{
 }
 
 body{
-  background:#f4f6f8;
+  background:#F0F4F8;
   color:#111827;
   font-family:Arial,sans-serif;
   overflow:hidden
@@ -43,98 +47,158 @@ button,input,select{
   overflow:hidden
 }
 
-/* Header */
+/* =========================================================
+   HEADER — Neumorphic + Coin Logo + Playfair Emboss
+========================================================= */
+
 .header{
   flex-shrink:0;
-  background:#111827;
-  color:#fff;
-  padding:12px
+  padding:8px 10px 4px;
+  background:#F0F4F8
+}
+
+.header-inner{
+  background:#F0F4F8;
+  border-radius:16px;
+  padding:14px 16px;
+  box-shadow:
+    8px 8px 20px rgba(163,177,198,.4),
+    -8px -8px 20px rgba(255,255,255,.9)
 }
 
 .header-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:8px
+  gap:10px
 }
 
 .header-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:1;
+  min-width:0
+}
+
+/* Coin logo */
+.header-logo{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#F0F4F8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  position:relative;
+  box-shadow:
+    3px 3px 8px rgba(163,177,198,.5),
+    -3px -3px 8px rgba(255,255,255,.9),
+    inset 0 1px 0 rgba(255,255,255,.5);
+  overflow:hidden
+}
+
+.header-logo-inner{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#0B6B4F 0%,#0F9D58 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.25),
+    0 1px 3px rgba(11,107,79,.3)
+}
+
+.header-logo-currency{
+  color:#FBBF24;
+  font-size:22px;
+  font-weight:900;
+  line-height:1;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.3),
+    0 0 8px rgba(251,191,36,.4)
+}
+
+/* Title */
+.header-text{
   min-width:0;
   flex:1
 }
 
 .header-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-weight:800;
+  font-style:italic;
   font-size:18px;
-  font-weight:700;
-  white-space:nowrap
+  color:#0B6B4F;
+  letter-spacing:-.3px;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  text-shadow:
+    -1px -1px 0 rgba(255,255,255,1),
+    1px 1px 0 rgba(11,107,79,.25),
+    2px 2px 0 rgba(11,107,79,.15)
 }
 
 .header-sub{
   margin-top:3px;
-  color:#cbd5e1;
-  font-size:10px
+  color:#64748B;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.2px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
 }
 
+/* Buttons */
 .header-actions{
   display:flex;
-  align-items:center;
-  gap:5px;
+  gap:6px;
   flex-shrink:0
 }
 
 .header-button{
-  width:auto;
-  height:31px;
-  margin:0;
-  padding:0 9px;
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:16px;
-  background:#fff;
-  color:#111827;
+  height:32px;
+  padding:0 11px;
+  border:0;
+  border-radius:9px;
   font-size:10px;
-  font-weight:700;
-  box-shadow:0 2px 6px rgba(0,0,0,.12)
+  font-weight:800;
+  background:#F0F4F8;
+  transition:all .15s ease;
+  white-space:nowrap
 }
 
-.contact-button{
-  background:#f8fafc;
-  color:#111827;
-  border:1px solid #e2e8f0;
+.header-button.contact-button{
+  color:#0B6B4F;
   box-shadow:
-    0 3px 0 #cbd5e1,
-    0 5px 10px rgba(0,0,0,.2);
-  transition:all .15s ease
+    2px 2px 6px rgba(163,177,198,.5),
+    -2px -2px 6px rgba(255,255,255,.9)
 }
 
-.contact-button:active{
-  transform:translateY(2px);
+.header-button.header-logout{
+  color:#DC2626;
   box-shadow:
-    0 1px 0 #cbd5e1,
-    0 3px 6px rgba(0,0,0,.15)
+    2px 2px 6px rgba(163,177,198,.5),
+    -2px -2px 6px rgba(255,255,255,.9)
 }
 
-.header-logout{
-  background:#fff1f2;
-  color:#dc2626;
-  border:1px solid #fecdd3;
+.header-button:active{
   box-shadow:
-    0 3px 0 #fecdd3,
-    0 5px 10px rgba(220,38,38,.15);
-  transition:all .15s ease
-}
-
-.header-logout:active{
-  transform:translateY(2px);
-  background:#ffe4e6;
-  box-shadow:
-    0 1px 0 #fecdd3,
-    0 3px 6px rgba(220,38,38,.12)
+    inset 2px 2px 4px rgba(163,177,198,.5),
+    inset -2px -2px 4px rgba(255,255,255,.9)
 }
 
 /* Container */
 .container{
   width:100%;
-  padding:9px
+  padding:4px 9px 9px
 }
 
 /* Login */
@@ -608,7 +672,7 @@ button:disabled{
   display:block
 }
 
-/* ⭐ বাকি pill — MID-এ (Bkash-এর নিচে) */
+/* ⭐ বাকি pill — MID-এ */
 .balance-pill{
   font-size:9.5px;
   font-weight:800;
@@ -779,7 +843,25 @@ button:disabled{
 @media(max-width:360px){
 
   .header{
-    padding:11px 10px
+    padding:10px 10px 12px
+  }
+
+  .header-inner{
+    padding:12px 13px
+  }
+
+  .header-logo{
+    width:40px;
+    height:40px
+  }
+
+  .header-logo-inner{
+    width:34px;
+    height:34px
+  }
+
+  .header-logo-currency{
+    font-size:20px
   }
 
   .header-title{
@@ -787,17 +869,17 @@ button:disabled{
   }
 
   .header-sub{
-    font-size:9px
-  }
-
-  .header-actions{
-    gap:4px
+    font-size:8.5px
   }
 
   .header-button{
-    height:29px;
-    padding:0 7px;
+    height:30px;
+    padding:0 9px;
     font-size:9px
+  }
+
+  .header-left{
+    gap:10px
   }
 
   .container{
@@ -945,8 +1027,22 @@ button:disabled{
 /* Extra Small */
 @media(max-width:330px){
 
+  .header-logo{
+    width:36px;
+    height:36px
+  }
+
+  .header-logo-inner{
+    width:30px;
+    height:30px
+  }
+
+  .header-logo-currency{
+    font-size:18px
+  }
+
   .header-title{
-    font-size:15px
+    font-size:14.5px
   }
 
   .header-sub{
@@ -954,8 +1050,9 @@ button:disabled{
   }
 
   .header-button{
-    padding:0 6px;
-    font-size:8px
+    padding:0 8px;
+    font-size:8.5px;
+    height:28px
   }
 
   .customer-name-card{
@@ -990,32 +1087,39 @@ button:disabled{
 <!-- Header -->
 <div class="header">
 
-  <div class="header-row">
+  <div class="header-inner">
 
-    <div class="header-left">
+    <div class="header-row">
 
-      <div class="header-title">
-        Amaya Exchange
+      <div class="header-left">
+
+        <div class="header-logo">
+          <div class="header-logo-inner">
+            <span class="header-logo-currency">৳</span>
+          </div>
+        </div>
+
+        <div class="header-text">
+          <div class="header-title">Amaya Exchange</div>
+          <div class="header-sub">লেনদেনে আস্থা, সেবায় নির্ভরতা</div>
+        </div>
+
       </div>
 
-      <div class="header-sub">
-        লেনদেনে আস্থা, সেবায় নির্ভরতা
+      <div class="header-actions">
+
+        <button
+          class="header-button contact-button"
+          onclick="contactWhatsApp()"
+        >📞 Contact</button>
+
+        <button
+          id="headerLogout"
+          class="header-button header-logout hidden"
+          onclick="logout()"
+        >Logout</button>
+
       </div>
-
-    </div>
-
-    <div class="header-actions">
-
-      <button
-        class="header-button contact-button"
-        onclick="contactWhatsApp()"
-      >📞 Contact Us</button>
-
-      <button
-        id="headerLogout"
-        class="header-button header-logout hidden"
-        onclick="logout()"
-      >Logout</button>
 
     </div>
 
@@ -1100,53 +1204,18 @@ button:disabled{
         All Transaction
       </option>
 
-      <option value="0">
-        January
-      </option>
-
-      <option value="1">
-        February
-      </option>
-
-      <option value="2">
-        March
-      </option>
-
-      <option value="3">
-        April
-      </option>
-
-      <option value="4">
-        May
-      </option>
-
-      <option value="5">
-        June
-      </option>
-
-      <option value="6">
-        July
-      </option>
-
-      <option value="7">
-        August
-      </option>
-
-      <option value="8">
-        September
-      </option>
-
-      <option value="9">
-        October
-      </option>
-
-      <option value="10">
-        November
-      </option>
-
-      <option value="11">
-        December
-      </option>
+      <option value="0">January</option>
+      <option value="1">February</option>
+      <option value="2">March</option>
+      <option value="3">April</option>
+      <option value="4">May</option>
+      <option value="5">June</option>
+      <option value="6">July</option>
+      <option value="7">August</option>
+      <option value="8">September</option>
+      <option value="9">October</option>
+      <option value="10">November</option>
+      <option value="11">December</option>
 
     </select>
 
@@ -1154,11 +1223,8 @@ button:disabled{
       id="customerName"
       class="customer-name-card"
     >
-
       <div id="customerNameText"></div>
-
       <div id="customerPhone"></div>
-
     </div>
 
   </div>
@@ -1174,15 +1240,8 @@ button:disabled{
       </div>
 
       <div class="due-number">
-
-        <span id="currentDue">
-          0.000
-        </span>
-
-        <span class="due-kd">
-          KD
-        </span>
-
+        <span id="currentDue">0.000</span>
+        <span class="due-kd">KD</span>
       </div>
 
     </div>
@@ -1196,29 +1255,12 @@ button:disabled{
       >
 
         <div class="rate-popup-left">
-
-          <div class="rate-popup-label">
-            Amount
-          </div>
-
-          <div
-            id="ratePopupAmount"
-            class="rate-popup-amount"
-          >
-            0 Tk
-          </div>
-
+          <div class="rate-popup-label">Amount</div>
+          <div id="ratePopupAmount" class="rate-popup-amount">0 Tk</div>
         </div>
 
         <div class="rate-popup-right">
-
-          <div
-            id="ratePopupKD"
-            class="rate-popup-kd"
-          >
-            0.000 KD
-          </div>
-
+          <div id="ratePopupKD" class="rate-popup-kd">0.000 KD</div>
         </div>
 
       </div>
@@ -1244,16 +1286,8 @@ button:disabled{
     id="noticeBox"
     class="notice hidden"
   >
-
-    <div class="notice-title">
-      📢 Notice
-    </div>
-
-    <div
-      id="noticeText"
-      class="notice-text"
-    ></div>
-
+    <div class="notice-title">📢 Notice</div>
+    <div id="noticeText" class="notice-text"></div>
   </div>
 
 
@@ -1844,28 +1878,15 @@ function showCustomer(){
   );
 
 
-  /*
-   * প্রথমে Local Cache
-   */
   loadLocalTransactions();
 
 
-  /*
-   * Notice background-এ
-   */
   loadNotice();
 
 
-  /*
-   * তারপর Server থেকে
-   * নতুন data background-এ
-   */
   loadTransactions(false);
 
 
-  /*
-   * প্রতি 5 সেকেন্ডে automatic sync
-   */
   startAutoRefresh();
 
 }
@@ -2612,7 +2633,7 @@ function renderTransactions(
   }
 
 
-  /* ⭐ প্রতিটা transaction-এর জন্য বাকি হিসাব */
+  /* ⭐ বাকি হিসাব — সব transaction chronological */
   const balanceMap=new Map();
 
   const chronological=[...allTransactions].sort((a,b)=>{
@@ -2648,7 +2669,6 @@ function renderTransactions(
 
     const typeRaw=String(t.type||'').trim();
 
-    /* ⭐ ৩ ধরনের type আলাদা */
     const isDue = typeRaw==='বাকি';
     const isPayment = typeRaw==='পেমেন্ট';
     const isCash = typeRaw==='নগদ';
@@ -2658,7 +2678,7 @@ function renderTransactions(
         "div"
       );
 
-    /* ⭐ কার্ডের className */
+
     if(isPayment){
       item.className='transaction paid-type';
     }else if(isCash){
@@ -2668,7 +2688,7 @@ function renderTransactions(
     }
 
 
-    /* ===== 1. DATE ===== */
+    /* ===== DATE ===== */
 
     const parsedDate=
       parseTransactionDate(
@@ -2718,7 +2738,7 @@ function renderTransactions(
     }
 
 
-    /* ===== 2. AMOUNT ===== */
+    /* ===== AMOUNT ===== */
 
     const kdAmount=
       Number(
@@ -2727,7 +2747,6 @@ function renderTransactions(
       );
 
 
-    /* ⭐ নগদে + চিহ্ন, পেমেন্টে − চিহ্ন */
     const sign=
       isPayment
       ?"−"
@@ -2741,7 +2760,7 @@ function renderTransactions(
       " KD";
 
 
-    /* ===== 3. NOTE + BD ===== */
+    /* ===== NOTE + BD ===== */
 
     let noteText=
       t.note||
@@ -2784,14 +2803,14 @@ function renderTransactions(
     }
 
 
-    /* ===== 4. AGENT (পিন) ===== */
+    /* ===== AGENT (পিন) ===== */
 
     const pinNumber=
       t.agentOption||
       "";
 
 
-    /* ===== 5. BAKI (running balance) ===== */
+    /* ===== BAKI ===== */
 
     const tKey=t.transactionId||JSON.stringify(t);
     const runningBal=balanceMap.get(tKey)||0;
@@ -2811,7 +2830,7 @@ function renderTransactions(
       `<div class="transaction-line"></div>`;
 
 
-    /* ⭐ Mid-এ amount + note + বাকি pill */
+    /* Mid — amount + note + বাকি pill */
     const midHTML=
       `<div class="transaction-mid">`+
         `<span class="transaction-amt">${amtText}</span>`+
@@ -2823,11 +2842,10 @@ function renderTransactions(
       `</div>`;
 
 
-    /* ⭐ Right-এ পিন + type label */
+    /* Right — পিন + type label */
     let rightHTML="";
 
     if(isDue && pinNumber){
-      /* বাকি + পিন */
       rightHTML=
         `<div class="transaction-right">`+
           `<span class="premium-pin">`+
@@ -2839,21 +2857,18 @@ function renderTransactions(
         `</div>`;
 
     }else if(isDue){
-      /* বাকি, পিন নেই */
       rightHTML=
         `<div class="transaction-right">`+
           `<span class="type-label due">বাকি</span>`+
         `</div>`;
 
     }else if(isPayment){
-      /* পেমেন্ট */
       rightHTML=
         `<div class="transaction-right">`+
           `<span class="type-label payment">পেমেন্ট</span>`+
         `</div>`;
 
     }else if(isCash && pinNumber){
-      /* ⭐ নগদ + পিন */
       rightHTML=
         `<div class="transaction-right">`+
           `<span class="premium-pin cash">`+
@@ -2865,7 +2880,6 @@ function renderTransactions(
         `</div>`;
 
     }else if(isCash){
-      /* নগদ, পিন নেই */
       rightHTML=
         `<div class="transaction-right">`+
           `<span class="type-label cash">নগদ</span>`+
@@ -3077,10 +3091,6 @@ checkSavedLogin();
 
 
 <script>
-
-// ==================================================
-// PWA SERVICE WORKER
-// ==================================================
 
 if(
   "serviceWorker" in navigator
