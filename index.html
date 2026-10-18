@@ -2377,152 +2377,48 @@ async function loadTransactions(
 // YEAR FILTER
 // ==================================================
 
-function buildYearFilter(
-  transactions
-){
+function buildYearFilter(transactions){
 
-  const years=
-    new Set();
+  const years = new Set();
 
-
-  transactions.forEach(
-    t=>{
-
-      const parsed=
-        parseTransactionDate(
-          t.date
-        );
-
-
-      if(parsed){
-
-        years.add(
-          parsed.getFullYear()
-        );
-
-      }
-
+  transactions.forEach(t=>{
+    const parsed = parseTransactionDate(t.date);
+    if(parsed){
+      years.add(parsed.getFullYear());
     }
-  );
+  });
 
+  const sortedYears = Array.from(years).sort((a,b)=>b-a);
 
-  const sortedYears=
-    Array.from(years)
-      .sort(
-        (a,b)=>
-          b-a
-      );
-
-
-  if(
-    !sortedYears.length
-  ){
-
+  if(!sortedYears.length){
     return;
-
   }
 
+  /* ⭐ সবসময় current year & month */
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth(); // 0 = Jan, 11 = Dec
 
-  const firstLoad=
-    !yearFilter.dataset.initialized;
+  /* ── Year dropdown ── */
+  yearFilter.innerHTML = "";
 
+  sortedYears.forEach(year=>{
+    const option = document.createElement("option");
+    option.value = String(year);
+    option.textContent = String(year);
+    yearFilter.appendChild(option);
+  });
 
-  const oldYear=
-    yearFilter.value;
-
-
-  const oldMonth=
-    monthFilter.value;
-
-
-  yearFilter.innerHTML=
-    "";
-
-
-  sortedYears.forEach(
-    year=>{
-
-      const option=
-        document.createElement(
-          "option"
-        );
-
-
-      option.value=
-        String(year);
-
-
-      option.textContent=
-        String(year);
-
-
-      yearFilter.appendChild(
-        option
-      );
-
-    }
-  );
-
-
-  if(firstLoad){
-
-    const currentYear=
-      new Date()
-        .getFullYear();
-
-
-    const currentMonth=
-      new Date()
-        .getMonth();
-
-
-    yearFilter.value=
-      sortedYears.includes(
-        currentYear
-      )
-      ?String(
-        currentYear
-      )
-      :String(
-        sortedYears[0]
-      );
-
-
-    monthFilter.value=
-      String(
-        currentMonth
-      );
-
-
-    yearFilter.dataset.initialized=
-      "true";
-
-
+  /* current year থাকলে সেটাই সিলেক্ট, নাহলে সব থেকে নতুন বছর */
+  if(sortedYears.includes(currentYear)){
+    yearFilter.value = String(currentYear);
   }else{
-
-    if(
-      oldYear&&
-      sortedYears.includes(
-        Number(oldYear)
-      )
-    ){
-
-      yearFilter.value=
-        oldYear;
-
-    }
-
-
-    if(
-      oldMonth!==""
-    ){
-
-      monthFilter.value=
-        oldMonth;
-
-    }
-
+    yearFilter.value = String(sortedYears[0]);
   }
+
+  /* ── Month dropdown ── */
+  /* সবসময় current month সিলেক্ট — আগের সিলেকশন মনে রাখে না */
+  monthFilter.value = String(currentMonth);
 
 }
 
