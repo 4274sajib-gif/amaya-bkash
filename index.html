@@ -305,9 +305,9 @@ button:disabled{
   background:#fff;
   border:1px solid #e2e8f0;
   border-radius:8px;
-  padding:3px 6px;
+  padding:0 6px;
   display:flex;
-  flex-direction:column;
+  flex-direction:row;
   align-items:center;
   justify-content:center;
   text-align:center;
@@ -315,6 +315,16 @@ button:disabled{
   white-space:nowrap;
   overflow:hidden;
   box-shadow:0 2px 5px rgba(0,0,0,.05)
+}
+
+.customer-name-info{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-width:0;
+  flex:1;
+  overflow:hidden
 }
 
 #customerNameText{
@@ -333,6 +343,60 @@ button:disabled{
   font-weight:600;
   overflow:hidden;
   text-overflow:ellipsis
+}
+
+/* =========================================================
+   REFRESH INLINE (D Design)
+========================================================= */
+
+.refresh-inline{
+  width:28px;
+  height:28px;
+  border-radius:7px;
+  background:#F0F4F8;
+  border:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#0B6B4F;
+  cursor:pointer;
+  box-shadow:
+    2px 2px 5px rgba(163,177,198,.4),
+    -2px -2px 5px rgba(255,255,255,.9);
+  transition:all .15s ease;
+  flex-shrink:0;
+  margin-left:6px;
+  margin-top:0;
+  padding:0
+}
+
+.refresh-inline:hover{
+  color:#16A34A
+}
+
+.refresh-inline:active{
+  box-shadow:
+    inset 2px 2px 4px rgba(163,177,198,.4),
+    inset -2px -2px 4px rgba(255,255,255,.9)
+}
+
+.refresh-inline.spinning svg{
+  animation:spin .8s linear infinite
+}
+
+.refresh-inline svg{
+  width:13px;
+  height:13px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 
 /* =========================================================
@@ -964,7 +1028,7 @@ button:disabled{
 
   .customer-name-card{
     height:34px;
-    padding:3px 4px;
+    padding:0 4px;
     border-radius:8px
   }
 
@@ -974,6 +1038,17 @@ button:disabled{
 
   #customerPhone{
     font-size:8px
+  }
+
+  .refresh-inline{
+    width:26px;
+    height:26px;
+    margin-left:4px
+  }
+
+  .refresh-inline svg{
+    width:12px;
+    height:12px
   }
 
   .balance-rate-row{
@@ -1135,6 +1210,17 @@ button:disabled{
   .filter-box{
     font-size:8px;
     padding:0 3px
+  }
+
+  .refresh-inline{
+    width:24px;
+    height:24px;
+    margin-left:3px
+  }
+
+  .refresh-inline svg{
+    width:11px;
+    height:11px
   }
 
   .warning-box{
@@ -1317,8 +1403,23 @@ button:disabled{
       id="customerName"
       class="customer-name-card"
     >
-      <div id="customerNameText"></div>
-      <div id="customerPhone"></div>
+      <div class="customer-name-info">
+        <div id="customerNameText"></div>
+        <div id="customerPhone"></div>
+      </div>
+      <button
+        class="refresh-inline"
+        id="refreshButton"
+        onclick="refreshData(this)"
+        aria-label="Refresh"
+      >
+        <svg viewBox="0 0 24 24">
+          <path d="M23 4v6h-6"/>
+          <path d="M1 20v-6h6"/>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/>
+          <path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+        </svg>
+      </button>
     </div>
 
   </div>
@@ -1678,6 +1779,9 @@ const monthFilter=
 const headerLogout=
   $("headerLogout");
 
+const refreshButton=
+  $("refreshButton");
+
 
 // ==================================================
 // CONTACT
@@ -1990,6 +2094,26 @@ function showCustomer(){
 
 
   startAutoRefresh();
+
+}
+
+
+// ==================================================
+// MANUAL REFRESH (D Design Button)
+// ঠিক ব্রাউজারের রিফ্রেশ বাটনের মতো
+// ==================================================
+
+function refreshData(btn){
+
+  btn.classList.add(
+    "spinning"
+  );
+
+  setTimeout(()=>{
+
+    location.reload();
+
+  }, 300);
 
 }
 
