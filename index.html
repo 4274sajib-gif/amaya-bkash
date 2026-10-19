@@ -48,7 +48,7 @@ button,input,select{
 }
 
 /* =========================================================
-   HEADER — Neumorphic + Coin Logo + Playfair Emboss
+   HEADER
 ========================================================= */
 
 .header{
@@ -81,7 +81,6 @@ button,input,select{
   min-width:0
 }
 
-/* Coin logo */
 .header-logo{
   width:44px;
   height:44px;
@@ -122,7 +121,6 @@ button,input,select{
     0 0 8px rgba(251,191,36,.4)
 }
 
-/* Title */
 .header-text{
   min-width:0;
   flex:1
@@ -154,7 +152,6 @@ button,input,select{
   text-overflow:ellipsis
 }
 
-/* Buttons */
 .header-actions{
   display:flex;
   gap:6px;
@@ -193,13 +190,11 @@ button,input,select{
     inset -2px -2px 4px rgba(255,255,255,.9)
 }
 
-/* Container */
 .container{
   width:100%;
   padding:4px 9px 9px
 }
 
-/* Login */
 #loginPage{
   flex:1;
   overflow-y:auto
@@ -264,7 +259,6 @@ button:disabled{
   opacity:.55
 }
 
-/* Customer */
 #customerPage{
   flex:1;
   min-height:0;
@@ -273,7 +267,6 @@ button:disabled{
   overflow:hidden
 }
 
-/* Filter */
 .customer-filter-row{
   flex-shrink:0;
   display:flex;
@@ -345,10 +338,6 @@ button:disabled{
   text-overflow:ellipsis
 }
 
-/* =========================================================
-   REFRESH INLINE (D Design)
-========================================================= */
-
 .refresh-inline{
   width:28px;
   height:28px;
@@ -399,10 +388,6 @@ button:disabled{
   to{transform:rotate(360deg)}
 }
 
-/* =========================================================
-   BALANCE + RATE — Neumorphic + Warning Box
-========================================================= */
-
 .balance-rate-row{
   flex-shrink:0;
   display:flex;
@@ -430,7 +415,6 @@ button:disabled{
   background:transparent
 }
 
-/* ⭐ Warning box — Soft Red + Green */
 .warning-box{
   display:flex;
   align-items:center;
@@ -552,7 +536,6 @@ button:disabled{
     inset -2px -2px 4px rgba(255,255,255,.8)
 }
 
-/* Rate Popup */
 .rate-popup{
   position:absolute;
   left:0;
@@ -623,7 +606,6 @@ button:disabled{
   transform:rotate(45deg)
 }
 
-/* Notice */
 .notice{
   flex-shrink:0;
   background:#fff9e9;
@@ -651,12 +633,60 @@ button:disabled{
    TRANSACTIONS
 ========================================================= */
 
-.transaction-history-title{
+.transaction-history-header{
   flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin:2px 0 4px
+}
+
+.transaction-history-title{
   font-size:10px;
   font-weight:800;
   color:#64748b;
-  margin:2px 0 3px
+  margin:0
+}
+
+.select-mode-btn{
+  height:26px;
+  padding:0 11px;
+  border:0;
+  border-radius:8px;
+  background:#F0F4F8;
+  color:#0B6B4F;
+  font-size:9.5px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:2px 2px 5px rgba(163,177,198,.4),-2px -2px 5px rgba(255,255,255,.9);
+  transition:all .18s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  margin-top:0;
+  width:auto;
+  line-height:1
+}
+
+.select-mode-btn::before{
+  content:"☑";
+  font-size:11px;
+  line-height:1
+}
+
+.select-mode-btn:active{
+  box-shadow:inset 2px 2px 4px rgba(163,177,198,.5),inset -2px -2px 4px rgba(255,255,255,.9)
+}
+
+.select-mode-btn.active{
+  background:linear-gradient(135deg,#0B6B4F 0%,#0F9D58 100%);
+  color:#fff;
+  box-shadow:0 3px 10px rgba(11,107,79,.4),inset 0 1px 0 rgba(255,255,255,.2)
+}
+
+.select-mode-btn.active::before{
+  content:"✓"
 }
 
 .transactions-scroll{
@@ -667,7 +697,7 @@ button:disabled{
   overflow-x:hidden;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior:contain;
-  padding-bottom:2px
+  padding-bottom:90px
 }
 
 .transaction{
@@ -683,7 +713,11 @@ button:disabled{
   display:grid;
   grid-template-columns:auto 1px 1fr auto;
   gap:11px;
-  align-items:center
+  align-items:center;
+  transition:all .18s ease;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent
 }
 
 .transaction.paid-type{
@@ -698,7 +732,58 @@ button:disabled{
   border-left-color:#7C3AED
 }
 
-/* Date */
+body.select-mode-on .transaction{
+  cursor:pointer;
+}
+
+body.select-mode-on .transaction:hover{
+  transform:translateX(2px);
+  box-shadow:0 3px 10px rgba(11,107,79,.12)
+}
+
+body.select-mode-on .transaction .select-check{
+  display:flex;
+}
+
+body.select-mode-on .transaction .transaction-right{
+  padding-right:26px;
+}
+
+.transaction.selected{
+  border-left-color:#0B6B4F !important;
+  background:#ECFDF5 !important;
+  box-shadow:0 0 0 2px rgba(11,107,79,.35),0 4px 12px rgba(11,107,79,.18) !important;
+  transform:scale(1.008)
+}
+
+.transaction .select-check{
+  display:none;
+  position:absolute;
+  top:8px;
+  right:8px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:#F0F4F8;
+  border:2px solid #cbd5e1;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  color:transparent;
+  font-weight:900;
+  box-shadow:1px 1px 3px rgba(163,177,198,.4);
+  transition:all .18s ease;
+  z-index:2;
+  line-height:1
+}
+
+.transaction.selected .select-check{
+  background:#0B6B4F;
+  border-color:#0B6B4F;
+  color:#fff;
+  box-shadow:0 2px 6px rgba(11,107,79,.45)
+}
+
 .transaction-date{
   display:flex;
   flex-direction:column;
@@ -751,7 +836,6 @@ button:disabled{
 .transaction.cash-type .transaction-date .m{color:#7C3AED}
 .transaction.cash-type .transaction-date .y{color:#a78bfa}
 
-/* Divider */
 .transaction-line{
   width:1px;
   height:36px;
@@ -765,7 +849,6 @@ button:disabled{
   align-self:center
 }
 
-/* Mid */
 .transaction-mid{
   display:flex;
   flex-direction:column;
@@ -796,17 +879,29 @@ button:disabled{
   display:block
 }
 
-/* ⭐ বাকি pill — MID-এ */
+/* ===== PILLS ROW — বাকি + Description একই লাইনে ===== */
+.transaction-pills-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  margin-top:2px;
+  align-items:center;
+  max-width:100%
+}
+
 .balance-pill{
   font-size:9.5px;
   font-weight:800;
   border-radius:5px;
-  padding:2px 7px;
+  padding:2px 6px;
   display:inline-block;
   line-height:1;
   letter-spacing:.1px;
   width:fit-content;
-  margin-top:2px
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  max-width:100%
 }
 .balance-pill.due{
   background:#DCFCE7;
@@ -821,16 +916,38 @@ button:disabled{
   color:#6D28D9
 }
 
-/* Right */
+/* ★ Description পিল — বাকির মতোই সাইজ, 👤 emoji ★ */
+.desc-pill{
+  font-size:9.5px;
+  color:#374151;
+  font-weight:800;
+  background:#F3F4F6;
+  border:1px solid #E5E7EB;
+  border-radius:5px;
+  padding:2px 6px;
+  display:inline-block;
+  line-height:1;
+  width:fit-content;
+  letter-spacing:.1px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  max-width:100%
+}
+.desc-pill:before{
+  content:"👤 ";
+  font-size:8.5px
+}
+
 .transaction-right{
   text-align:right;
   display:flex;
   flex-direction:column;
   gap:4px;
-  align-items:flex-end
+  align-items:flex-end;
+  transition:padding-right .18s ease
 }
 
-/* ⭐ Type label */
 .type-label{
   display:inline-flex;
   align-items:center;
@@ -872,7 +989,6 @@ button:disabled{
   box-shadow:0 0 0 2px rgba(124,58,237,.15)
 }
 
-/* Premium PIN pill */
 .premium-pin{
   display:inline-flex;
   align-items:center;
@@ -937,7 +1053,6 @@ button:disabled{
     inset 0 1px 0 rgba(255,255,255,.15)
 }
 
-/* Message */
 .message{
   width:100%;
   text-align:center;
@@ -954,7 +1069,6 @@ button:disabled{
   color:#777
 }
 
-/* Footer */
 .footer{
   flex-shrink:0;
   text-align:center;
@@ -963,302 +1077,271 @@ button:disabled{
   font-size:9px
 }
 
+/* =========================================================
+   SELECTION BAR
+========================================================= */
+.selection-bar{
+  position:fixed;
+  left:50%;
+  bottom:14px;
+  transform:translateX(-50%) translateY(140%);
+  width:calc(100% - 24px);
+  max-width:430px;
+  background:linear-gradient(135deg,#0B6B4F 0%,#0F9D58 100%);
+  color:#fff;
+  border-radius:14px;
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  box-shadow:0 10px 30px rgba(11,107,79,.5),0 0 0 1px rgba(255,255,255,.1) inset;
+  z-index:100;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .2s ease;
+  pointer-events:none;
+  opacity:0
+}
+
+.selection-bar.show{
+  transform:translateX(-50%) translateY(0);
+  pointer-events:auto;
+  opacity:1
+}
+
+.selection-bar-info{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:2px
+}
+
+.selection-bar-count{
+  font-size:9px;
+  opacity:.9;
+  font-weight:600;
+  line-height:1
+}
+
+.selection-bar-total{
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:-.3px;
+  line-height:1;
+  text-shadow:0 1px 2px rgba(0,0,0,.2)
+}
+
+.selection-bar-actions{display:flex;gap:6px;flex-shrink:0}
+
+.selection-bar-btn{
+  height:32px;
+  padding:0 12px;
+  border:0;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:all .15s ease
+}
+
+.selection-bar-btn.clear{
+  background:rgba(255,255,255,.2);
+  color:#fff
+}
+
+.selection-bar-btn.clear:active{background:rgba(255,255,255,.3)}
+
+.selection-bar-btn.show-total{
+  background:#FBBF24;
+  color:#111827;
+  box-shadow:0 2px 6px rgba(251,191,36,.4)
+}
+
+.selection-bar-btn.show-total:active{transform:scale(.95)}
+
+/* =========================================================
+   MODAL
+========================================================= */
+.total-modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(11,17,26,.6);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:200;
+  opacity:0;
+  visibility:hidden;
+  transition:all .22s ease
+}
+
+.total-modal-overlay.show{opacity:1;visibility:visible}
+
+.total-modal{
+  background:#F0F4F8;
+  border-radius:18px;
+  padding:20px;
+  width:100%;
+  max-width:340px;
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+  transform:scale(.9) translateY(20px);
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1)
+}
+
+.total-modal-overlay.show .total-modal{transform:scale(1) translateY(0)}
+
+.total-modal-header{text-align:center;margin-bottom:14px}
+
+.total-modal-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-weight:800;
+  font-style:italic;
+  font-size:17px;
+  color:#0B6B4F;
+  text-shadow:-1px -1px 0 rgba(255,255,255,1),1px 1px 0 rgba(11,107,79,.2);
+  line-height:1.2
+}
+
+.total-modal-sub{
+  font-size:10px;
+  color:#64748B;
+  font-weight:600;
+  margin-top:4px;
+  letter-spacing:.3px
+}
+
+.total-modal-body{
+  background:#fff;
+  border-radius:12px;
+  padding:12px 14px;
+  margin-bottom:14px;
+  box-shadow:inset 2px 2px 6px rgba(163,177,198,.15)
+}
+
+.total-modal-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:7px 0;
+  font-size:12px
+}
+
+.total-modal-row + .total-modal-row{border-top:1px dashed #e2e8f0}
+
+.total-modal-row-label{color:#64748B;font-weight:600}
+.total-modal-row-value{color:#111827;font-weight:800}
+
+.total-modal-row.total{
+  padding-top:10px;
+  margin-top:4px;
+  border-top:2px solid #0B6B4F
+}
+
+.total-modal-row.total .total-modal-row-label{
+  color:#0B6B4F;
+  font-weight:800;
+  font-size:13px
+}
+
+.total-modal-row.total .total-modal-row-value{
+  color:#0B6B4F;
+  font-size:19px;
+  font-weight:900;
+  letter-spacing:-.4px
+}
+
+.total-modal-close{
+  width:100%;
+  height:44px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(135deg,#0B6B4F 0%,#0F9D58 100%);
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 4px 14px rgba(11,107,79,.35);
+  margin:0
+}
+
+.total-modal-close:active{transform:scale(.97)}
+
 /* Small Phone */
 @media(max-width:360px){
 
-  .header{
-    padding:10px 10px 12px
-  }
-
-  .header-inner{
-    padding:12px 13px
-  }
-
-  .header-logo{
-    width:40px;
-    height:40px
-  }
-
-  .header-logo-inner{
-    width:34px;
-    height:34px
-  }
-
-  .header-logo-currency{
-    font-size:20px
-  }
-
-  .header-title{
-    font-size:13px
-  }
-
-  .header-sub{
-    font-size:8.5px
-  }
-
-  .header-button{
-    height:30px;
-    padding:0 9px;
-    font-size:9px
-  }
-
-  .header-left{
-    gap:10px
-  }
-
-  .container{
-    padding:8px
-  }
-
-  .customer-filter-row{
-    gap:3px;
-    margin-bottom:5px
-  }
-
-  .filter-box{
-    height:34px;
-    padding:0 3px;
-    font-size:8px;
-    border-radius:8px
-  }
-
-  .filter-box option{
-    font-size:9px
-  }
-
-  .customer-name-card{
-    height:34px;
-    padding:0 4px;
-    border-radius:8px
-  }
-
-  #customerNameText{
-    font-size:12px
-  }
-
-  #customerPhone{
-    font-size:8px
-  }
-
-  .refresh-inline{
-    width:26px;
-    height:26px;
-    margin-left:4px
-  }
-
-  .refresh-inline svg{
-    width:12px;
-    height:12px
-  }
-
-  .balance-rate-row{
-    height:54px;
-    padding:4px 6px;
-    border-radius:10px
-  }
-
-  .balance-box{
-    padding:0
-  }
-
-  .warning-box{
-    height:44px;
-    padding:5px 8px;
-    gap:6px
-  }
-
-  .warning-icon{
-    width:22px;
-    height:22px;
-    font-size:12px
-  }
-
-  .warning-label{
-    font-size:7px;
-    letter-spacing:.3px
-  }
-
-  .warning-value{
-    font-size:14px
-  }
-
-  .warning-kd{
-    font-size:8px
-  }
-
-  .rate-box{
-    height:39px;
-    padding:0
-  }
-
-  .rate-input{
-    height:28px;
-    font-size:8px;
-    padding:0 8px
-  }
-
-  .rate-popup{
-    padding:6px 8px
-  }
-
-  .rate-popup-amount{
-    font-size:12px
-  }
-
-  .rate-popup-kd{
-    font-size:16px
-  }
-
-  .notice{
-    padding:7px 9px;
-    margin-bottom:7px
-  }
-
-  .notice-title{
-    font-size:10px
-  }
-
-  .notice-text{
-    font-size:10px
-  }
-
-  .transaction{
-    padding:9px 10px
-  }
-
-  .transaction-date{
-    min-width:50px
-  }
-
-  .transaction-date .d{
-    font-size:15px
-  }
-
-  .transaction-date .m{
-    font-size:8.5px
-  }
-
-  .transaction-date .y{
-    font-size:7px
-  }
-
-  .transaction-amt{
-    font-size:13.5px
-  }
-
-  .transaction-note-text-full{
-    font-size:9.5px
-  }
-
-  .balance-pill{
-    font-size:9px
-  }
-
-  .premium-pin{
-    padding:3px 10px 3px 8px;
-    gap:4px
-  }
-
-  .premium-pin .lbl{
-    font-size:10px
-  }
-
-  .premium-pin .num{
-    font-size:10px
-  }
-
-  .footer{
-    padding:5px 8px
-  }
+  .header{padding:10px 10px 12px}
+  .header-inner{padding:12px 13px}
+  .header-logo{width:40px;height:40px}
+  .header-logo-inner{width:34px;height:34px}
+  .header-logo-currency{font-size:20px}
+  .header-title{font-size:13px}
+  .header-sub{font-size:8.5px}
+  .header-button{height:30px;padding:0 9px;font-size:9px}
+  .header-left{gap:10px}
+  .container{padding:8px}
+  .customer-filter-row{gap:3px;margin-bottom:5px}
+  .filter-box{height:34px;padding:0 3px;font-size:8px;border-radius:8px}
+  .filter-box option{font-size:9px}
+  .customer-name-card{height:34px;padding:0 4px;border-radius:8px}
+  #customerNameText{font-size:12px}
+  #customerPhone{font-size:8px}
+  .refresh-inline{width:26px;height:26px;margin-left:4px}
+  .refresh-inline svg{width:12px;height:12px}
+  .balance-rate-row{height:54px;padding:4px 6px;border-radius:10px}
+  .warning-box{height:44px;padding:5px 8px;gap:6px}
+  .warning-icon{width:22px;height:22px;font-size:12px}
+  .warning-label{font-size:7px;letter-spacing:.3px}
+  .warning-value{font-size:14px}
+  .warning-kd{font-size:8px}
+  .rate-box{height:39px;padding:0}
+  .rate-input{height:28px;font-size:8px;padding:0 8px}
+  .rate-popup{padding:6px 8px}
+  .rate-popup-amount{font-size:12px}
+  .rate-popup-kd{font-size:16px}
+  .notice{padding:7px 9px;margin-bottom:7px}
+  .notice-title{font-size:10px}
+  .notice-text{font-size:10px}
+  .transaction{padding:9px 10px}
+  .transaction-date{min-width:50px}
+  .transaction-date .d{font-size:15px}
+  .transaction-date .m{font-size:8.5px}
+  .transaction-date .y{font-size:7px}
+  .transaction-amt{font-size:13.5px}
+  .transaction-note-text-full{font-size:9.5px}
+  .balance-pill{font-size:9px}
+  .desc-pill{font-size:9px}
+  .premium-pin{padding:3px 10px 3px 8px;gap:4px}
+  .premium-pin .lbl{font-size:10px}
+  .premium-pin .num{font-size:10px}
+  .footer{padding:5px 8px}
+  .selection-bar{padding:9px 10px;gap:8px}
+  .selection-bar-total{font-size:15px}
+  .selection-bar-btn{padding:0 10px;font-size:10px;height:30px}
+  .select-mode-btn{height:24px;font-size:9px;padding:0 9px}
 }
 
-/* Extra Small */
 @media(max-width:330px){
-
-  .header-logo{
-    width:36px;
-    height:36px
-  }
-
-  .header-logo-inner{
-    width:30px;
-    height:30px
-  }
-
-  .header-logo-currency{
-    font-size:18px
-  }
-
-  .header-title{
-    font-size:14.5px
-  }
-
-  .header-sub{
-    font-size:8px
-  }
-
-  .header-button{
-    padding:0 8px;
-    font-size:8.5px;
-    height:28px
-  }
-
-  .customer-name-card{
-    font-size:9px
-  }
-
-  .filter-box{
-    font-size:8px;
-    padding:0 3px
-  }
-
-  .refresh-inline{
-    width:24px;
-    height:24px;
-    margin-left:3px
-  }
-
-  .refresh-inline svg{
-    width:11px;
-    height:11px
-  }
-
-  .warning-box{
-    height:42px;
-    padding:4px 7px;
-    gap:5px
-  }
-
-  .warning-icon{
-    width:20px;
-    height:20px;
-    font-size:11px
-  }
-
-  .warning-label{
-    font-size:6.5px
-  }
-
-  .warning-value{
-    font-size:13px
-  }
-
-  .warning-kd{
-    font-size:7.5px
-  }
-
-  .rate-input{
-    font-size:9px;
-    padding:0 5px
-  }
-
-  .premium-pin .lbl{
-    font-size:9.5px
-  }
-
-  .premium-pin .num{
-    font-size:9.5px
-  }
+  .header-logo{width:36px;height:36px}
+  .header-logo-inner{width:30px;height:30px}
+  .header-logo-currency{font-size:18px}
+  .header-title{font-size:14.5px}
+  .header-sub{font-size:8px}
+  .header-button{padding:0 8px;font-size:8.5px;height:28px}
+  .customer-name-card{font-size:9px}
+  .filter-box{font-size:8px;padding:0 3px}
+  .refresh-inline{width:24px;height:24px;margin-left:3px}
+  .refresh-inline svg{width:11px;height:11px}
+  .warning-box{height:42px;padding:4px 7px;gap:5px}
+  .warning-icon{width:20px;height:20px;font-size:11px}
+  .warning-label{font-size:6.5px}
+  .warning-value{font-size:13px}
+  .warning-kd{font-size:7.5px}
+  .rate-input{font-size:9px;padding:0 5px}
+  .premium-pin .lbl{font-size:9.5px}
+  .premium-pin .num{font-size:9.5px}
 }
 </style>
 </head>
@@ -1269,120 +1352,48 @@ button:disabled{
 
 <!-- Header -->
 <div class="header">
-
   <div class="header-inner">
-
     <div class="header-row">
-
       <div class="header-left">
-
         <div class="header-logo">
           <div class="header-logo-inner">
             <span class="header-logo-currency">৳</span>
           </div>
         </div>
-
         <div class="header-text">
           <div class="header-title">Amaya Exchange</div>
           <div class="header-sub">লেনদেনে আস্থা, সেবায় নির্ভরতা</div>
         </div>
-
       </div>
-
       <div class="header-actions">
-
-        <button
-          class="header-button contact-button"
-          onclick="contactWhatsApp()"
-        >📞 Contact</button>
-
-        <button
-          id="headerLogout"
-          class="header-button header-logout hidden"
-          onclick="logout()"
-        >Logout</button>
-
+        <button class="header-button contact-button" onclick="contactWhatsApp()">📞 Contact</button>
+        <button id="headerLogout" class="header-button header-logout hidden" onclick="logout()">Logout</button>
       </div>
-
     </div>
-
   </div>
-
 </div>
-
 
 <!-- Login -->
 <div id="loginPage" class="container">
-
   <div class="card">
-
-    <div class="login-title">
-      Customer Login
-    </div>
-
-    <div class="login-sub">
-      আপনার WhatsApp Number এবং Password দিয়ে Login করুন
-    </div>
-
-    <label>
-      WhatsApp Number
-    </label>
-
-    <input
-      id="phone"
-      type="tel"
-      inputmode="tel"
-      placeholder="WhatsApp Number"
-      autocomplete="username"
-    >
-
-    <label>
-      Password
-    </label>
-
-    <input
-      id="password"
-      type="password"
-      placeholder="Password"
-      autocomplete="current-password"
-    >
-
-    <button
-      id="loginButton"
-      onclick="login()"
-    >Login</button>
-
-    <div
-      id="loginMessage"
-      class="message"
-    ></div>
-
+    <div class="login-title">Customer Login</div>
+    <div class="login-sub">আপনার WhatsApp Number এবং Password দিয়ে Login করুন</div>
+    <label>WhatsApp Number</label>
+    <input id="phone" type="tel" inputmode="tel" placeholder="WhatsApp Number" autocomplete="username">
+    <label>Password</label>
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+    <button id="loginButton" onclick="login()">Login</button>
+    <div id="loginMessage" class="message"></div>
   </div>
-
 </div>
 
-
 <!-- Customer -->
-<div
-  id="customerPage"
-  class="container hidden"
->
+<div id="customerPage" class="container hidden">
 
   <!-- Filter -->
   <div class="customer-filter-row">
-
-    <select
-      id="yearFilter"
-      class="filter-box"
-      onchange="applyTransactionFilter()"
-    ></select>
-
-    <select
-      id="monthFilter"
-      class="filter-box"
-      onchange="applyTransactionFilter()"
-    >
-
+    <select id="yearFilter" class="filter-box" onchange="applyTransactionFilter()"></select>
+    <select id="monthFilter" class="filter-box" onchange="applyTransactionFilter()">
       <option value="all">All Transaction</option>
       <option value="0">January</option>
       <option value="1">February</option>
@@ -1396,23 +1407,14 @@ button:disabled{
       <option value="9">October</option>
       <option value="10">November</option>
       <option value="11">December</option>
-
     </select>
 
-    <div
-      id="customerName"
-      class="customer-name-card"
-    >
+    <div id="customerName" class="customer-name-card">
       <div class="customer-name-info">
         <div id="customerNameText"></div>
         <div id="customerPhone"></div>
       </div>
-      <button
-        class="refresh-inline"
-        id="refreshButton"
-        onclick="refreshData(this)"
-        aria-label="Refresh"
-      >
+      <button class="refresh-inline" id="refreshButton" onclick="refreshData(this)" aria-label="Refresh">
         <svg viewBox="0 0 24 24">
           <path d="M23 4v6h-6"/>
           <path d="M1 20v-6h6"/>
@@ -1421,1822 +1423,862 @@ button:disabled{
         </svg>
       </button>
     </div>
-
   </div>
-
 
   <!-- Balance + Rate -->
   <div class="balance-rate-row">
-
     <div class="balance-box">
-
       <div class="warning-box">
-
         <div class="warning-icon">!</div>
-
         <div class="warning-content">
-
           <div class="warning-label">আপনার বর্তমান বাকি</div>
-
           <div class="warning-value">
             <span id="currentDue">0.000</span>
             <span class="warning-kd">KD</span>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
-
     <div class="rate-box">
-
-      <div
-        id="ratePopup"
-        class="rate-popup"
-      >
-
+      <div id="ratePopup" class="rate-popup">
         <div class="rate-popup-left">
           <div class="rate-popup-label">Amount</div>
           <div id="ratePopupAmount" class="rate-popup-amount">0 Tk</div>
         </div>
-
         <div class="rate-popup-right">
           <div id="ratePopupKD" class="rate-popup-kd">0.000 KD</div>
         </div>
-
       </div>
-
-
-      <input
-        id="rateAmount"
-        class="rate-input"
-        type="text"
-        inputmode="numeric"
-        autocomplete="off"
-        placeholder="💱 রেট জানতে টাকার পরিমান লিখুন"
-        oninput="calculateRate()"
-      >
-
+      <input id="rateAmount" class="rate-input" type="text" inputmode="numeric" autocomplete="off"
+        placeholder="💱 রেট জানতে টাকার পরিমান লিখুন" oninput="calculateRate()">
     </div>
-
   </div>
 
-
   <!-- Notice -->
-  <div
-    id="noticeBox"
-    class="notice hidden"
-  >
+  <div id="noticeBox" class="notice hidden">
     <div class="notice-title">📢 Notice</div>
     <div id="noticeText" class="notice-text"></div>
   </div>
 
-
-  <!-- Transactions -->
-  <div class="transaction-history-title">
-    Transaction History
+  <!-- ⭐ History Header + Select Mode Button -->
+  <div class="transaction-history-header">
+    <div class="transaction-history-title">Transaction History</div>
+    <button id="selectModeBtn" class="select-mode-btn" onclick="toggleSelectMode()">Select Mode</button>
   </div>
 
-  <div
-    id="transactions"
-    class="transactions-scroll"
-  ></div>
+  <div id="transactions" class="transactions-scroll"></div>
+</div>
+
+<div class="footer">Amaya Exchange</div>
 
 </div>
 
-
-<!-- Footer -->
-<div class="footer">
-  Amaya Exchange
+<!-- Selection Bar -->
+<div id="selectionBar" class="selection-bar">
+  <div class="selection-bar-info">
+    <div class="selection-bar-count" id="selectionCount">0 টি সিলেক্টেড</div>
+    <div class="selection-bar-total" id="selectionTotal">0.000 KD</div>
+  </div>
+  <div class="selection-bar-actions">
+    <button class="selection-bar-btn clear" onclick="exitSelectMode()">Exit</button>
+    <button class="selection-bar-btn show-total" onclick="showTotalPopup()">Total</button>
+  </div>
 </div>
 
+<!-- Modal -->
+<div id="totalModalOverlay" class="total-modal-overlay" onclick="closeTotalPopup(event)">
+  <div class="total-modal" onclick="event.stopPropagation()">
+    <div class="total-modal-header">
+      <div class="total-modal-title">সিলেক্টেড লেনদেনের যোগফল</div>
+      <div class="total-modal-sub">Selected Transactions Summary</div>
+    </div>
+    <div class="total-modal-body">
+      <div class="total-modal-row">
+        <span class="total-modal-row-label">মোট লেনদেন</span>
+        <span class="total-modal-row-value" id="modalCount">0 টি</span>
+      </div>
+      <div class="total-modal-row">
+        <span class="total-modal-row-label">বাকি (Due)</span>
+        <span class="total-modal-row-value" id="modalDue">0.000 KD</span>
+      </div>
+      <div class="total-modal-row">
+        <span class="total-modal-row-label">পেমেন্ট (Payment)</span>
+        <span class="total-modal-row-value" id="modalPayment">0.000 KD</span>
+      </div>
+      <div class="total-modal-row">
+        <span class="total-modal-row-label">নগদ (Cash)</span>
+        <span class="total-modal-row-value" id="modalCash">0.000 KD</span>
+      </div>
+      <div class="total-modal-row total">
+        <span class="total-modal-row-label">মোট KD</span>
+        <span class="total-modal-row-value" id="modalTotal">0.000 KD</span>
+      </div>
+    </div>
+    <button class="total-modal-close" onclick="closeTotalPopup()">ঠিক আছে</button>
+  </div>
 </div>
-
 
 <script>
 
 // ==================================================
 // CONFIG
 // ==================================================
-
-const API_URL=
+const API_URL =
 "https://script.google.com/macros/s/AKfycbxv9Y6u320GLBP6Axvzdb8eZpKSkB25Xjbt1656GL-tj5AHuJWjVvdVfp5qRZSu8lfs/exec";
 
-const CONTACT_WHATSAPP=
-"8801354304315";
-
-const RATE_1=
-333.333333;
-
-const RATE_2=
-363.636363;
-
-const RATE_3=
-357.142857;
-
-const REFRESH_TIME=
-5000;
-
+const CONTACT_WHATSAPP = "8801354304315";
+const RATE_1 = 333.333333;
+const RATE_2 = 363.636363;
+const RATE_3 = 357.142857;
+const REFRESH_TIME = 5000;
 
 // ==================================================
 // STATE
 // ==================================================
-
-let currentCustomer=null;
-
-let refreshTimer=null;
-
-let loadingTransactions=false;
-
-let lastTransactionId="";
-
-let allTransactions=[];
-
+let currentCustomer = null;
+let refreshTimer = null;
+let loadingTransactions = false;
+let lastTransactionId = "";
+let allTransactions = [];
+let selectedTransactions = new Set();
+let selectModeOn = false;
 
 // ==================================================
 // LOCAL CACHE
 // ==================================================
+const LOCAL_CACHE_PREFIX = "amayaExchangeCache_";
+const LOCAL_CUSTOMER_KEY = "customerSession";
 
-const LOCAL_CACHE_PREFIX=
-"amayaExchangeCache_";
-
-const LOCAL_CUSTOMER_KEY=
-"customerSession";
-
-
-function getCacheKey(){
-
-  if(!currentCustomer?.id){
-
-    return null;
-
-  }
-
-  return LOCAL_CACHE_PREFIX+
-    String(currentCustomer.id);
-
+function getCacheKey() {
+  if (!currentCustomer?.id) return null;
+  return LOCAL_CACHE_PREFIX + String(currentCustomer.id);
 }
 
-
-function saveLocalData(data){
-
-  try{
-
-    const key=
-      getCacheKey();
-
-    if(!key){
-
-      return;
-
-    }
-
-    localStorage.setItem(
-      key,
-      JSON.stringify({
-
-        savedAt:
-          Date.now(),
-
-        data:
-          data
-
-      })
-    );
-
-  }catch(error){}
-
+function saveLocalData(data) {
+  try {
+    const key = getCacheKey();
+    if (!key) return;
+    localStorage.setItem(key, JSON.stringify({ savedAt: Date.now(), data: data }));
+  } catch (error) {}
 }
 
-
-function getLocalData(){
-
-  try{
-
-    const key=
-      getCacheKey();
-
-    if(!key){
-
-      return null;
-
-    }
-
-    const saved=
-      localStorage.getItem(key);
-
-    if(!saved){
-
-      return null;
-
-    }
-
-    const parsed=
-      JSON.parse(saved);
-
-    if(
-      !parsed||
-      !parsed.data
-    ){
-
-      return null;
-
-    }
-
+function getLocalData() {
+  try {
+    const key = getCacheKey();
+    if (!key) return null;
+    const saved = localStorage.getItem(key);
+    if (!saved) return null;
+    const parsed = JSON.parse(saved);
+    if (!parsed || !parsed.data) return null;
     return parsed.data;
-
-  }catch(error){
-
-    return null;
-
-  }
-
+  } catch (error) { return null; }
 }
 
-
 // ==================================================
-// TRANSACTION FINGERPRINT
+// FINGERPRINT
 // ==================================================
-
-function createTransactionFingerprint(
-  transactions
-){
-
-  if(
-    !Array.isArray(transactions)
-  ){
-
-    return "";
-
-  }
-
-  return JSON.stringify(
-
-    transactions.map(
-      t=>({
-
-        transactionId:
-          t.transactionId||
-          "",
-
-        date:
-          t.date||
-          "",
-
-        kdAmount:
-          t.kdAmount||
-          "",
-
-        bdAmount:
-          t.bdAmount||
-          "",
-
-        type:
-          t.type||
-          "",
-
-        note:
-          t.note||
-          "",
-
-        agentOption:
-          t.agentOption||
-          ""
-
-      })
-    )
-
-  );
-
+function createTransactionFingerprint(transactions) {
+  if (!Array.isArray(transactions)) return "";
+  return JSON.stringify(transactions.map(t => ({
+    transactionId: t.transactionId || "",
+    date: t.date || "",
+    kdAmount: t.kdAmount || "",
+    bdAmount: t.bdAmount || "",
+    type: t.type || "",
+    note: t.note || "",
+    description: t.description || "",
+    agentOption: t.agentOption || ""
+  })));
 }
-
 
 // ==================================================
 // DOM
 // ==================================================
+const $ = id => document.getElementById(id);
 
-const $=
-  id=>
-    document.getElementById(id);
-
-
-const loginPage=
-  $("loginPage");
-
-const customerPage=
-  $("customerPage");
-
-const phoneInput=
-  $("phone");
-
-const passwordInput=
-  $("password");
-
-const loginButton=
-  $("loginButton");
-
-const loginMessage=
-  $("loginMessage");
-
-const customerNameText=
-  $("customerNameText");
-
-const customerPhone=
-  $("customerPhone");
-
-const noticeBox=
-  $("noticeBox");
-
-const noticeText=
-  $("noticeText");
-
-const currentDue=
-  $("currentDue");
-
-const transactionsBox=
-  $("transactions");
-
-const rateAmount=
-  $("rateAmount");
-
-const ratePopup=
-  $("ratePopup");
-
-const ratePopupAmount=
-  $("ratePopupAmount");
-
-const ratePopupKD=
-  $("ratePopupKD");
-
-const yearFilter=
-  $("yearFilter");
-
-const monthFilter=
-  $("monthFilter");
-
-const headerLogout=
-  $("headerLogout");
-
-const refreshButton=
-  $("refreshButton");
-
+const loginPage = $("loginPage");
+const customerPage = $("customerPage");
+const phoneInput = $("phone");
+const passwordInput = $("password");
+const loginButton = $("loginButton");
+const loginMessage = $("loginMessage");
+const customerNameText = $("customerNameText");
+const customerPhone = $("customerPhone");
+const noticeBox = $("noticeBox");
+const noticeText = $("noticeText");
+const currentDue = $("currentDue");
+const transactionsBox = $("transactions");
+const rateAmount = $("rateAmount");
+const ratePopup = $("ratePopup");
+const ratePopupAmount = $("ratePopupAmount");
+const ratePopupKD = $("ratePopupKD");
+const yearFilter = $("yearFilter");
+const monthFilter = $("monthFilter");
+const headerLogout = $("headerLogout");
+const refreshButton = $("refreshButton");
+const selectModeBtn = $("selectModeBtn");
 
 // ==================================================
 // CONTACT
 // ==================================================
-
-function contactWhatsApp(){
-
-  window.open(
-    "https://wa.me/"+
-    CONTACT_WHATSAPP,
-    "_blank"
-  );
-
+function contactWhatsApp() {
+  window.open("https://wa.me/" + CONTACT_WHATSAPP, "_blank");
 }
-
 
 // ==================================================
-// NUMBER
+// NUMBER HELPERS
 // ==================================================
-
-function convertBanglaNumbers(
-  value
-){
-
-  const bn=
-    "০১২৩৪৫৬৭৮৯";
-
-  const en=
-    "0123456789";
-
-  return String(value)
-    .replace(
-      /[০-৯]/g,
-      d=>
-        en[
-          bn.indexOf(d)
-        ]
-    );
-
+function convertBanglaNumbers(value) {
+  const bn = "০১২৩৪৫৬৭৮৯";
+  const en = "0123456789";
+  return String(value).replace(/[০-৯]/g, d => en[bn.indexOf(d)]);
 }
 
-
-function formatAmount(
-  number
-){
-
-  return Number(number)
-    .toLocaleString("en-IN");
-
+function formatAmount(number) {
+  return Number(number).toLocaleString("en-IN");
 }
-
 
 // ==================================================
 // RATE
 // ==================================================
+function calculateRate() {
+  let value = convertBanglaNumbers(rateAmount.value).replace(/[^0-9]/g, "");
+  if (!value) { ratePopup.classList.remove("show"); return; }
 
-function calculateRate(){
-
-  let value=
-    convertBanglaNumbers(
-      rateAmount.value
-    )
-    .replace(
-      /[^0-9]/g,
-      ""
-    );
-
-
-  if(!value){
-
-    ratePopup.classList.remove(
-      "show"
-    );
-
-    return;
-
-  }
-
-
-  const amount=
-    parseInt(
-      value,
-      10
-    );
-
-
-  if(
-    !Number.isFinite(amount)||
-    amount<=0
-  ){
-
-    ratePopup.classList.remove(
-      "show"
-    );
-
-    return;
-
-  }
-
+  const amount = parseInt(value, 10);
+  if (!Number.isFinite(amount) || amount <= 0) { ratePopup.classList.remove("show"); return; }
 
   let rate;
+  if (amount < 1000) rate = RATE_1;
+  else if (amount % 1000 === 0) rate = RATE_2;
+  else rate = RATE_3;
 
+  const kd = amount / rate;
 
-  if(amount<1000){
-
-    rate=
-      RATE_1;
-
-  }else if(
-    amount%1000===0
-  ){
-
-    rate=
-      RATE_2;
-
-  }else{
-
-    rate=
-      RATE_3;
-
-  }
-
-
-  const kd=
-    amount/rate;
-
-
-  rateAmount.value=
-    formatAmount(amount);
-
-
-  ratePopupAmount.textContent=
-    formatAmount(amount)+
-    " Tk";
-
-
-  ratePopupKD.textContent=
-    kd.toFixed(3)+
-    " KD";
-
-
-  ratePopup.classList.add(
-    "show"
-  );
-
+  rateAmount.value = formatAmount(amount);
+  ratePopupAmount.textContent = formatAmount(amount) + " Tk";
+  ratePopupKD.textContent = kd.toFixed(3) + " KD";
+  ratePopup.classList.add("show");
 }
-
 
 // ==================================================
 // LOGIN
 // ==================================================
+async function login() {
+  const phone = phoneInput.value.trim().replace(/\s+/g, "");
+  const password = passwordInput.value.trim();
 
-async function login(){
-
-  const phone=
-    phoneInput.value
-      .trim()
-      .replace(
-        /\s+/g,
-        ""
-      );
-
-
-  const password=
-    passwordInput.value.trim();
-
-
-  if(
-    !phone||
-    !password
-  ){
-
-    showMessage(
-      "WhatsApp Number এবং Password দিন",
-      "error"
-    );
-
+  if (!phone || !password) {
+    showMessage("WhatsApp Number এবং Password দিন", "error");
     return;
-
   }
 
+  loginButton.disabled = true;
+  loginButton.textContent = "Login হচ্ছে...";
 
-  loginButton.disabled=
-    true;
+  try {
+    const url = API_URL + "?action=customerLogin" +
+      "&phone=" + encodeURIComponent(phone) +
+      "&password=" + encodeURIComponent(password);
 
-  loginButton.textContent=
-    "Login হচ্ছে...";
+    const response = await fetch(url);
+    const data = await response.json();
 
-
-  try{
-
-    const url=
-      API_URL+
-      "?action=customerLogin"+
-      "&phone="+
-      encodeURIComponent(phone)+
-      "&password="+
-      encodeURIComponent(password);
-
-
-    const response=
-      await fetch(url);
-
-
-    const data=
-      await response.json();
-
-
-    if(data.success){
-
-      currentCustomer=
-        data.data?.customer||
-        data.customer;
-
-
-      if(
-        !currentCustomer?.id
-      ){
-
-        showMessage(
-          "Customer তথ্য পাওয়া যায়নি",
-          "error"
-        );
-
+    if (data.success) {
+      currentCustomer = data.data?.customer || data.customer;
+      if (!currentCustomer?.id) {
+        showMessage("Customer তথ্য পাওয়া যায়নি", "error");
         return;
-
       }
-
-
-      localStorage.setItem(
-        LOCAL_CUSTOMER_KEY,
-        JSON.stringify(
-          currentCustomer
-        )
-      );
-
-
+      localStorage.setItem(LOCAL_CUSTOMER_KEY, JSON.stringify(currentCustomer));
       showCustomer();
-
-
-    }else{
-
-      showMessage(
-        data.error||
-        data.message||
-        "Phone Number অথবা Password ভুল",
-        "error"
-      );
-
+    } else {
+      showMessage(data.error || data.message || "Phone Number অথবা Password ভুল", "error");
     }
-
-  }catch(error){
-
-    showMessage(
-      "Server-এর সাথে যোগাযোগ করা যাচ্ছে না",
-      "error"
-    );
-
-  }finally{
-
-    loginButton.disabled=
-      false;
-
-    loginButton.textContent=
-      "Login";
-
+  } catch (error) {
+    showMessage("Server-এর সাথে যোগাযোগ করা যাচ্ছে না", "error");
+  } finally {
+    loginButton.disabled = false;
+    loginButton.textContent = "Login";
   }
-
 }
-
 
 // ==================================================
 // CUSTOMER
 // ==================================================
-
-function showCustomer(){
-
-  loginPage.classList.add(
-    "hidden"
-  );
-
-
-  customerPage.classList.remove(
-    "hidden"
-  );
-
-
-  customerNameText.textContent=
-    currentCustomer.name||
-    "";
-
-
-  customerPhone.textContent=
-    currentCustomer.phone||
-    "";
-
-
-  headerLogout.classList.remove(
-    "hidden"
-  );
-
-
+function showCustomer() {
+  loginPage.classList.add("hidden");
+  customerPage.classList.remove("hidden");
+  customerNameText.textContent = currentCustomer.name || "";
+  customerPhone.textContent = currentCustomer.phone || "";
+  headerLogout.classList.remove("hidden");
   loadLocalTransactions();
-
-
   loadNotice();
-
-
   loadTransactions(false);
-
-
   startAutoRefresh();
-
 }
 
-
 // ==================================================
-// MANUAL REFRESH (D Design Button)
-// ঠিক ব্রাউজারের রিফ্রেশ বাটনের মতো
+// MANUAL REFRESH
 // ==================================================
-
-function refreshData(btn){
-
-  btn.classList.add(
-    "spinning"
-  );
-
-  setTimeout(()=>{
-
-    location.reload();
-
-  }, 300);
-
+function refreshData(btn) {
+  btn.classList.add("spinning");
+  setTimeout(() => { location.reload(); }, 300);
 }
 
+// ==================================================
+// SELECT MODE
+// ==================================================
+function toggleSelectMode() {
+  if (selectModeOn) {
+    exitSelectMode();
+  } else {
+    selectModeOn = true;
+    document.body.classList.add("select-mode-on");
+    selectModeBtn.classList.add("active");
+    selectModeBtn.textContent = "Done";
+    updateSelectionBar();
+  }
+}
+
+function exitSelectMode() {
+  selectModeOn = false;
+  document.body.classList.remove("select-mode-on");
+  selectModeBtn.classList.remove("active");
+  selectModeBtn.textContent = "Select Mode";
+  clearSelection();
+}
 
 // ==================================================
 // LOCAL TRANSACTIONS
 // ==================================================
+function loadLocalTransactions() {
+  if (!currentCustomer) return;
+  const localData = getLocalData();
+  if (!localData) return;
 
-function loadLocalTransactions(){
+  const due = Number(localData.currentDue || 0);
+  currentDue.textContent = due.toFixed(3);
 
-  if(!currentCustomer){
+  const transactions = localData.transactions || [];
+  allTransactions = Array.isArray(transactions) ? transactions : [];
 
+  if (!allTransactions.length) {
+    transactionsBox.innerHTML = '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
     return;
-
   }
 
-
-  const localData=
-    getLocalData();
-
-
-  if(!localData){
-
-    return;
-
-  }
-
-
-  const due=
-    Number(
-      localData.currentDue||
-      0
-    );
-
-
-  currentDue.textContent=
-    due.toFixed(3);
-
-
-  const transactions=
-    localData.transactions||
-    [];
-
-
-  allTransactions=
-    Array.isArray(
-      transactions
-    )
-    ?transactions
-    :[];
-
-
-  if(
-    !allTransactions.length
-  ){
-
-    transactionsBox.innerHTML=
-      '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
-
-    return;
-
-  }
-
-
-  lastTransactionId=
-    createTransactionFingerprint(
-      allTransactions
-    );
-
-
-  buildYearFilter(
-    allTransactions
-  );
-
-
+  lastTransactionId = createTransactionFingerprint(allTransactions);
+  buildYearFilter(allTransactions);
   applyTransactionFilter();
-
 }
-
 
 // ==================================================
 // AUTO REFRESH
 // ==================================================
-
-function startAutoRefresh(){
-
+function startAutoRefresh() {
   stopAutoRefresh();
-
-
-  refreshTimer=
-    setInterval(
-
-      ()=>{
-
-        if(
-          currentCustomer&&
-          !customerPage.classList.contains(
-            "hidden"
-          )
-        ){
-
-          loadTransactions(
-            false
-          );
-
-        }
-
-      },
-
-      REFRESH_TIME
-
-    );
-
+  refreshTimer = setInterval(() => {
+    if (currentCustomer && !customerPage.classList.contains("hidden")) {
+      loadTransactions(false);
+    }
+  }, REFRESH_TIME);
 }
 
-
-function stopAutoRefresh(){
-
-  if(refreshTimer){
-
-    clearInterval(
-      refreshTimer
-    );
-
-    refreshTimer=
-      null;
-
+function stopAutoRefresh() {
+  if (refreshTimer) {
+    clearInterval(refreshTimer);
+    refreshTimer = null;
   }
-
 }
-
 
 // ==================================================
 // NOTICE
 // ==================================================
-
-async function loadNotice(){
-
-  try{
-
-    const response=
-      await fetch(
-        API_URL+
-        "?action=notice",
-        {
-          cache:
-            "no-store"
-        }
-      );
-
-
-    const data=
-      await response.json();
-
-
-    const notice=
-      data.data?.notice??
-      data.notice;
-
-
-    if(
-      notice&&
-      String(notice).trim()!==""
-    ){
-
-      noticeText.textContent=
-        notice;
-
-
-      noticeBox.classList.remove(
-        "hidden"
-      );
-
-    }else{
-
-      noticeBox.classList.add(
-        "hidden"
-      );
-
+async function loadNotice() {
+  try {
+    const response = await fetch(API_URL + "?action=notice", { cache: "no-store" });
+    const data = await response.json();
+    const notice = data.data?.notice ?? data.notice;
+    if (notice && String(notice).trim() !== "") {
+      noticeText.textContent = notice;
+      noticeBox.classList.remove("hidden");
+    } else {
+      noticeBox.classList.add("hidden");
     }
-
-  }catch(error){}
-
+  } catch (error) {}
 }
-
 
 // ==================================================
 // LOAD TRANSACTIONS
 // ==================================================
+async function loadTransactions(firstLoad) {
+  if (!currentCustomer || loadingTransactions) return;
+  loadingTransactions = true;
 
-async function loadTransactions(
-  firstLoad
-){
-
-  if(
-    !currentCustomer||
-    loadingTransactions
-  ){
-
-    return;
-
+  if (firstLoad && !getLocalData()) {
+    transactionsBox.innerHTML = '<div class="message loading">লেনদেন লোড হচ্ছে...</div>';
   }
 
+  try {
+    const url = API_URL + "?action=transactions&customerId=" + encodeURIComponent(currentCustomer.id);
+    const response = await fetch(url, { cache: "no-store" });
+    const data = await response.json();
 
-  loadingTransactions=
-    true;
-
-
-  if(
-    firstLoad&&    !getLocalData()
-  ){
-
-    transactionsBox.innerHTML=
-      '<div class="message loading">লেনদেন লোড হচ্ছে...</div>';
-
-  }
-
-
-  try{
-
-    const url=
-      API_URL+
-      "?action=transactions"+
-      "&customerId="+
-      encodeURIComponent(
-        currentCustomer.id
-      );
-
-
-    const response=
-      await fetch(
-        url,
-        {
-          cache:
-            "no-store"
-        }
-      );
-
-
-    const data=
-      await response.json();
-
-
-    if(
-      !data.success
-    ){
-
-      if(
-        firstLoad&&
-        !allTransactions.length
-      ){
-
-        transactionsBox.innerHTML=
-          '<div class="message error">লেনদেন লোড হয়নি</div>';
-
+    if (!data.success) {
+      if (firstLoad && !allTransactions.length) {
+        transactionsBox.innerHTML = '<div class="message error">লেনদেন লোড হয়নি</div>';
       }
-
       return;
-
     }
 
+    const result = data.data || {};
+    const due = Number(result.currentDue || 0);
+    const transactions = result.transactions || [];
+    const cleanTransactions = Array.isArray(transactions) ? transactions : [];
 
-    const result=
-      data.data||
-      {};
+    saveLocalData({ currentDue: due, transactions: cleanTransactions });
 
-
-    const due=
-      Number(
-        result.currentDue||
-        0
-      );
-
-
-    const transactions=
-      result.transactions||
-      [];
-
-
-    const cleanTransactions=
-      Array.isArray(
-        transactions
-      )
-      ?transactions
-      :[];
-
-
-    saveLocalData({
-
-      currentDue:
-        due,
-
-      transactions:
-        cleanTransactions
-
-    });
-
-
-    const dueText=
-      due.toFixed(3);
-
-
-    if(
-      currentDue.textContent!==
-      dueText
-    ){
-
-      currentDue.textContent=
-        dueText;
-
+    const dueText = due.toFixed(3);
+    if (currentDue.textContent !== dueText) {
+      currentDue.textContent = dueText;
     }
 
+    const newFingerprint = createTransactionFingerprint(cleanTransactions);
+    const dataChanged = newFingerprint !== lastTransactionId;
 
-    const newFingerprint=
-      createTransactionFingerprint(
-        cleanTransactions
-      );
+    allTransactions = cleanTransactions;
 
-
-    const dataChanged=
-      newFingerprint!==
-      lastTransactionId;
-
-
-    allTransactions=
-      cleanTransactions;
-
-
-    if(
-      !allTransactions.length
-    ){
-
-      transactionsBox.innerHTML=
-        '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
-
-      lastTransactionId=
-        newFingerprint;
-
+    if (!allTransactions.length) {
+      transactionsBox.innerHTML = '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
+      lastTransactionId = newFingerprint;
       return;
-
     }
 
-
-    if(
-      firstLoad||
-      dataChanged
-    ){
-
-      lastTransactionId=
-        newFingerprint;
-
-
-      buildYearFilter(
-        allTransactions
-      );
-
-
+    if (firstLoad || dataChanged) {
+      lastTransactionId = newFingerprint;
+      buildYearFilter(allTransactions);
       applyTransactionFilter();
-
     }
-
-  }catch(error){
-
-    if(
-      firstLoad&&
-      !allTransactions.length
-    ){
-
-      transactionsBox.innerHTML=
-        '<div class="message error">লেনদেন লোড হয়নি</div>';
-
+  } catch (error) {
+    if (firstLoad && !allTransactions.length) {
+      transactionsBox.innerHTML = '<div class="message error">লেনদেন লোড হয়নি</div>';
     }
-
-  }finally{
-
-    loadingTransactions=
-      false;
-
+  } finally {
+    loadingTransactions = false;
   }
-
 }
-
 
 // ==================================================
 // YEAR FILTER
 // ==================================================
-
-function buildYearFilter(transactions){
-
+function buildYearFilter(transactions) {
   const years = new Set();
-
-  transactions.forEach(t=>{
+  transactions.forEach(t => {
     const parsed = parseTransactionDate(t.date);
-    if(parsed){
-      years.add(parsed.getFullYear());
-    }
+    if (parsed) years.add(parsed.getFullYear());
   });
 
-  const sortedYears = Array.from(years).sort((a,b)=>b-a);
+  const sortedYears = Array.from(years).sort((a, b) => b - a);
+  if (!sortedYears.length) return;
 
-  if(!sortedYears.length){
-    return;
-  }
-
-  /* ⭐ সবসময় current year & month */
   const now = new Date();
   const currentYear = now.getFullYear();
-  const currentMonth = now.getMonth(); // 0 = Jan, 11 = Dec
+  const currentMonth = now.getMonth();
 
-  /* ── Year dropdown ── */
   yearFilter.innerHTML = "";
-
-  sortedYears.forEach(year=>{
+  sortedYears.forEach(year => {
     const option = document.createElement("option");
     option.value = String(year);
     option.textContent = String(year);
     yearFilter.appendChild(option);
   });
 
-  /* current year থাকলে সেটাই সিলেক্ট, নাহলে সব থেকে নতুন বছর */
-  if(sortedYears.includes(currentYear)){
+  if (sortedYears.includes(currentYear)) {
     yearFilter.value = String(currentYear);
-  }else{
+  } else {
     yearFilter.value = String(sortedYears[0]);
   }
 
-  /* ── Month dropdown ── */
-  /* সবসময় current month সিলেক্ট — আগের সিলেকশন মনে রাখে না */
   monthFilter.value = String(currentMonth);
-
 }
-
 
 // ==================================================
 // DATE
 // ==================================================
+function parseTransactionDate(value) {
+  if (!value) return null;
 
-function parseTransactionDate(
-  value
-){
+  const text = String(value).trim();
+  const match = text.match(/^(\d{1,2})[-\/](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[-\/](\d{4})$/i);
 
-  if(!value){
-
-    return null;
-
+  if (match) {
+    const day = parseInt(match[1], 10);
+    const monthText = match[2].toLowerCase();
+    const year = parseInt(match[3], 10);
+    const months = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+    const month = months.indexOf(monthText);
+    if (month >= 0) return new Date(year, month, day);
   }
 
-
-  const text=
-    String(value)
-      .trim();
-
-
-  const match=
-    text.match(
-      /^(\d{1,2})[-\/](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[-\/](\d{4})$/i
-    );
-
-
-  if(match){
-
-    const day=
-      parseInt(
-        match[1],
-        10
-      );
-
-
-    const monthText=
-      match[2]
-        .toLowerCase();
-
-
-    const year=
-      parseInt(
-        match[3],
-        10
-      );
-
-
-    const months=[
-      "jan",
-      "feb",
-      "mar",
-      "apr",
-      "may",
-      "jun",
-      "jul",
-      "aug",
-      "sep",
-      "oct",
-      "nov",
-      "dec"
-    ];
-
-
-    const month=
-      months.indexOf(
-        monthText
-      );
-
-
-    if(
-      month>=0
-    ){
-
-      return new Date(
-        year,
-        month,
-        day
-      );
-
-    }
-
-  }
-
-
-  const fallback=
-    new Date(text);
-
-
-  return isNaN(
-    fallback.getTime()
-  )
-  ?null
-  :fallback;
-
+  const fallback = new Date(text);
+  return isNaN(fallback.getTime()) ? null : fallback;
 }
-
 
 // ==================================================
 // FILTER
 // ==================================================
-
-function applyTransactionFilter(){
-
-  if(
-    !allTransactions.length
-  ){
-
-    transactionsBox.innerHTML=
-      '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
-
+function applyTransactionFilter() {
+  if (!allTransactions.length) {
+    transactionsBox.innerHTML = '<div class="message loading">কোনো লেনদেন পাওয়া যায়নি</div>';
     return;
-
   }
 
-
-  const selectedYear=
-    Number(
-      yearFilter.value
-    );
-
-
-  const selectedMonth=
-    monthFilter.value;
-
+  const selectedYear = Number(yearFilter.value);
+  const selectedMonth = monthFilter.value;
 
   let filtered;
 
-
-  if(
-    selectedMonth===
-    "all"
-  ){
-
-    filtered=
-      allTransactions.filter(
-        t=>{
-
-          const date=
-            parseTransactionDate(
-              t.date
-            );
-
-
-          return date&&
-            date.getFullYear()===
-            selectedYear;
-
-        }
-      );
-
-
-  }else{
-
-    const month=
-      Number(
-        selectedMonth
-      );
-
-
-    filtered=
-      allTransactions.filter(
-        t=>{
-
-          const date=
-            parseTransactionDate(
-              t.date
-            );
-
-
-          return date&&
-            date.getFullYear()===
-            selectedYear&&
-            date.getMonth()===
-            month;
-
-        }
-      );
-
+  if (selectedMonth === "all") {
+    filtered = allTransactions.filter(t => {
+      const date = parseTransactionDate(t.date);
+      return date && date.getFullYear() === selectedYear;
+    });
+  } else {
+    const month = Number(selectedMonth);
+    filtered = allTransactions.filter(t => {
+      const date = parseTransactionDate(t.date);
+      return date && date.getFullYear() === selectedYear && date.getMonth() === month;
+    });
   }
 
-
-  renderTransactions(
-    filtered
-  );
-
+  renderTransactions(filtered);
 }
 
-
 // ==================================================
-// RENDER — Premium Cards with PIN + BAKI
+// SELECTION
 // ==================================================
+function toggleSelection(transactionKey, element) {
+  if (!selectModeOn) return;
 
-function renderTransactions(
-  transactions
-){
+  if (selectedTransactions.has(transactionKey)) {
+    selectedTransactions.delete(transactionKey);
+    element.classList.remove("selected");
+  } else {
+    selectedTransactions.add(transactionKey);
+    element.classList.add("selected");
+  }
+  updateSelectionBar();
+}
 
-  if(
-    !transactions.length
-  ){
+function updateSelectionBar() {
+  const bar = $("selectionBar");
+  const countEl = $("selectionCount");
+  const totalEl = $("selectionTotal");
 
-    transactionsBox.innerHTML=
-      '<div class="message loading">এই সময়ে কোনো লেনদেন পাওয়া যায়নি</div>';
+  const count = selectedTransactions.size;
 
+  if (count === 0) {
+    bar.classList.remove("show");
     return;
-
   }
 
-
-  /* ⭐ বাকি হিসাব — সব transaction chronological */
-  const balanceMap=new Map();
-
-  const chronological=[...allTransactions].sort((a,b)=>{
-    const da=parseTransactionDate(a.date);
-    const db=parseTransactionDate(b.date);
-    if(!da||!db) return 0;
-    const diff=da.getTime()-db.getTime();
-    if(diff!==0) return diff;
-    return String(a.transactionId||'').localeCompare(String(b.transactionId||''));
+  let totalKD = 0;
+  allTransactions.forEach(t => {
+    const key = t.transactionId || JSON.stringify(t);
+    if (selectedTransactions.has(key)) {
+      totalKD += Number(t.kdAmount || 0);
+    }
   });
 
-  let running=0;
-  chronological.forEach(t=>{
-    const kd=Number(t.kdAmount||0);
-    const type=String(t.type||'').trim();
-
-    if(kd>0){
-      if(type==='বাকি') running+=kd;
-      else if(type==='পেমেন্ট') running-=kd;
-      /* নগদ → প্রভাব নেই */
-    }
-    balanceMap.set(t.transactionId||JSON.stringify(t), Math.max(0,running));
-  });
-
-
-  const fragment=
-    document.createDocumentFragment();
-
-
-  for(
-    const t of transactions
-  ){
-
-    const typeRaw=String(t.type||'').trim();
-
-    const isDue = typeRaw==='বাকি';
-    const isPayment = typeRaw==='পেমেন্ট';
-    const isCash = typeRaw==='নগদ';
-
-    const item=
-      document.createElement(
-        "div"
-      );
-
-
-    if(isPayment){
-      item.className='transaction paid-type';
-    }else if(isCash){
-      item.className='transaction cash-type';
-    }else{
-      item.className='transaction due-type';
-    }
-
-
-    /* ===== DATE ===== */
-
-    const parsedDate=
-      parseTransactionDate(
-        t.date
-      );
-
-
-    let day="",
-        month="",
-        year="";
-
-
-    if(parsedDate){
-
-      day=
-        String(
-          parsedDate.getDate()
-        )
-        .padStart(
-          2,
-          "0"
-        );
-
-
-      month=
-        parsedDate
-          .toLocaleString(
-            "en-US",
-            {
-              month:
-                "long"
-            }
-          );
-
-
-      year=
-        String(parsedDate.getFullYear());
-
-    }else{
-
-      day=
-        t.date||
-        "";
-
-    }
-
-
-    /* ===== AMOUNT ===== */
-
-    const kdAmount=
-      Number(
-        t.kdAmount||
-        0
-      );
-
-
-    const sign=
-      isPayment
-      ?"−"
-      :"+";
-
-
-    const amtText=
-      sign+
-      kdAmount
-        .toFixed(3)+
-      " KD";
-
-
-    /* ===== NOTE + BD ===== */
-
-    let noteText=
-      t.note||
-      "";
-
-
-    const bdAmount=
-      t.bdAmount;
-
-
-    if(
-      bdAmount!==""&&
-      bdAmount!==null&&
-      bdAmount!==undefined&&
-      Number(bdAmount)!==0
-    ){
-
-      const tk=
-        Number(
-          String(bdAmount)
-            .replace(
-              /,/g,
-              ""
-            )
-        )
-        .toLocaleString(
-          "en-IN"
-        );
-
-
-      noteText=
-        noteText
-        ?noteText+
-          " • "+
-          tk+
-          " Tk"
-        :tk+
-          " Tk";
-
-    }
-
-
-    /* ===== AGENT (পিন) ===== */
-
-    const pinNumber=
-      t.agentOption||
-      "";
-
-
-    /* ===== BAKI ===== */
-
-    const tKey=t.transactionId||JSON.stringify(t);
-    const runningBal=balanceMap.get(tKey)||0;
-
-
-    /* ===== BUILD ===== */
-
-    const dateHTML=
-      `<div class="transaction-date">`+
-        `<span class="d">${escapeHTML(day)}</span>`+
-        `<span class="m">${escapeHTML(month)}</span>`+
-        `<span class="y">${escapeHTML(year)}</span>`+
-      `</div>`;
-
-
-    const lineHTML=
-      `<div class="transaction-line"></div>`;
-
-
-    /* Mid — amount + note + বাকি pill */
-    const midHTML=
-      `<div class="transaction-mid">`+
-        `<span class="transaction-amt">${amtText}</span>`+
-        (noteText
-          ?`<span class="transaction-note-text-full">${escapeHTML(noteText)}</span>`
-          :""
-        )+
-        `<span class="balance-pill ${isPayment?'payment':isCash?'cash':'due'}">বাকি ${runningBal.toFixed(3)}</span>`+
-      `</div>`;
-
-
-    /* Right — পিন + type label */
-    let rightHTML="";
-
-    if(isDue && pinNumber){
-      rightHTML=
-        `<div class="transaction-right">`+
-          `<span class="premium-pin">`+
-            `<span class="lbl">পিন</span>`+
-            `<span class="dash">-</span>`+
-            `<span class="num">${escapeHTML(pinNumber)}</span>`+
-          `</span>`+
-          `<span class="type-label due">বাকি</span>`+
-        `</div>`;
-
-    }else if(isDue){
-      rightHTML=
-        `<div class="transaction-right">`+
-          `<span class="type-label due">বাকি</span>`+
-        `</div>`;
-
-    }else if(isPayment){
-      rightHTML=
-        `<div class="transaction-right">`+
-          `<span class="type-label payment">পেমেন্ট</span>`+
-        `</div>`;
-
-    }else if(isCash && pinNumber){
-      rightHTML=
-        `<div class="transaction-right">`+
-          `<span class="premium-pin cash">`+
-            `<span class="lbl">পিন</span>`+
-            `<span class="dash">-</span>`+
-            `<span class="num">${escapeHTML(pinNumber)}</span>`+
-          `</span>`+
-          `<span class="type-label cash">নগদ</span>`+
-        `</div>`;
-
-    }else if(isCash){
-      rightHTML=
-        `<div class="transaction-right">`+
-          `<span class="type-label cash">নগদ</span>`+
-        `</div>`;
-
-    }else{
-      rightHTML=`<div class="transaction-right"></div>`;
-    }
-
-
-    item.innerHTML=
-      dateHTML+
-      lineHTML+
-      midHTML+
-      rightHTML;
-
-
-    fragment.appendChild(
-      item
-    );
-
-  }
-
-
-  transactionsBox.replaceChildren(
-    fragment
-  );
-
+  countEl.textContent = count + " টি সিলেক্টেড";
+  totalEl.textContent = totalKD.toFixed(3) + " KD";
+  bar.classList.add("show");
 }
 
+function clearSelection() {
+  selectedTransactions.clear();
+  document.querySelectorAll(".transaction.selected").forEach(el => {
+    el.classList.remove("selected");
+  });
+  updateSelectionBar();
+}
+
+function showTotalPopup() {
+  if (selectedTransactions.size === 0) return;
+
+  let count = 0, due = 0, payment = 0, cash = 0, total = 0;
+
+  allTransactions.forEach(t => {
+    const key = t.transactionId || JSON.stringify(t);
+    if (selectedTransactions.has(key)) {
+      const amt = Number(t.kdAmount || 0);
+      const type = String(t.type || '').trim();
+      count++;
+      total += amt;
+      if (type === 'বাকি') due += amt;
+      else if (type === 'পেমেন্ট') payment += amt;
+      else if (type === 'নগদ') cash += amt;
+    }
+  });
+
+  $("modalCount").textContent = count + " টি";
+  $("modalDue").textContent = due.toFixed(3) + " KD";
+  $("modalPayment").textContent = payment.toFixed(3) + " KD";
+  $("modalCash").textContent = cash.toFixed(3) + " KD";
+  $("modalTotal").textContent = total.toFixed(3) + " KD";
+
+  $("totalModalOverlay").classList.add("show");
+}
+
+function closeTotalPopup(event) {
+  if (event && event.target !== event.currentTarget) return;
+  $("totalModalOverlay").classList.remove("show");
+}
+
+// ==================================================
+// RENDER — Premium Cards with PIN + BAKI + DESCRIPTION
+// ==================================================
+function renderTransactions(transactions) {
+  if (!transactions.length) {
+    transactionsBox.innerHTML = '<div class="message loading">এই সময়ে কোনো লেনদেন পাওয়া যায়নি</div>';
+    return;
+  }
+
+  // বাকি হিসাব
+  const balanceMap = new Map();
+  const chronological = [...allTransactions].sort((a, b) => {
+    const da = parseTransactionDate(a.date);
+    const db = parseTransactionDate(b.date);
+    if (!da || !db) return 0;
+    const diff = da.getTime() - db.getTime();
+    if (diff !== 0) return diff;
+    return String(a.transactionId || '').localeCompare(String(b.transactionId || ''));
+  });
+
+  let running = 0;
+  chronological.forEach(t => {
+    const kd = Number(t.kdAmount || 0);
+    const type = String(t.type || '').trim();
+    if (kd > 0) {
+      if (type === 'বাকি') running += kd;
+      else if (type === 'পেমেন্ট') running -= kd;
+    }
+    balanceMap.set(t.transactionId || JSON.stringify(t), Math.max(0, running));
+  });
+
+  const fragment = document.createDocumentFragment();
+
+  for (const t of transactions) {
+    const typeRaw = String(t.type || '').trim();
+    const isDue = typeRaw === 'বাকি';
+    const isPayment = typeRaw === 'পেমেন্ট';
+    const isCash = typeRaw === 'নগদ';
+
+    const item = document.createElement("div");
+
+    if (isPayment) item.className = 'transaction paid-type';
+    else if (isCash) item.className = 'transaction cash-type';
+    else item.className = 'transaction due-type';
+
+    const selectKey = t.transactionId || JSON.stringify(t);
+    if (selectedTransactions.has(selectKey)) {
+      item.classList.add("selected");
+    }
+    item.dataset.key = selectKey;
+
+    // Date
+    const parsedDate = parseTransactionDate(t.date);
+    let day = "", month = "", year = "";
+
+    if (parsedDate) {
+      day = String(parsedDate.getDate()).padStart(2, "0");
+      month = parsedDate.toLocaleString("en-US", { month: "long" });
+      year = String(parsedDate.getFullYear());
+    } else {
+      day = t.date || "";
+    }
+
+    // Amount
+    const kdAmount = Number(t.kdAmount || 0);
+    const sign = isPayment ? "−" : "+";
+    const amtText = sign + kdAmount.toFixed(3) + " KD";
+
+    // Note + BD
+    let noteText = t.note || "";
+    const bdAmount = t.bdAmount;
+
+    if (bdAmount !== "" && bdAmount !== null && bdAmount !== undefined && Number(bdAmount) !== 0) {
+      const tk = Number(String(bdAmount).replace(/,/g, "")).toLocaleString("en-IN");
+      noteText = noteText ? noteText + " • " + tk + " Tk" : tk + " Tk";
+    }
+
+    // Agent PIN
+    const pinNumber = t.agentOption || "";
+
+    // বাকি
+    const tKey = t.transactionId || JSON.stringify(t);
+    const runningBal = balanceMap.get(tKey) || 0;
+
+    // ★ Description
+    const description = String(t.description || '').trim();
+
+    // Build
+    const dateHTML =
+      `<div class="transaction-date">` +
+        `<span class="d">${escapeHTML(day)}</span>` +
+        `<span class="m">${escapeHTML(month)}</span>` +
+        `<span class="y">${escapeHTML(year)}</span>` +
+      `</div>`;
+
+    const lineHTML = `<div class="transaction-line"></div>`;
+
+    // Mid — amount + note + pills (বাকি + Description)
+    const midHTML =
+      `<div class="transaction-mid">` +
+        `<span class="transaction-amt">${amtText}</span>` +
+        (noteText ? `<span class="transaction-note-text-full">${escapeHTML(noteText)}</span>` : "") +
+        `<div class="transaction-pills-row">` +
+          `<span class="balance-pill ${isPayment?'payment':isCash?'cash':'due'}">বাকি ${runningBal.toFixed(3)}</span>` +
+          (description ? `<span class="desc-pill">${escapeHTML(description)}</span>` : "") +
+        `</div>` +
+      `</div>`;
+
+    // Right — পিন + type label
+    let rightHTML = "";
+
+    if (isDue && pinNumber) {
+      rightHTML =
+        `<div class="transaction-right">` +
+          `<span class="premium-pin">` +
+            `<span class="lbl">পিন</span>` +
+            `<span class="dash">-</span>` +
+            `<span class="num">${escapeHTML(pinNumber)}</span>` +
+          `</span>` +
+          `<span class="type-label due">বাকি</span>` +
+        `</div>`;
+    } else if (isDue) {
+      rightHTML = `<div class="transaction-right"><span class="type-label due">বাকি</span></div>`;
+    } else if (isPayment) {
+      rightHTML = `<div class="transaction-right"><span class="type-label payment">পেমেন্ট</span></div>`;
+    } else if (isCash && pinNumber) {
+      rightHTML =
+        `<div class="transaction-right">` +
+          `<span class="premium-pin cash">` +
+            `<span class="lbl">পিন</span>` +
+            `<span class="dash">-</span>` +
+            `<span class="num">${escapeHTML(pinNumber)}</span>` +
+          `</span>` +
+          `<span class="type-label cash">নগদ</span>` +
+        `</div>`;
+    } else if (isCash) {
+      rightHTML = `<div class="transaction-right"><span class="type-label cash">নগদ</span></div>`;
+    } else {
+      rightHTML = `<div class="transaction-right"></div>`;
+    }
+
+    item.innerHTML =
+      `<span class="select-check">✓</span>` +
+      dateHTML + lineHTML + midHTML + rightHTML;
+
+    // Click — শুধু select mode ON থাকলে
+    item.addEventListener("click", () => {
+      if (!selectModeOn) return;
+      toggleSelection(selectKey, item);
+    });
+
+    fragment.appendChild(item);
+  }
+
+  transactionsBox.replaceChildren(fragment);
+}
 
 // ==================================================
 // LOGOUT
 // ==================================================
-
-function logout(){
-
+function logout() {
   stopAutoRefresh();
+  localStorage.removeItem(LOCAL_CUSTOMER_KEY);
 
+  currentCustomer = null;
+  lastTransactionId = "";
+  allTransactions = [];
+  selectedTransactions.clear();
+  selectModeOn = false;
 
-  localStorage.removeItem(
-    LOCAL_CUSTOMER_KEY
-  );
+  document.body.classList.remove("select-mode-on");
+  if (selectModeBtn) {
+    selectModeBtn.classList.remove("active");
+    selectModeBtn.textContent = "Select Mode";
+  }
 
+  const bar = $("selectionBar");
+  if (bar) bar.classList.remove("show");
 
-  currentCustomer=
-    null;
+  customerPage.classList.add("hidden");
+  loginPage.classList.remove("hidden");
+  headerLogout.classList.add("hidden");
 
-
-  lastTransactionId=
-    "";
-
-
-  allTransactions=
-    [];
-
-
-  customerPage.classList.add(
-    "hidden"
-  );
-
-
-  loginPage.classList.remove(
-    "hidden"
-  );
-
-
-  headerLogout.classList.add(
-    "hidden"
-  );
-
-
-  phoneInput.value=
-    "";
-
-
-  passwordInput.value=
-    "";
-
-
-  rateAmount.value=
-    "";
-
-
-  ratePopup.classList.remove(
-    "show"
-  );
-
-
-  loginMessage.textContent=
-    "";
-
+  phoneInput.value = "";
+  passwordInput.value = "";
+  rateAmount.value = "";
+  ratePopup.classList.remove("show");
+  loginMessage.textContent = "";
 }
-
 
 // ==================================================
 // SESSION
 // ==================================================
+function checkSavedLogin() {
+  const saved = localStorage.getItem(LOCAL_CUSTOMER_KEY);
+  if (!saved) return;
 
-function checkSavedLogin(){
-
-  const saved=
-    localStorage.getItem(
-      LOCAL_CUSTOMER_KEY
-    );
-
-
-  if(!saved){
-
-    return;
-
-  }
-
-
-  try{
-
-    currentCustomer=
-      JSON.parse(
-        saved
-      );
-
-
-    if(
-      currentCustomer&&
-      currentCustomer.id&&
-      currentCustomer.name
-    ){
-
+  try {
+    currentCustomer = JSON.parse(saved);
+    if (currentCustomer && currentCustomer.id && currentCustomer.name) {
       showCustomer();
-
     }
-
-  }catch(error){
-
-    localStorage.removeItem(
-      LOCAL_CUSTOMER_KEY
-    );
-
+  } catch (error) {
+    localStorage.removeItem(LOCAL_CUSTOMER_KEY);
   }
-
 }
-
 
 // ==================================================
 // MESSAGE
 // ==================================================
-
-function showMessage(
-  text,
-  type
-){
-
-  loginMessage.textContent=
-    text;
-
-
-  loginMessage.className=
-    "message "+
-    (type||"");
-
+function showMessage(text, type) {
+  loginMessage.textContent = text;
+  loginMessage.className = "message " + (type || "");
 }
-
 
 // ==================================================
 // ESCAPE HTML
 // ==================================================
-
-function escapeHTML(
-  text
-){
-
+function escapeHTML(text) {
   return String(text)
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
-
 
 // ==================================================
 // START
 // ==================================================
-
 checkSavedLogin();
 
 </script>
 
-
 <script>
-
-if(
-  "serviceWorker" in navigator
-){
-
-  window.addEventListener(
-    "load",
-    async()=>{
-
-      try{
-
-        const registration=
-          await navigator.serviceWorker.register(
-            "./service-worker.js"
-          );
-
-
-        registration.update();
-
-      }catch(error){}
-
-    }
-  );
-
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      const registration = await navigator.serviceWorker.register("./service-worker.js");
+      registration.update();
+    } catch (error) {}
+  });
 }
-
 </script>
 
 </body>
