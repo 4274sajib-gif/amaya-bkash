@@ -50,7 +50,6 @@ button,input,select{
 /* =========================================================
    HEADER
 ========================================================= */
-
 .header{
   flex-shrink:0;
   padding:8px 10px 4px;
@@ -632,7 +631,6 @@ button:disabled{
 /* =========================================================
    TRANSACTIONS
 ========================================================= */
-
 .transaction-history-header{
   flex-shrink:0;
   display:flex;
@@ -879,7 +877,6 @@ body.select-mode-on .transaction .transaction-right{
   display:block
 }
 
-/* ===== PILLS ROW — বাকি + Description একই লাইনে ===== */
 .transaction-pills-row{
   display:flex;
   flex-wrap:wrap;
@@ -916,7 +913,6 @@ body.select-mode-on .transaction .transaction-right{
   color:#6D28D9
 }
 
-/* ★ Description পিল — বাকির মতোই সাইজ, 👤 emoji ★ */
 .desc-pill{
   font-size:9.5px;
   color:#374151;
@@ -1078,196 +1074,255 @@ body.select-mode-on .transaction .transaction-right{
 }
 
 /* =========================================================
-   SELECTION BAR
+   ★ SELECT POPUP (Final)
 ========================================================= */
-.selection-bar{
+.mini-popup{
   position:fixed;
+  bottom:18px;
   left:50%;
-  bottom:14px;
-  transform:translateX(-50%) translateY(140%);
-  width:calc(100% - 24px);
-  max-width:430px;
-  background:linear-gradient(135deg,#0B6B4F 0%,#0F9D58 100%);
+  transform:translateX(-50%) translateY(30px);
+  background:#111827;
   color:#fff;
-  border-radius:14px;
-  padding:10px 12px;
+  border-radius:16px;
+  padding:10px 14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  z-index:100;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .2s ease,transform .25s ease,visibility .2s ease;
+  min-width:270px;
+  max-width:calc(100vw - 32px);
+  cursor:pointer;
+}
+
+.mini-popup.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateX(-50%) translateY(0)
+}
+
+.popup-info{
   display:flex;
   align-items:center;
-  gap:10px;
-  box-shadow:0 10px 30px rgba(11,107,79,.5),0 0 0 1px rgba(255,255,255,.1) inset;
-  z-index:100;
-  transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .2s ease;
-  pointer-events:none;
-  opacity:0
+  justify-content:space-between;
+  gap:12px
 }
 
-.selection-bar.show{
-  transform:translateX(-50%) translateY(0);
-  pointer-events:auto;
-  opacity:1
-}
-
-.selection-bar-info{
-  flex:1;
-  min-width:0;
+.popup-left{
   display:flex;
-  flex-direction:column;
-  gap:2px
+  align-items:center;
+  gap:9px;
+  min-width:0;
+  flex:1
 }
 
-.selection-bar-count{
-  font-size:9px;
-  opacity:.9;
-  font-weight:600;
-  line-height:1
-}
-
-.selection-bar-total{
-  font-size:16px;
-  font-weight:900;
-  letter-spacing:-.3px;
-  line-height:1;
-  text-shadow:0 1px 2px rgba(0,0,0,.2)
-}
-
-.selection-bar-actions{display:flex;gap:6px;flex-shrink:0}
-
-.selection-bar-btn{
-  height:32px;
-  padding:0 12px;
-  border:0;
-  border-radius:8px;
-  font-size:11px;
-  font-weight:800;
-  cursor:pointer;
-  white-space:nowrap;
-  transition:all .15s ease
-}
-
-.selection-bar-btn.clear{
-  background:rgba(255,255,255,.2);
-  color:#fff
-}
-
-.selection-bar-btn.clear:active{background:rgba(255,255,255,.3)}
-
-.selection-bar-btn.show-total{
-  background:#FBBF24;
-  color:#111827;
-  box-shadow:0 2px 6px rgba(251,191,36,.4)
-}
-
-.selection-bar-btn.show-total:active{transform:scale(.95)}
-
-/* =========================================================
-   MODAL
-========================================================= */
-.total-modal-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(11,17,26,.6);
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
+/* ★ Dynamic Icon ★ */
+.popup-icon{
+  width:26px;
+  height:26px;
+  border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px;
-  z-index:200;
-  opacity:0;
-  visibility:hidden;
-  transition:all .22s ease
-}
-
-.total-modal-overlay.show{opacity:1;visibility:visible}
-
-.total-modal{
-  background:#F0F4F8;
-  border-radius:18px;
-  padding:20px;
-  width:100%;
-  max-width:340px;
-  box-shadow:0 20px 50px rgba(0,0,0,.35);
-  transform:scale(.9) translateY(20px);
-  transition:transform .28s cubic-bezier(.34,1.56,.64,1)
-}
-
-.total-modal-overlay.show .total-modal{transform:scale(1) translateY(0)}
-
-.total-modal-header{text-align:center;margin-bottom:14px}
-
-.total-modal-title{
-  font-family:'Playfair Display',Georgia,serif;
-  font-weight:800;
-  font-style:italic;
-  font-size:17px;
-  color:#0B6B4F;
-  text-shadow:-1px -1px 0 rgba(255,255,255,1),1px 1px 0 rgba(11,107,79,.2);
-  line-height:1.2
-}
-
-.total-modal-sub{
-  font-size:10px;
-  color:#64748B;
-  font-weight:600;
-  margin-top:4px;
-  letter-spacing:.3px
-}
-
-.total-modal-body{
-  background:#fff;
-  border-radius:12px;
-  padding:12px 14px;
-  margin-bottom:14px;
-  box-shadow:inset 2px 2px 6px rgba(163,177,198,.15)
-}
-
-.total-modal-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:7px 0;
-  font-size:12px
-}
-
-.total-modal-row + .total-modal-row{border-top:1px dashed #e2e8f0}
-
-.total-modal-row-label{color:#64748B;font-weight:600}
-.total-modal-row-value{color:#111827;font-weight:800}
-
-.total-modal-row.total{
-  padding-top:10px;
-  margin-top:4px;
-  border-top:2px solid #0B6B4F
-}
-
-.total-modal-row.total .total-modal-row-label{
-  color:#0B6B4F;
-  font-weight:800;
-  font-size:13px
-}
-
-.total-modal-row.total .total-modal-row-value{
-  color:#0B6B4F;
-  font-size:19px;
+  font-size:12px;
   font-weight:900;
-  letter-spacing:-.4px
+  flex-shrink:0;
+  transition:all .25s ease;
 }
-
-.total-modal-close{
-  width:100%;
-  height:44px;
-  border:0;
-  border-radius:10px;
-  background:linear-gradient(135deg,#0B6B4F 0%,#0F9D58 100%);
+.popup-icon.confirm{
+  background:linear-gradient(135deg,#4ADE80,#16A34A);
+  color:#111827;
+  box-shadow:0 2px 8px rgba(74,222,128,.4);
+}
+.popup-icon.warning{
+  background:linear-gradient(135deg,#F59E0B,#D97706);
   color:#fff;
-  font-size:14px;
-  font-weight:800;
-  cursor:pointer;
-  box-shadow:0 4px 14px rgba(11,107,79,.35);
-  margin:0
+  box-shadow:0 2px 8px rgba(245,158,11,.5);
 }
 
-.total-modal-close:active{transform:scale(.97)}
+.popup-text{min-width:0}
+
+/* ★ Dynamic Amount Color ★ */
+.popup-total{
+  font-size:16px;
+  font-weight:900;
+  line-height:1;
+  white-space:nowrap;
+  transition:color .25s ease;
+}
+.popup-total.confirm{color:#4ADE80}
+.popup-total.warning{color:#F59E0B}
+
+.popup-total small{
+  font-size:10px;
+  font-weight:700;
+  color:#94A3B8;
+  margin-left:2px
+}
+
+.popup-count{
+  font-size:10px;
+  color:#94A3B8;
+  font-weight:700;
+  margin-top:2px;
+  line-height:1
+}
+
+/* Right side: badge + arrow */
+.popup-right-side{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-shrink:0;
+  transition:opacity .2s ease;
+}
+
+/* ★ Static Badge ★ */
+.popup-badge{
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.3px;
+  padding:3px 8px;
+  border-radius:20px;
+  white-space:nowrap;
+  line-height:1.2;
+  transition:opacity .2s ease,transform .2s ease;
+  display:inline-flex;
+  align-items:center;
+}
+
+.popup-badge.warning{
+  background:linear-gradient(135deg,#F59E0B,#D97706);
+  color:#fff;
+  box-shadow:
+    0 2px 6px rgba(245,158,11,.5),
+    0 0 0 1px rgba(245,158,11,.15);
+}
+
+.popup-badge.confirm{
+  background:linear-gradient(135deg,#4ADE80,#16A34A);
+  color:#fff;
+  box-shadow:
+    0 2px 6px rgba(74,222,128,.5),
+    0 0 0 1px rgba(74,222,128,.15);
+}
+
+.mini-popup.expanded .popup-badge{
+  opacity:0;
+  transform:scale(.8);
+  pointer-events:none;
+  width:0;
+  padding:0;
+  overflow:hidden;
+}
+
+.popup-expand{
+  color:#94A3B8;
+  font-size:14px;
+  font-weight:900;
+  transition:transform .2s ease;
+  flex-shrink:0;
+  line-height:1
+}
+
+.mini-popup.expanded .popup-expand{
+  transform:rotate(180deg)
+}
+
+.popup-menu{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease,margin-top .25s ease;
+}
+
+.mini-popup.expanded .popup-menu{
+  max-height:400px;
+  margin-top:10px;
+  border-top:1px solid rgba(255,255,255,.12);
+  padding-top:10px;
+}
+
+/* Warning / Confirm Box */
+.popup-status{
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:10px;
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+}
+
+.popup-status.warning{
+  background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(245,158,11,.08));
+  border:1px solid rgba(245,158,11,.4);
+  border-left:3px solid #F59E0B;
+}
+
+.popup-status.confirm{
+  background:linear-gradient(135deg,rgba(74,222,128,.15),rgba(74,222,128,.08));
+  border:1px solid rgba(74,222,128,.4);
+  border-left:3px solid #4ADE80;
+}
+
+.popup-status-icon{
+  font-size:18px;
+  line-height:1;
+  flex-shrink:0;
+  margin-top:1px;
+}
+
+.popup-status.warning .popup-status-icon{color:#F59E0B}
+.popup-status.confirm .popup-status-icon{color:#4ADE80}
+
+.popup-status-content{
+  flex:1;
+  min-width:0
+}
+
+.popup-status-title{
+  font-size:12px;
+  font-weight:900;
+  line-height:1.2;
+  margin-bottom:4px;
+}
+
+.popup-status.warning .popup-status-title{color:#FCD34D}
+.popup-status.confirm .popup-status-title{color:#4ADE80}
+
+.popup-status-desc{
+  font-size:10.5px;
+  color:#CBD5E1;
+  line-height:1.4;
+  font-weight:600;
+}
+
+.popup-status-desc b{
+  color:#fff;
+  font-weight:800
+}
+
+.popup-menu-btn{
+  width:100%;
+  height:36px;
+  border:0;
+  border-radius:8px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  cursor:pointer;
+  margin-bottom:6px;
+  transition:background .12s ease;
+}
+
+.popup-menu-btn:last-child{margin-bottom:0}
+.popup-menu-btn:active{background:rgba(255,255,255,.18)}
+.popup-menu-btn.danger{color:#FCA5A5;background:rgba(220,38,38,.15)}
+.popup-menu-btn.success{background:#16A34A;color:#fff}
 
 /* Small Phone */
 @media(max-width:360px){
@@ -1317,10 +1372,11 @@ body.select-mode-on .transaction .transaction-right{
   .premium-pin .lbl{font-size:10px}
   .premium-pin .num{font-size:10px}
   .footer{padding:5px 8px}
-  .selection-bar{padding:9px 10px;gap:8px}
-  .selection-bar-total{font-size:15px}
-  .selection-bar-btn{padding:0 10px;font-size:10px;height:30px}
   .select-mode-btn{height:24px;font-size:9px;padding:0 9px}
+  .mini-popup{padding:9px 12px;min-width:250px}
+  .popup-status{padding:10px}
+  .popup-status-title{font-size:11px}
+  .popup-status-desc{font-size:10px}
 }
 
 @media(max-width:330px){
@@ -1460,7 +1516,7 @@ body.select-mode-on .transaction .transaction-right{
     <div id="noticeText" class="notice-text"></div>
   </div>
 
-  <!-- ⭐ History Header + Select Mode Button -->
+  <!-- History Header + Select Mode Button -->
   <div class="transaction-history-header">
     <div class="transaction-history-title">Transaction History</div>
     <button id="selectModeBtn" class="select-mode-btn" onclick="toggleSelectMode()">Select Mode</button>
@@ -1473,48 +1529,25 @@ body.select-mode-on .transaction .transaction-right{
 
 </div>
 
-<!-- Selection Bar -->
-<div id="selectionBar" class="selection-bar">
-  <div class="selection-bar-info">
-    <div class="selection-bar-count" id="selectionCount">0 টি সিলেক্টেড</div>
-    <div class="selection-bar-total" id="selectionTotal">0.000 KD</div>
-  </div>
-  <div class="selection-bar-actions">
-    <button class="selection-bar-btn clear" onclick="exitSelectMode()">Exit</button>
-    <button class="selection-bar-btn show-total" onclick="showTotalPopup()">Total</button>
-  </div>
-</div>
-
-<!-- Modal -->
-<div id="totalModalOverlay" class="total-modal-overlay" onclick="closeTotalPopup(event)">
-  <div class="total-modal" onclick="event.stopPropagation()">
-    <div class="total-modal-header">
-      <div class="total-modal-title">সিলেক্টেড লেনদেনের যোগফল</div>
-      <div class="total-modal-sub">Selected Transactions Summary</div>
-    </div>
-    <div class="total-modal-body">
-      <div class="total-modal-row">
-        <span class="total-modal-row-label">মোট লেনদেন</span>
-        <span class="total-modal-row-value" id="modalCount">0 টি</span>
-      </div>
-      <div class="total-modal-row">
-        <span class="total-modal-row-label">বাকি (Due)</span>
-        <span class="total-modal-row-value" id="modalDue">0.000 KD</span>
-      </div>
-      <div class="total-modal-row">
-        <span class="total-modal-row-label">পেমেন্ট (Payment)</span>
-        <span class="total-modal-row-value" id="modalPayment">0.000 KD</span>
-      </div>
-      <div class="total-modal-row">
-        <span class="total-modal-row-label">নগদ (Cash)</span>
-        <span class="total-modal-row-value" id="modalCash">0.000 KD</span>
-      </div>
-      <div class="total-modal-row total">
-        <span class="total-modal-row-label">মোট KD</span>
-        <span class="total-modal-row-value" id="modalTotal">0.000 KD</span>
+<!-- ★ SELECT POPUP (Final) ★ -->
+<div id="miniPopup" class="mini-popup" onclick="toggleSelectExpand(event)">
+  <div class="popup-info">
+    <div class="popup-left">
+      <div id="popupIcon" class="popup-icon confirm">✓</div>
+      <div class="popup-text">
+        <div id="popupTotal" class="popup-total confirm">0.000<small>KD</small></div>
+        <div class="popup-count" id="popupCount">0 টি নির্বাচিত</div>
       </div>
     </div>
-    <button class="total-modal-close" onclick="closeTotalPopup()">ঠিক আছে</button>
+    <div class="popup-right-side">
+      <span id="popupBadge" class="popup-badge confirm">✓ একই</span>
+      <span class="popup-expand" id="popupExpand">▲</span>
+    </div>
+  </div>
+  <div class="popup-menu" onclick="event.stopPropagation()">
+    <div id="popupStatus"></div>
+    <button class="popup-menu-btn danger" onclick="clearAllSelected()">🗑️ সব মুছুন</button>
+    <button class="popup-menu-btn success" onclick="closeSelectMode()">✓ সম্পন্ন</button>
   </div>
 </div>
 
@@ -1589,6 +1622,15 @@ function createTransactionFingerprint(transactions) {
     description: t.description || "",
     agentOption: t.agentOption || ""
   })));
+}
+
+// ==================================================
+// BANGLA NUMBER
+// ==================================================
+function toBn(num){
+  const en = "0123456789";
+  const bn = "০১২৩৪৫৬৭৮৯";
+  return String(num).replace(/[0-9]/g, d => bn[en.indexOf(d)]);
 }
 
 // ==================================================
@@ -1737,7 +1779,7 @@ function toggleSelectMode() {
     document.body.classList.add("select-mode-on");
     selectModeBtn.classList.add("active");
     selectModeBtn.textContent = "Done";
-    updateSelectionBar();
+    updateSelectPopup();
   }
 }
 
@@ -1746,7 +1788,150 @@ function exitSelectMode() {
   document.body.classList.remove("select-mode-on");
   selectModeBtn.classList.remove("active");
   selectModeBtn.textContent = "Select Mode";
-  clearSelection();
+  closeSelectMode();
+}
+
+// ==================================================
+// ★ SELECT POPUP — FINAL
+// ==================================================
+function updateSelectPopup() {
+  const popup = $("miniPopup");
+  if (!popup) return;
+
+  if (!selectModeOn || selectedTransactions.size === 0) {
+    hideSelectPopup();
+    return;
+  }
+
+  const calc = calcSelected();
+  const mode = calc.allSame ? "confirm" : "warning";
+
+  // Amount color
+  const totalEl = $("popupTotal");
+  totalEl.className = "popup-total " + mode;
+  totalEl.innerHTML = (calc.totalKD < 0 ? '−' : '') + Math.abs(calc.totalKD).toFixed(3) + '<small>KD</small>';
+
+  // Count
+  $("popupCount").textContent = toBn(calc.count) + ' টি নির্বাচিত';
+
+  // Icon dynamic
+  const iconEl = $("popupIcon");
+  iconEl.className = "popup-icon " + mode;
+  iconEl.textContent = calc.allSame ? "✓" : "⚠️";
+
+  // Badge
+  const badgeEl = $("popupBadge");
+  if (calc.allSame) {
+    badgeEl.className = "popup-badge confirm";
+    badgeEl.textContent = "✓ একই";
+  } else {
+    badgeEl.className = "popup-badge warning";
+    badgeEl.textContent = "⚠️ " + toBn(calc.uniqueDescs.length) + " আলাদা";
+  }
+
+  // Status box
+  renderPopupStatus(calc);
+
+  popup.classList.add("show");
+}
+
+function calcSelected() {
+  let totalKD = 0;
+  const selectedTransactionsList = [];
+
+  allTransactions.forEach(t => {
+    const key = t.transactionId || JSON.stringify(t);
+    if (!selectedTransactions.has(key)) return;
+
+    const kd = Number(t.kdAmount || 0);
+    const type = String(t.type || '').trim();
+
+    if (type === 'পেমেন্ট') totalKD -= kd;
+    else totalKD += kd;
+
+    selectedTransactionsList.push(t);
+  });
+
+  const uniqueDescs = new Set(
+    selectedTransactionsList.map(t => String(t.description || '').trim())
+  );
+
+  return {
+    count: selectedTransactions.size,
+    totalKD: totalKD,
+    transactions: selectedTransactionsList,
+    allSame: uniqueDescs.size === 1,
+    uniqueDescs: Array.from(uniqueDescs)
+  };
+}
+
+function renderPopupStatus(calc) {
+  const el = $("popupStatus");
+  if (!el) return;
+  if (calc.transactions.length === 0) { el.innerHTML = ''; return; }
+
+  if (calc.allSame) {
+    const desc = calc.uniqueDescs[0] || '(No description)';
+    el.innerHTML = `
+      <div class="popup-status confirm">
+        <div class="popup-status-icon">✓</div>
+        <div class="popup-status-content">
+          <div class="popup-status-title">সব একই ধরনের</div>
+          <div class="popup-status-desc">
+            সব লেনদেন: <b>${escapeHTML(desc)}</b>
+            <br>${toBn(calc.count)} টি — নিরাপদে সম্পন্ন করুন
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    const list = calc.uniqueDescs.map(d => `"${escapeHTML(d || 'No desc')}"`).join(', ');
+    el.innerHTML = `
+      <div class="popup-status warning">
+        <div class="popup-status-icon">⚠️</div>
+        <div class="popup-status-content">
+          <div class="popup-status-title">সাবধান! আলাদা লেনদেন</div>
+          <div class="popup-status-desc">
+            ${toBn(calc.count)} টি লেনদেনে <b>${toBn(calc.uniqueDescs.length)} টি আলাদা নাম</b>:
+            <br>${list}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function hideSelectPopup() {
+  const popup = $("miniPopup");
+  if (!popup) return;
+  popup.classList.remove("show", "expanded");
+  const ex = $("popupExpand");
+  if (ex) ex.textContent = '▲';
+}
+
+function toggleSelectExpand(event) {
+  const popup = $("miniPopup");
+  if (!popup || !popup.classList.contains("show")) return;
+  if (selectedTransactions.size === 0) return;
+  const isExpanded = popup.classList.toggle("expanded");
+  const ex = $("popupExpand");
+  if (ex) ex.textContent = isExpanded ? '▼' : '▲';
+}
+
+function clearAllSelected() {
+  selectedTransactions.clear();
+  document.querySelectorAll(".transaction.selected").forEach(el => {
+    el.classList.remove("selected");
+  });
+  hideSelectPopup();
+}
+
+function closeSelectMode() {
+  selectedTransactions.clear();
+  document.querySelectorAll(".transaction.selected").forEach(el => {
+    el.classList.remove("selected");
+  });
+  hideSelectPopup();
 }
 
 // ==================================================
@@ -1968,76 +2153,11 @@ function toggleSelection(transactionKey, element) {
     selectedTransactions.add(transactionKey);
     element.classList.add("selected");
   }
-  updateSelectionBar();
-}
-
-function updateSelectionBar() {
-  const bar = $("selectionBar");
-  const countEl = $("selectionCount");
-  const totalEl = $("selectionTotal");
-
-  const count = selectedTransactions.size;
-
-  if (count === 0) {
-    bar.classList.remove("show");
-    return;
-  }
-
-  let totalKD = 0;
-  allTransactions.forEach(t => {
-    const key = t.transactionId || JSON.stringify(t);
-    if (selectedTransactions.has(key)) {
-      totalKD += Number(t.kdAmount || 0);
-    }
-  });
-
-  countEl.textContent = count + " টি সিলেক্টেড";
-  totalEl.textContent = totalKD.toFixed(3) + " KD";
-  bar.classList.add("show");
-}
-
-function clearSelection() {
-  selectedTransactions.clear();
-  document.querySelectorAll(".transaction.selected").forEach(el => {
-    el.classList.remove("selected");
-  });
-  updateSelectionBar();
-}
-
-function showTotalPopup() {
-  if (selectedTransactions.size === 0) return;
-
-  let count = 0, due = 0, payment = 0, cash = 0, total = 0;
-
-  allTransactions.forEach(t => {
-    const key = t.transactionId || JSON.stringify(t);
-    if (selectedTransactions.has(key)) {
-      const amt = Number(t.kdAmount || 0);
-      const type = String(t.type || '').trim();
-      count++;
-      total += amt;
-      if (type === 'বাকি') due += amt;
-      else if (type === 'পেমেন্ট') payment += amt;
-      else if (type === 'নগদ') cash += amt;
-    }
-  });
-
-  $("modalCount").textContent = count + " টি";
-  $("modalDue").textContent = due.toFixed(3) + " KD";
-  $("modalPayment").textContent = payment.toFixed(3) + " KD";
-  $("modalCash").textContent = cash.toFixed(3) + " KD";
-  $("modalTotal").textContent = total.toFixed(3) + " KD";
-
-  $("totalModalOverlay").classList.add("show");
-}
-
-function closeTotalPopup(event) {
-  if (event && event.target !== event.currentTarget) return;
-  $("totalModalOverlay").classList.remove("show");
+  updateSelectPopup();
 }
 
 // ==================================================
-// RENDER — Premium Cards with PIN + BAKI + DESCRIPTION
+// RENDER — Premium Cards
 // ==================================================
 function renderTransactions(transactions) {
   if (!transactions.length) {
@@ -2045,7 +2165,6 @@ function renderTransactions(transactions) {
     return;
   }
 
-  // বাকি হিসাব
   const balanceMap = new Map();
   const chronological = [...allTransactions].sort((a, b) => {
     const da = parseTransactionDate(a.date);
@@ -2087,7 +2206,6 @@ function renderTransactions(transactions) {
     }
     item.dataset.key = selectKey;
 
-    // Date
     const parsedDate = parseTransactionDate(t.date);
     let day = "", month = "", year = "";
 
@@ -2099,12 +2217,10 @@ function renderTransactions(transactions) {
       day = t.date || "";
     }
 
-    // Amount
     const kdAmount = Number(t.kdAmount || 0);
     const sign = isPayment ? "−" : "+";
     const amtText = sign + kdAmount.toFixed(3) + " KD";
 
-    // Note + BD
     let noteText = t.note || "";
     const bdAmount = t.bdAmount;
 
@@ -2113,17 +2229,11 @@ function renderTransactions(transactions) {
       noteText = noteText ? noteText + " • " + tk + " Tk" : tk + " Tk";
     }
 
-    // Agent PIN
     const pinNumber = t.agentOption || "";
-
-    // বাকি
     const tKey = t.transactionId || JSON.stringify(t);
     const runningBal = balanceMap.get(tKey) || 0;
-
-    // ★ Description
     const description = String(t.description || '').trim();
 
-    // Build
     const dateHTML =
       `<div class="transaction-date">` +
         `<span class="d">${escapeHTML(day)}</span>` +
@@ -2133,7 +2243,6 @@ function renderTransactions(transactions) {
 
     const lineHTML = `<div class="transaction-line"></div>`;
 
-    // Mid — amount + note + pills (বাকি + Description)
     const midHTML =
       `<div class="transaction-mid">` +
         `<span class="transaction-amt">${amtText}</span>` +
@@ -2144,7 +2253,6 @@ function renderTransactions(transactions) {
         `</div>` +
       `</div>`;
 
-    // Right — পিন + type label
     let rightHTML = "";
 
     if (isDue && pinNumber) {
@@ -2181,7 +2289,6 @@ function renderTransactions(transactions) {
       `<span class="select-check">✓</span>` +
       dateHTML + lineHTML + midHTML + rightHTML;
 
-    // Click — শুধু select mode ON থাকলে
     item.addEventListener("click", () => {
       if (!selectModeOn) return;
       toggleSelection(selectKey, item);
@@ -2212,8 +2319,7 @@ function logout() {
     selectModeBtn.textContent = "Select Mode";
   }
 
-  const bar = $("selectionBar");
-  if (bar) bar.classList.remove("show");
+  hideSelectPopup();
 
   customerPage.classList.add("hidden");
   loginPage.classList.remove("hidden");
