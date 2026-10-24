@@ -2222,12 +2222,17 @@ function renderTransactions(transactions) {
     const amtText = sign + kdAmount.toFixed(3) + " KD";
 
     let noteText = t.note || "";
-    const bdAmount = t.bdAmount;
+const bdAmount = t.bdAmount;
 
-    if (bdAmount !== "" && bdAmount !== null && bdAmount !== undefined && Number(bdAmount) !== 0) {
-      const tk = Number(String(bdAmount).replace(/,/g, "")).toLocaleString("en-IN");
-      noteText = noteText ? noteText + " • " + tk + " Tk" : tk + " Tk";
-    }
+// BD Amount শুধু নির্দিষ্ট note-এর জন্য দেখাবে
+const allowedNotes = ["bkash", "nagad", "recharge", "electricity"];
+const noteLower = String(t.note || "").toLowerCase();
+const showBdAmount = allowedNotes.some(keyword => noteLower.includes(keyword));
+
+if (showBdAmount && bdAmount !== "" && bdAmount !== null && bdAmount !== undefined && Number(bdAmount) !== 0) {
+  const tk = Number(String(bdAmount).replace(/,/g, "")).toLocaleString("en-IN");
+  noteText = noteText ? noteText + " • " + tk + " Tk" : tk + " Tk";
+}
 
     const pinNumber = t.agentOption || "";
     const tKey = t.transactionId || JSON.stringify(t);
