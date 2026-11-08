@@ -401,7 +401,9 @@ button:disabled{
   border-radius:12px;
   box-shadow:
     4px 4px 10px rgba(163,177,198,.5),
-    -4px -4px 10px rgba(255,255,255,.9)
+    -4px -4px 10px rgba(255,255,255,.9);
+  position:relative;
+  overflow:visible
 }
 
 .balance-box{
@@ -411,7 +413,9 @@ button:disabled{
   display:flex;
   align-items:center;
   padding:0;
-  background:transparent
+  background:transparent;
+  position:relative;
+  overflow:visible
 }
 
 .warning-box{
@@ -603,6 +607,107 @@ button:disabled{
   height:10px;
   background:#111827;
   transform:rotate(45deg)
+}
+
+/* =========================================================
+   ★ DUE REMINDER POPUP (কার্ডের উপরে, লেখার সাইজের সমান)
+========================================================= */
+.due-reminder-popup{
+  position:absolute;
+  left:10px;               
+  bottom:calc(100% - 4px); /* কার্ডের ঠিক উপরে ভেসে থাকবে */
+  width:max-content;       /* ফুল উইডথ নয়, লেখার সাইজের সমান */
+  max-width:calc(100vw - 40px); /* স্ক্রিনের বাইরে যাবে না */
+  z-index:9999;
+  background:linear-gradient(135deg,#DC2626 0%,#B91C1C 100%);
+  color:#fff;
+  border-radius:10px;
+  padding:7px 11px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:
+    0 12px 30px rgba(185,28,28,.5),
+    inset 0 1px 0 rgba(255,255,255,.18);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px) scale(.96); 
+  transition:
+    opacity .28s cubic-bezier(.34,1.56,.64,1),
+    transform .32s cubic-bezier(.34,1.56,.64,1),
+    visibility .28s ease;
+  pointer-events:none;
+}
+
+.due-reminder-popup.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+  animation:duePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes duePulse{
+  0%,100%{
+    box-shadow:
+      0 8px 20px rgba(185,28,28,.4),
+      0 0 0 0 rgba(220,38,38,.45),
+      inset 0 1px 0 rgba(255,255,255,.18)
+  }
+  50%{
+    box-shadow:
+      0 8px 20px rgba(185,28,28,.5),
+      0 0 0 4px rgba(220,38,38,0),
+      inset 0 1px 0 rgba(255,255,255,.18)
+  }
+}
+
+/* তীরচিহ্নটি নিচের দিকে (কার্ডের দিকে) */
+.due-reminder-popup::before{
+  content:"";
+  position:absolute;
+  left:24px;
+  bottom:-5px; 
+  width:10px;
+  height:10px;
+  background:#DC2626;
+  transform:rotate(45deg);
+  border-radius:0 0 2px 0;
+}
+
+.due-reminder-icon{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:rgba(255,255,255,.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  flex-shrink:0;
+  line-height:1;
+  animation:bellShake 3s ease-in-out infinite;
+  box-shadow:0 1px 5px rgba(0,0,0,.15)
+}
+
+@keyframes bellShake{
+  0%,85%,100%{transform:rotate(0deg)}
+  88%{transform:rotate(-14deg)}
+  91%{transform:rotate(14deg)}
+  94%{transform:rotate(-9deg)}
+  97%{transform:rotate(9deg)}
+}
+
+.due-reminder-text{
+  font-size:10.5px;
+  font-weight:800;
+  line-height:1.35;
+  letter-spacing:.1px;
+  color:#fff;
+  text-shadow:0 1px 2px rgba(0,0,0,.25);
+  flex:1;
+  min-width:0;
+  white-space:nowrap; /* লেখা যাতে ভেঙে ৩ লাইন না হয় */
 }
 
 .notice{
@@ -1116,7 +1221,6 @@ body.select-mode-on .transaction .transaction-right{
   flex:1
 }
 
-/* ★ Dynamic Icon ★ */
 .popup-icon{
   width:26px;
   height:26px;
@@ -1142,7 +1246,6 @@ body.select-mode-on .transaction .transaction-right{
 
 .popup-text{min-width:0}
 
-/* ★ Dynamic Amount Color ★ */
 .popup-total{
   font-size:16px;
   font-weight:900;
@@ -1168,7 +1271,6 @@ body.select-mode-on .transaction .transaction-right{
   line-height:1
 }
 
-/* Right side: badge + arrow */
 .popup-right-side{
   display:flex;
   align-items:center;
@@ -1177,7 +1279,6 @@ body.select-mode-on .transaction .transaction-right{
   transition:opacity .2s ease;
 }
 
-/* ★ Static Badge ★ */
 .popup-badge{
   font-size:8px;
   font-weight:900;
@@ -1242,7 +1343,6 @@ body.select-mode-on .transaction .transaction-right{
   padding-top:10px;
 }
 
-/* Warning / Confirm Box */
 .popup-status{
   border-radius:10px;
   padding:12px;
@@ -1377,6 +1477,9 @@ body.select-mode-on .transaction .transaction-right{
   .popup-status{padding:10px}
   .popup-status-title{font-size:11px}
   .popup-status-desc{font-size:10px}
+  .due-reminder-popup{padding:6px 9px;gap:6px}
+  .due-reminder-icon{width:22px;height:22px;font-size:12px}
+  .due-reminder-text{font-size:9.5px;}
 }
 
 @media(max-width:330px){
@@ -1398,6 +1501,9 @@ body.select-mode-on .transaction .transaction-right{
   .rate-input{font-size:9px;padding:0 5px}
   .premium-pin .lbl{font-size:9.5px}
   .premium-pin .num{font-size:9.5px}
+  .due-reminder-popup{padding:5px 8px;gap:5px}
+  .due-reminder-icon{width:20px;height:20px;font-size:11px}
+  .due-reminder-text{font-size:9px;}
 }
 </style>
 </head>
@@ -1483,6 +1589,8 @@ body.select-mode-on .transaction .transaction-right{
 
   <!-- Balance + Rate -->
   <div class="balance-rate-row">
+    
+    <!-- বাম দিকের বক্স -->
     <div class="balance-box">
       <div class="warning-box">
         <div class="warning-icon">!</div>
@@ -1495,6 +1603,8 @@ body.select-mode-on .transaction .transaction-right{
         </div>
       </div>
     </div>
+    
+    <!-- ডান দিকের বক্স -->
     <div class="rate-box">
       <div id="ratePopup" class="rate-popup">
         <div class="rate-popup-left">
@@ -1507,6 +1617,12 @@ body.select-mode-on .transaction .transaction-right{
       </div>
       <input id="rateAmount" class="rate-input" type="text" inputmode="numeric" autocomplete="off"
         placeholder="💱 রেট জানতে টাকার পরিমান লিখুন" oninput="calculateRate()">
+    </div>
+
+    <!-- ★ Due Reminder Popup (পপআপটি এখন একদম শেষে, কার্ডের উপরে ভেসে থাকবে) ★ -->
+    <div id="dueReminderPopup" class="due-reminder-popup" role="alert" aria-live="polite">
+      <div class="due-reminder-icon">⏰</div>
+      <div class="due-reminder-text">সময়মতো বাকি পরিশোধ করুন,<br>ওভারডিউ চার্জ এড়িয়ে চলুন।</div>
     </div>
   </div>
 
@@ -1758,6 +1874,9 @@ function showCustomer() {
   loadNotice();
   loadTransactions(false);
   startAutoRefresh();
+  
+  // সবসময় নোটিশ পপআপ দেখাবে
+  showDueReminder();
 }
 
 // ==================================================
@@ -1767,6 +1886,48 @@ function refreshData(btn) {
   btn.classList.add("spinning");
   setTimeout(() => { location.reload(); }, 300);
 }
+
+// ==================================================
+// ★ DUE REMINDER POPUP (সবসময় দেখাবে)
+// ==================================================
+let dueReminderShown = false;
+
+function showDueReminder() {
+  if (dueReminderShown) return;
+
+  const popup = $("dueReminderPopup");
+  if (!popup) return;
+
+  dueReminderShown = true;
+
+  setTimeout(() => {
+    popup.classList.add("show");
+  }, 600);
+
+  // বাইরে ক্লিক করলে বন্ধ
+  setTimeout(() => {
+    document.addEventListener("click", onOutsideClickDueReminder, true);
+  }, 900);
+}
+
+function onOutsideClickDueReminder(e) {
+  const popup = $("dueReminderPopup");
+  if (!popup || !popup.classList.contains("show")) return;
+  if (popup.contains(e.target)) return; // ভেতরে ক্লিক → বন্ধ হবে না
+  hideDueReminder();
+}
+
+function hideDueReminder() {
+  const popup = $("dueReminderPopup");
+  if (!popup) return;
+  popup.classList.remove("show");
+  document.removeEventListener("click", onOutsideClickDueReminder, true);
+}
+
+// ESC কী চাপলেও বন্ধ
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") hideDueReminder();
+});
 
 // ==================================================
 // SELECT MODE
@@ -1806,20 +1967,16 @@ function updateSelectPopup() {
   const calc = calcSelected();
   const mode = calc.allSame ? "confirm" : "warning";
 
-  // Amount color
   const totalEl = $("popupTotal");
   totalEl.className = "popup-total " + mode;
   totalEl.innerHTML = (calc.totalKD < 0 ? '−' : '') + Math.abs(calc.totalKD).toFixed(3) + '<small>KD</small>';
 
-  // Count
   $("popupCount").textContent = toBn(calc.count) + ' টি নির্বাচিত';
 
-  // Icon dynamic
   const iconEl = $("popupIcon");
   iconEl.className = "popup-icon " + mode;
   iconEl.textContent = calc.allSame ? "✓" : "⚠️";
 
-  // Badge
   const badgeEl = $("popupBadge");
   if (calc.allSame) {
     badgeEl.className = "popup-badge confirm";
@@ -1829,7 +1986,6 @@ function updateSelectPopup() {
     badgeEl.textContent = "⚠️ " + toBn(calc.uniqueDescs.length) + " আলাদা";
   }
 
-  // Status box
   renderPopupStatus(calc);
 
   popup.classList.add("show");
@@ -1927,11 +2083,25 @@ function clearAllSelected() {
 }
 
 function closeSelectMode() {
+  // ১. সিলেক্ট করা সব ডাটা মুছে ফেলবে
   selectedTransactions.clear();
+  
+  // ২. স্ক্রিন থেকে সব সিলেক্ট মার্ক (সবুজ বর্ডার) সরিয়ে ফেলবে
   document.querySelectorAll(".transaction.selected").forEach(el => {
     el.classList.remove("selected");
   });
+  
+  // ৩. মিনি পপআপটি বন্ধ করে দেবে
   hideSelectPopup();
+
+  // ৪. ★ নতুন যোগ করা অংশ: সিলেক্ট মোড পুরোপুরি বন্ধ করে দেবে (Done এর মতো) ★
+  selectModeOn = false;
+  document.body.classList.remove("select-mode-on");
+  
+  if (typeof selectModeBtn !== 'undefined' && selectModeBtn) {
+    selectModeBtn.classList.remove("active");
+    selectModeBtn.textContent = "Select Mode";
+  }
 }
 
 // ==================================================
@@ -2222,17 +2392,16 @@ function renderTransactions(transactions) {
     const amtText = sign + kdAmount.toFixed(3) + " KD";
 
     let noteText = t.note || "";
-const bdAmount = t.bdAmount;
+    const bdAmount = t.bdAmount;
 
-// BD Amount শুধু নির্দিষ্ট note-এর জন্য দেখাবে
-const allowedNotes = ["bkash", "nagad", "recharge", "electricity"];
-const noteLower = String(t.note || "").toLowerCase();
-const showBdAmount = allowedNotes.some(keyword => noteLower.includes(keyword));
+    const allowedNotes = ["bkash", "nagad", "recharge", "electricity"];
+    const noteLower = String(t.note || "").toLowerCase();
+    const showBdAmount = allowedNotes.some(keyword => noteLower.includes(keyword));
 
-if (showBdAmount && bdAmount !== "" && bdAmount !== null && bdAmount !== undefined && Number(bdAmount) !== 0) {
-  const tk = Number(String(bdAmount).replace(/,/g, "")).toLocaleString("en-IN");
-  noteText = noteText ? noteText + " • " + tk + " Tk" : tk + " Tk";
-}
+    if (showBdAmount && bdAmount !== "" && bdAmount !== null && bdAmount !== undefined && Number(bdAmount) !== 0) {
+      const tk = Number(String(bdAmount).replace(/,/g, "")).toLocaleString("en-IN");
+      noteText = noteText ? noteText + " • " + tk + " Tk" : tk + " Tk";
+    }
 
     const pinNumber = t.agentOption || "";
     const tKey = t.transactionId || JSON.stringify(t);
@@ -2317,6 +2486,7 @@ function logout() {
   allTransactions = [];
   selectedTransactions.clear();
   selectModeOn = false;
+  dueReminderShown = false;
 
   document.body.classList.remove("select-mode-on");
   if (selectModeBtn) {
@@ -2325,6 +2495,7 @@ function logout() {
   }
 
   hideSelectPopup();
+  hideDueReminder();
 
   customerPage.classList.add("hidden");
   loginPage.classList.remove("hidden");
